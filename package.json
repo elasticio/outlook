@@ -1,8 +1,8 @@
 {
   "name": "outlook-component",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
-  "homepage": "http://https://mail.office365.com/",
+  "homepage": "http://www.outlook.com/",
   "author": {
     "name": "elastic.io GmbH",
     "email": "info@elastic.io",
@@ -20,9 +20,10 @@
     "elasticio-component"
   ],
   "dependencies": {
-    "q": "^1.4.1",
+    "elasticio-node": "0.0.5",
     "elasticio-sailor-nodejs": "1.1.2",
-    "elasticio-node": "0.0.5"
+    "node-outlook": "^1.1.6",
+    "q": "^1.4.1"
   },
   "devDependencies": {
     "eslint": "^2.1.0",
@@ -34,6 +35,6 @@
       "mocha": true
     }
   },
-  "repository": "elasticio/outlook-component",
+  "repository": "elasticio/outlook",
   "license": "Apache-2.0"
 }

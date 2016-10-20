@@ -33,6 +33,25 @@ Now we are ready to push it:
 $ git push elasticio master
 ```
 
+## Authentication
+
+This component uses OAuth 2.0 authentication, so when deploying it to 
+your team you need to supply OAuth App Client ID and Client Secret. 
+You can register your app to obtain a client ID and secret via 
+https://apps.dev.microsoft.com, for that you would need to sign in with 
+either your Microsoft account (Outlook.com), or your work or school account (Office 365).
+
+Client ID and Secret need to be configured in the environment variables
+```MSAPP_CLIENT_ID``` and ```MSAPP_CLIENT_SECRET```. When specifying
+callback URI  please use your callback URL in a form
+             
+```
+https://your-tenant.elastic.io/callback/oauth2
+```
+
+for public cloud  default tenant just use ``https://app.elastic.io/callback/oauth2``
+
+
 ## License
 
 Apache-2.0 © [elastic.io GmbH](http://elastic.io)
