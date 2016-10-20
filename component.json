@@ -13,6 +13,12 @@
   },
   "credentials": {
     "fields": {
+      "tenantId": {
+        "label": "Tenant ID",
+        "viewClass": "TextFieldView",
+        "required": true,
+        "placeholder": "Use 'common' if not sure"
+      },
       "oauth": {
         "label": "Authentication",
         "viewClass": "OAuthFieldView",
@@ -22,8 +28,8 @@
     "oauth2": {
       "client_id": "{{MSAPP_CLIENT_ID}}",
       "client_secret": "{{MSAPP_CLIENT_SECRET}}",
-      "auth_uri": "https://login.microsoftonline.com/contoso.onmicrosoft.com/oauth2/authorize",
-      "token_uri": "https://login.microsoftonline.com/contoso.onmicrosoft.com/oauth2/token",
+      "auth_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/authorize",
+      "token_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/token",
       "response_type": "code",
       "scopes": [
         "openid","https://outlook.office.com/contacts.read"
