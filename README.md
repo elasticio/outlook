@@ -51,6 +51,14 @@ https://your-tenant.elastic.io/callback/oauth2
 
 for public cloud  default tenant just use ``https://app.elastic.io/callback/oauth2``
 
+## Known issues and limitations
+
+### Common tenant for OAuth 2.0 
+
+OAuth authentication flow has a hardcoded ``common`` tenant, see [here](https://azure.microsoft.com/en-us/documentation/articles/active-directory-protocols-oauth-code/) for more information. 
+If you want to change it please externalize tenant value as part of credentials configuration.
+ 
+
 
 ## License
 

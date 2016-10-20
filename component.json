@@ -1,13 +1,34 @@
 {
   "title": "Outlook",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
+  "envVars": {
+    "MSAPP_CLIENT_ID": {
+      "required": true,
+      "description": "Your Microsoft "
+    },
+    "MSAPP_CLIENT_SECRET": {
+      "required": true,
+      "description": "Your Salesforce OAuth client secret"
+    }
+  },
   "credentials": {
     "fields": {
-      "name": {
-        "label": "My API Key",
-        "required": true,
-        "viewClass": "TextFieldView"
+      "oauth": {
+        "label": "Authentication",
+        "viewClass": "OAuthFieldView",
+        "required": true
       }
+    },
+    "oauth2": {
+      "client_id": "{{MSAPP_CLIENT_ID}}",
+      "client_secret": "{{MSAPP_CLIENT_SECRET}}",
+      "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "token_uri": "https://login.microsoftonline.com/common/oauth2/token",
+      "prompt": "admin_consent",
+      "response_type": "code",
+      "scopes": [
+        "openid","https://outlook.office.com/contacts.read"
+      ]
     }
   }
 }
