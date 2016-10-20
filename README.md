@@ -49,7 +49,10 @@ callback URI  please use your callback URL in a form
 https://your-tenant.elastic.io/callback/oauth2
 ```
 
-for public cloud  default tenant just use ``https://app.elastic.io/callback/oauth2``
+for public cloud default tenant just use ``https://app.elastic.io/callback/oauth2``
+
+Apart from the OAuth 2.0 button you would need to specify the __AD tenant ID__
+ if you not sure about that just use ``common``.
 
 ## Known issues and limitations
 
