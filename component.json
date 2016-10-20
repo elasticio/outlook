@@ -32,8 +32,20 @@
       "token_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/token",
       "response_type": "code",
       "scopes": [
-        "openid","https://outlook.office.com/contacts.read"
+        "openid",
+        "https://outlook.office.com/contacts.read"
       ]
+    }
+  },
+  "triggers": {
+    "getContacts": {
+      "title": "Contacts",
+      "main": "./lib/triggers/contacts.js",
+      "type": "polling",
+      "metadata": {
+        "in": {},
+        "out": "./lib/schemas/contacts.out.json"
+      }
     }
   }
 }
