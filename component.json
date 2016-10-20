@@ -1,0 +1,13 @@
+{
+  "title": "Outlook",
+  "description": "elastic.io integration component for Office 365 Outlook REST API",
+  "credentials": {
+    "fields": {
+      "name": {
+        "label": "My API Key",
+        "required": true,
+        "viewClass": "TextFieldView"
+      }
+    }
+  }
+}
