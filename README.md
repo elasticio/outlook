@@ -56,7 +56,9 @@ Apart from the OAuth 2.0 button you would need to specify the __AD tenant ID__
 
 ## Known issues and limitations
 
- 
+### Current implementation uses AD V2.0 OAuth2
+
+Secon version of AD protocol has [some advantages](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-compare/), see [here](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-limitations/) for more information.
 
 
 ## License

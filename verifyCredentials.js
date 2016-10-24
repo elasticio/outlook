@@ -9,7 +9,7 @@ module.exports = function verifyCredentials(credentials, cb) {
     defaultVersion: 'v1.0',
     debugLogging: true,
     authProvider: (done) => {
-      done(null, cfg.oauth.access_token);
+      done(null, credentials.oauth.access_token);
     }
   });
   // Doing verification
