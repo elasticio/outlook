@@ -4,10 +4,6 @@
     "contacts": {
       "type": "array",
       "properties": {
-        "@odata.etag": {
-          "type": "string",
-          "required": true
-        },
         "id": {
           "type": "string",
           "required": true
