@@ -28,7 +28,7 @@
     "oauth2": {
       "client_id": "{{MSAPP_CLIENT_ID}}",
       "client_secret": "{{MSAPP_CLIENT_SECRET}}",
-      "auth_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/authorize",
+      "auth_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/authorize?resource=https:%2f%2foutlook.office365.com%2f",
       "token_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/token",
       "response_type": "code",
       "scopes": [
