@@ -30,12 +30,7 @@
       "client_secret": "{{MSAPP_CLIENT_SECRET}}",
       "auth_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/authorize",
       "token_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/token",
-      "response_type": "code",
-      "scopes": [
-        "openid",
-        "offline_access",
-        "https://graph.microsoft.com/contacts.read"
-      ]
+      "response_type": "id_token"
     }
   },
   "triggers": {
