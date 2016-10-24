@@ -33,6 +33,8 @@
       "response_type": "code",
       "scopes": [
         "openid",
+        "offline_access",
+        "Contacts.Read",
         "https://outlook.office.com/contacts.read"
       ]
     }
