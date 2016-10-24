@@ -25,7 +25,7 @@
       "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
       "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
       "scopes": [
-        "openid","User.Read","Contacts.Read","Profile"
+        "openid","offline_access","User.Read","Contacts.Read","Profile"
       ]
     }
   },
