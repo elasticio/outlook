@@ -34,9 +34,7 @@
       "scopes": [
         "openid",
         "offline_access",
-        "Contacts.Read",
-        "https://outlook.office.com/contacts.read",
-        "https://graph.microsoft.com/mail.send"
+        "https://graph.microsoft.com/contacts.read"
       ]
     }
   },
