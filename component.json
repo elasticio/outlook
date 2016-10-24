@@ -13,12 +13,6 @@
   },
   "credentials": {
     "fields": {
-      "tenantId": {
-        "label": "Tenant ID",
-        "viewClass": "TextFieldView",
-        "required": true,
-        "placeholder": "Use 'common' if not sure"
-      },
       "oauth": {
         "label": "Authentication",
         "viewClass": "OAuthFieldView",
@@ -28,9 +22,11 @@
     "oauth2": {
       "client_id": "{{MSAPP_CLIENT_ID}}",
       "client_secret": "{{MSAPP_CLIENT_SECRET}}",
-      "auth_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/authorize",
-      "token_uri": "https://login.microsoftonline.com/{{tenantId}}/oauth2/token",
-      "response_type": "id_token"
+      "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+      "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token"
+      "scopes": [
+        "openid","User.Read","Contacts.Read","Profile"
+      ]
     }
   },
   "triggers": {
