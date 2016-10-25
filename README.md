@@ -58,8 +58,12 @@ Apart from the OAuth 2.0 button you would need to specify the __AD tenant ID__
 
 ### Current implementation uses AD V2.0 OAuth2
 
-Secon version of AD protocol has [some advantages](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-compare/), see [here](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-limitations/) for more information.
+Second version of AD protocol has [some advantages](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-compare/), see [here](https://azure.microsoft.com/en-us/documentation/articles/active-directory-v2-limitations/) for more information.
 
+### OData output for lastModifiedDateTime has a precision issue
+
+Apparently the ``lastModifiedDateTime`` returned by MS Graph has no milliseconds in it is obvious that filter query accept and treat millisecond values correctly
+there is a workaround for that issue implemented in the code, however you need to keep an eye on it.
 
 ## License
 
