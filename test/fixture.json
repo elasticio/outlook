@@ -1,0 +1,237 @@
+{
+  "fixtures": {
+    "contacts": {
+      "msg": {
+        "headers": {},
+        "body": {}
+      },
+      "cfg": {
+         "oauth": {
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+            "access_token": "{{MS365_ACCESS_TOKEN}}"
+          },
+         "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+          }
+        }
+      },
+    "createEvent_1": {
+      "msg": {
+        "headers": {},
+        "body": {
+            "subject": "Test REST API - Simple Event Start/End date",
+            "body": {
+              "contentType": "HTML",
+              "content": "This is a test."
+            },
+            "start": {
+              "dateTime": "2016-12-19T18:00:00",
+              "timeZone": "Central European Standard Time"
+            },
+            "end": {
+              "dateTime": "2016-12-20T19:00:00",
+              "timeZone": "Central European Standard Time"
+            }
+          }
+       },
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+     },
+    "createEvent_2": {
+      "msg": {
+        "headers": {},
+        "body": {
+          "subject": "Test REST API - All Day Event",
+          "body": {
+            "contentType": "HTML",
+            "content": "This is a test."
+          },
+          "start": {
+            "dateTime": "2016-12-25 ",
+            "timeZone": "Central European Standard Time"
+          },
+          "end": {
+            "dateTime": "2016-12-25",
+            "timeZone": "Central European Standard Time"
+          },
+          "isAllDay": "1"
+        }
+      },
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+    },
+    "createEvent_3": {
+      "msg": {
+        "headers": {},
+        "body": {
+          "subject": "Test REST API - Simple Event Start/End date - Location/Importance/Show as ",
+          "body": {
+            "contentType": "HTML",
+            "content": "This is a test."
+          },
+          "start": {
+            "dateTime": "2016-12-19T18:00:00",
+            "timeZone": "Central European Standard Time"
+          },
+          "end": {
+            "dateTime": "2016-12-20T19:00:00",
+            "timeZone": "Central European Standard Time"
+          },
+          "location": {
+            "address": {
+              "city": "Bonn",
+              "countryOrRegion": "Germanx",
+              "postalCode": "2323455345",
+              "state": "NRW",
+              "street": "AStreet"
+            },
+            "displayName": "Our Test Location"
+          },
+          "importance": "High",
+          "showAs": "WorkingElsewhere"
+        }
+      }
+     ,
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+    },
+    "createEvent_4": {
+      "msg": {
+        "headers": {},
+        "body": {
+          "subject": "Test REST API - Simple Event Start/End date - Special date",
+          "body": {
+            "contentType": "HTML",
+            "content": "This is a test."
+          },
+          "start": {
+            "dateTime": "19 December 2016 18:00:00",
+            "timeZone": "Central European Standard Time"
+          },
+          "end": {
+            "dateTime": "12 20 2016 09:00 PM",
+            "timeZone": "Central European Standard Time"
+          },
+          "isAllDay": "1"
+        }
+      },
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+    },
+    "createEvent_5_negative": {
+      "msg": {
+        "headers": {},
+        "body": {
+          "subject": "Test REST API -  Invalid timezone, this should fail",
+          "body": {
+            "contentType": "HTML",
+            "content": "This is a test."
+          },
+          "start": {
+            "dateTime": "19 December 2016  18:00:00",
+            "timeZone": "CET"
+          },
+          "end": {
+            "dateTime": "12 20 2016 09:00 PM",
+            "timeZone": "CET"
+          }
+        }
+      },
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+    },
+    "createEvent_6": {
+      "msg": {
+        "headers": {},
+        "body": {
+          "subject": "Test REST API - Simple Event Start/End date - Special date - All day 2 days",
+          "body": {
+            "contentType": "HTML",
+            "content": "This is a test."
+          },
+          "start": {
+            "dateTime": "19 December 2016 18:00:00",
+            "timeZone": "Central European Standard Time"
+          },
+          "end": {
+            "dateTime": "12 20 2016 09:00 PM",
+            "timeZone": "Central European Standard Time"
+          },
+          "isAllDay": "1"
+        }
+      },
+      "cfg": {
+        "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "oauth": {
+          "expires_in": 3600,
+          "token_type": "Bearer",
+          "refresh_token": "{{MS365_REFRESH_TOKEN}}",
+          "access_token": "{{MS365_ACCESS_TOKEN}}"
+        },
+        "envVars": {
+          "MSAPP_CLIENT_ID": "{{MS365_MSAPP_CLIENT_ID}}",
+          "MSAPP_CLIENT_SECRET": "{{MS365_MSAPP_CLIENT_SECRET}}"
+        }
+      }
+    }
+   }
+  }
+

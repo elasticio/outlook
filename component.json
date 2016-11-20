@@ -4,11 +4,11 @@
   "envVars": {
     "MSAPP_CLIENT_ID": {
       "required": true,
-      "description": "Your Microsoft "
+      "description": "Your App Client ID"
     },
     "MSAPP_CLIENT_SECRET": {
       "required": true,
-      "description": "Your Salesforce OAuth client secret"
+      "description": "Your App Client Secret"
     }
   },
   "credentials": {
@@ -25,7 +25,7 @@
       "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
       "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
       "scopes": [
-        "openid","offline_access","User.Read","Contacts.Read","Profile"
+        "openid","offline_access","User.Read","Contacts.Read","Profile","Calendars.ReadWrite"
       ]
     }
   },
@@ -37,6 +37,25 @@
       "metadata": {
         "in": {},
         "out": "./lib/schemas/contacts.out.json"
+      }
+    }
+  },
+  "actions": {
+    "createEvent": {
+      "title": "Create Event",
+      "main": "./lib/actions/createEvent.js",
+      "fields": {
+        "calendarId": {
+          "viewClass": "SelectView",
+          "prompt": "Select a Calendar",
+          "label": "Calendar",
+          "required": false,
+          "model": "getCalendars"
+        }
+      },
+      "metadata": {
+        "in": "./lib/schemas/createEvent.in.json",
+        "out": "./lib/schemas/createEvent.out.json"
       }
     }
   }

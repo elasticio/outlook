@@ -1,6 +1,6 @@
 {
   "name": "outlook-component",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
   "homepage": "http://www.outlook.com/",
   "author": {
@@ -26,9 +26,13 @@
     "elasticio-sailor-nodejs": "1.1.2",
     "msgraph-sdk-javascript": "^0.1.2",
     "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.1.1",
+    "moment":"^2.1.16",
+    "q": "^1.4.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
+    "elasticio-cli": "1.0.0",
     "eslint": "^2.1.0",
     "eslint-config-xo-space": "^0.10.0"
   },

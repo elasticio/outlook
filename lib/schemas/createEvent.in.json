@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "required": false,
+  "properties": {
+    "subject": {
+      "type": "string",
+      "required": false
+    },
+    "body": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "enum": [ "Text", "HTML"] ,
+          "required": false
+        },
+        "content": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "start": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "type": "string",
+          "required": true
+        },
+        "timeZone": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "end": {
+      "type": "object",
+      "properties": {
+        "dateTime": {
+          "type": "string",
+          "required": true
+        },
+        "timeZone": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "location": {
+      "type": "object",
+      "required": false,
+      "properties": {
+        "address": {
+          "type": "object",
+          "required": false,
+          "properties": {
+            "city": {
+              "type": "string",
+              "required": false
+            },
+            "countryOrRegion": {
+              "type": "string",
+              "required": false
+            },
+            "postalCode": {
+              "type": "string",
+              "required": false
+            },
+            "state": {
+              "type": "string",
+              "required": false
+            },
+            "street": {
+              "type": "string",
+              "required": false
+            }
+          }
+        },
+        "displayName": {
+          "type": "string",
+          "required": false
+        }
+      }
+    },
+    "isAllDay": {
+      "type": "string",
+      "enum": [ "false", "true"],
+      "required": false
+    },
+    "importance": {
+      "type": "string",
+      "enum": [ "Low", "Normal", "High"],
+      "required": false
+    },
+    "reminderMinutesBeforeStart": {
+      "type": "number",
+      "required": false
+    },
+    "isReminderOn": {
+      "type": "boolean",
+      "required": false
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": [ "Normal", "Personal", "Private", "Confidential"],
+      "required": false
+    },
+    "showAs": {
+      "type": "string",
+      "enum": ["Free", "Tentative", "Busy", "Oof", "WorkingElsewhere", "Unknown"],
+      "required": false
+    }
+
+  }
+}
