@@ -123,7 +123,7 @@ module.exports = {
         'keyword-spacing': ERROR,
         'space-before-blocks': ERROR,
         'no-invalid-this': WARN,
-        'consistent-this': ERROR,
+        'consistent-this': WARN,
         'no-this-before-super': ERROR,
         'no-unreachable': ERROR,
         'no-sparse-arrays': ERROR,
