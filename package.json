@@ -8,9 +8,6 @@
     "email": "info@elastic.io",
     "url": "http://elastic.io"
   },
-  "scripts": {
-    "test": "./node_modules/.bin/grunt test"
-  },
   "files": [
     "lib"
   ],
