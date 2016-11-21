@@ -4,18 +4,12 @@ describe('Outlook Get Calendars', function () {
   const action = require('../../lib/actions/createEvent');
 
   const cfg = require('../data/configuration.in.json');
+  const jsonOut = require('../data/getCalendars_test.out.json');
 
   const refreshTokenUri ='https://login.microsoftonline.com';
   const refreshTokenApi = '/common/oauth2/v2.0/token';
   const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const microsoftGraphApi = '/me/calendars';
-
-  const getCalendarsMockResult = { calendar: "testCalendar" };
-
-  var cb;
-  beforeEach(function () {
-   cb = jasmine.createSpy('cb');
-  });
 
   it('should return no errors on success create request', function () {
     nock(refreshTokenUri)
@@ -24,59 +18,26 @@ describe('Outlook Get Calendars', function () {
 
     nock(microsoftGraphUri)
       .get(microsoftGraphApi)
-      .reply(200, getCalendarsMockResult);
+      .reply(200, jsonOut);
 
-    action.getCalendars(cfg, cb);
+    var resultsPromise = action.getCalendars(cfg);
+
+    var result;
+    runs(function () {
+      resultsPromise.then(function (data) {
+        result = data;
+      });
+    });
 
     waitsFor(function () {
-      return cb.callCount;
+      return result;
     });
 
     runs(function () {
-      expect(cb).toHaveBeenCalled();
-      expect(cb.calls.length).toEqual(1);
-      expect(cb).toHaveBeenCalledWith(null, { });
+      expect(result).toBeDefined();
+      expect(result).toEqual( { "AAMkAGI2TGuLAAA=": "Calendar" });
+    });
+
    });
-  });
-
-  it('should return errors on refresh token failure', function () {
-    nock(refreshTokenUri)
-      .post(refreshTokenApi)
-        .reply(401, {access_token: 1})
-
-      action.getCalendars(cfg, cb);
-
-      waitsFor(function () {
-        return cb.callCount;
-      });
-
-      runs(function () {
-        expect(cb).toHaveBeenCalled();
-        expect(cb.calls.length).toEqual(1);
-        expect(cb).toHaveBeenCalledWith({ statusCode : 401 });
-      });
-  });
-
-  it('should return errors  on request failure: case - consent problems', function () {
-    nock(refreshTokenUri)
-      .post(refreshTokenApi)
-      .reply(200, {access_token: 1})
-
-    nock(microsoftGraphUri)
-      .get(microsoftGraphApi)
-      .reply(403, getCalendarsMockResult);
-
-    action.getCalendars(cfg, cb);
-
-    waitsFor(function () {
-      return cb.callCount;
-    });
-
-    runs(function () {
-      expect(cb).toHaveBeenCalled();
-      expect(cb.calls.length).toEqual(1);
-      expect(cb).toHaveBeenCalledWith({ statusCode : 403 });
-    });
-  });
 
 });
