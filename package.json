@@ -12,6 +12,7 @@
     "lib"
   ],
   "scripts": {
+    "pretest": "eslint lib --fix",
     "test": "./node_modules/.bin/grunt test"
   },
   "main": "lib/index.js",
