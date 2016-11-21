@@ -99,7 +99,7 @@ module.exports = {
                 ObjectExpression: {
                     minProperties: 1
                 },
-                ObjectPattern: { 
+                ObjectPattern: {
                     minProperties: 5
                 }
             }
@@ -122,7 +122,7 @@ module.exports = {
         'space-infix-ops': ERROR,
         'keyword-spacing': ERROR,
         'space-before-blocks': ERROR,
-        'no-invalid-this': ERROR,
+        'no-invalid-this': WARN,
         'consistent-this': ERROR,
         'no-this-before-super': ERROR,
         'no-unreachable': ERROR,
