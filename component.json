@@ -49,7 +49,7 @@
           "viewClass": "SelectView",
           "prompt": "Select a Calendar",
           "label": "Calendar",
-          "required": false,
+          "required": true,
           "model": "getCalendars"
         }
       },
