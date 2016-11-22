@@ -11,7 +11,12 @@ describe('Outlook Get Calendars', function () {
   const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const microsoftGraphApi = '/me/calendars';
 
-  it('should return no errors on success create request', function () {
+  var cb;
+  beforeEach(function () {
+    cb = jasmine.createSpy('cb');
+  });
+
+  it('should return calendar info on success get request', function () {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, {access_token: 1})
@@ -20,24 +25,40 @@ describe('Outlook Get Calendars', function () {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    var resultsPromise = action.getCalendars(cfg);
-
-    var result;
-    runs(function () {
-      resultsPromise.then(function (data) {
-        result = data;
-      });
-    });
+    action.getCalendars(cfg, cb);
 
     waitsFor(function () {
-      return result;
+      return cb.callCount;
     });
 
     runs(function () {
-      expect(result).toBeDefined();
-      expect(result).toEqual( { "AAMkAGI2TGuLAAA=": "Calendar" });
+      expect(cb).toHaveBeenCalled();
+      expect(cb.calls.length).toEqual(1);
+      expect(cb).toHaveBeenCalledWith(null, { "AAMkAGI2TGuLAAA=" : "Calendar" });
+    });
+  });
+
+  it('should return errors on refresh token failure ', function () {
+    nock(refreshTokenUri)
+      .post(refreshTokenApi)
+      .reply(401, {access_token: 1})
+
+    nock(microsoftGraphUri)
+      .get(microsoftGraphApi)
+      .reply(200, jsonOut);
+
+    action.getCalendars(cfg, cb);
+
+    waitsFor(function () {
+      return cb.callCount;
     });
 
-   });
+    runs(function () {
+      expect(cb).toHaveBeenCalled();
+      expect(cb.calls.length).toEqual(1);
+      expect(cb).toHaveBeenCalledWith({ statusCode : 401 });
+    });
+  });
+
 
 });
