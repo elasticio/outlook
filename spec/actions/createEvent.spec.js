@@ -18,6 +18,7 @@ describe('Outlook Create Event', function () {
   var self;
   beforeEach(function() {
     self = jasmine.createSpyObj('self', ['emit']);
+    spyOn(baseCF, 'baseComponent').and.callThrough();
   });
 
 
@@ -37,9 +38,10 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.length).toEqual(1);
+      expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('data');
       expect(calls[0].args[1].body).toEqual({"id":"testid12345"});
+      expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
       expect(scope2).toBeTruthy();
     }
@@ -61,9 +63,10 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.length).toEqual(1);
+      expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('data');
       expect(calls[0].args[1].body).toEqual({"id":"testid12345"});
+      expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
       expect(scope2).toBeTruthy();
     }
@@ -81,8 +84,9 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.length).toEqual(1);
+      expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('error');
+      expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
     }
   });
@@ -103,8 +107,9 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.length).toEqual(1);
+      expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('error');
+      expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
       expect(scope2).toBeTruthy();
     }
@@ -127,12 +132,14 @@ describe('Outlook Create Event', function () {
 
    function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.length).toEqual(1);
+      expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('error');
+      expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
       expect(scope2).toBeTruthy();
     }
 
   });
+
 
 });
