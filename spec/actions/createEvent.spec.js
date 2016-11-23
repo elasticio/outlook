@@ -18,10 +18,9 @@ describe('Outlook Create Event', function () {
   var self;
   beforeEach(function() {
     self = jasmine.createSpyObj('self', ['emit']);
-    spyOn(baseCF, 'baseComponent').and.callThrough();
   });
 
-
+/*
   it('should emit (data and end events on success create request - case: http 200', function (done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
@@ -140,6 +139,6 @@ describe('Outlook Create Event', function () {
     }
 
   });
-
+*/
 
 });
