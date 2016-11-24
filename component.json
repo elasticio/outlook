@@ -209,7 +209,7 @@
         "isAllDay": {
           "label": "All Day Event",
           "viewClass": "CheckBoxView"
-        },
+        }
       },
       "metadata": {
         "in": "./lib/schemas/createEvent.in.json",
