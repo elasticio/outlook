@@ -10,14 +10,6 @@
       "type": "object",
       "required": false,
       "properties": {
-        "contentType": {
-          "type": "string",
-          "enum": [
-            "Text",
-            "HTML"
-          ],
-          "required": false
-        },
         "content": {
           "type": "string",
           "required": false

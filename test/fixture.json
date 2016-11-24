@@ -24,21 +24,20 @@
         "body": {
             "subject": "Test REST API - Simple Event Start/End date",
             "body": {
-              "contentType": "HTML",
               "content": "This is a test."
             },
             "start": {
-              "dateTime": "2016-12-19T18:00:00",
-              "timeZone": "Central European Standard Time"
+              "dateTime": "2016-12-19T18:00:00"
             },
             "end": {
-              "dateTime": "2016-12-20T19:00:00",
-              "timeZone": "Central European Standard Time"
-            }
+              "dateTime": "2016-12-20T19:00:00"
+           }
           }
        },
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "timeZone": "Central European Standard Time",
+        "bodyContentType": "HTML",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
@@ -57,22 +56,21 @@
         "body": {
           "subject": "Test REST API - All Day Event",
           "body": {
-            "contentType": "HTML",
             "content": "This is a test."
           },
           "start": {
-            "dateTime": "2016-12-25 ",
-            "timeZone": "Central European Standard Time"
+            "dateTime": "2017-05-25 "
           },
           "end": {
-            "dateTime": "2016-12-25",
-            "timeZone": "Central European Standard Time"
-          },
-          "isAllDay": "1"
+            "dateTime": "2017-05-25"
+          }
         }
       },
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "isAllDay": "true",
+        "timeZone": "Central European Standard Time",
+        "bodyContentType": "HTML",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
@@ -91,16 +89,13 @@
         "body": {
           "subject": "Test REST API - Simple Event Start/End date - Location/Importance/Show as ",
           "body": {
-            "contentType": "HTML",
             "content": "This is a test."
           },
           "start": {
-            "dateTime": "2016-12-19T18:00:00",
-            "timeZone": "Central European Standard Time"
+            "dateTime": "2016-12-19T18:00:00"
           },
           "end": {
-            "dateTime": "2016-12-20T19:00:00",
-            "timeZone": "Central European Standard Time"
+            "dateTime": "2016-12-20T19:00:00"
           },
           "location": {
             "address": {
@@ -111,14 +106,16 @@
               "street": "AStreet"
             },
             "displayName": "Our Test Location"
-          },
-          "importance": "High",
-          "showAs": "WorkingElsewhere"
+          }
         }
       }
      ,
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "importance": "High",
+        "showAs": "WorkingElsewhere",
+        "bodyContentType": "HTML",
+        "timeZone": "Central European Standard Time",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
@@ -137,22 +134,20 @@
         "body": {
           "subject": "Test REST API - Simple Event Start/End date - Special date",
           "body": {
-            "contentType": "HTML",
             "content": "This is a test."
           },
           "start": {
-            "dateTime": "19 December 2016 18:00:00",
-            "timeZone": "Central European Standard Time"
+            "dateTime": "19 December 2016 18:00:00"
           },
           "end": {
-            "dateTime": "12 20 2016 09:00 PM",
-            "timeZone": "Central European Standard Time"
-          },
-          "isAllDay": "1"
+            "dateTime": "12 20 2016 09:00 PM"
+          }
         }
       },
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "isAllDay": "true",
+        "timeZone": "Central European Standard Time",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
@@ -171,21 +166,20 @@
         "body": {
           "subject": "Test REST API -  Invalid timezone, this should fail",
           "body": {
-            "contentType": "HTML",
             "content": "This is a test."
           },
           "start": {
-            "dateTime": "19 December 2016  18:00:00",
-            "timeZone": "CET"
+            "dateTime": "19 December 2016  18:00:00"
           },
           "end": {
-            "dateTime": "12 20 2016 09:00 PM",
-            "timeZone": "CET"
+            "dateTime": "12 20 2016 09:00 PM"
           }
         }
       },
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "timeZone": "CET",
+        "bodyContentType": "HTML",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
@@ -204,22 +198,21 @@
         "body": {
           "subject": "Test REST API - Simple Event Start/End date - Special date - All day 2 days",
           "body": {
-            "contentType": "HTML",
             "content": "This is a test."
           },
           "start": {
-            "dateTime": "19 December 2016 18:00:00",
-            "timeZone": "Central European Standard Time"
+            "dateTime": "19 December 2016 18:00:00"
           },
           "end": {
-            "dateTime": "12 20 2016 09:00 PM",
-            "timeZone": "Central European Standard Time"
-          },
-          "isAllDay": "1"
+            "dateTime": "12 20 2016 09:00 PM"
+          }
         }
       },
       "cfg": {
         "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA=",
+        "isAllDay": "true",
+        "bodyContentType": "Text",
+        "timeZone": "Central European Standard Time",
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
