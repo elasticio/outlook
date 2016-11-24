@@ -142,31 +142,4 @@ describe('Outlook Create Event', function () {
     });
   });
 
-  it('should emit error and end events when getting invalid dates as input', function () {
-    nock(refreshTokenUri)
-      .post(refreshTokenApi)
-      .reply(200, {access_token: 1});
-
-    nock(microsoftGraphUri)
-      .post(microsoftGraphApi)
-      .reply(200, jsonOut);
-
-    jsonIn.start.dateTime = "sedert";
-    runs(function(){
-      action.process.call(self, {body: jsonIn}, cfg, {});
-    });
-
-    waitsFor(function(){
-      return self.emit.calls.length;
-    });
-
-    runs(function(){
-      let calls = self.emit.calls;
-      expect(calls.length).toEqual(2);
-      expect(calls[0].args[0]).toEqual('error');
-      expect(calls[1].args[0]).toEqual('end');
-    });
-  });
-
-
 });
