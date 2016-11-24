@@ -89,39 +89,8 @@ describe('Outlook Process Event Data', function () {
 
   });
 
-  it('formats utc format start and end time to YYYY-MM-DDTHH:mm:ss for non all day events - t1', function () {
-    let config_input = {};
-    let json_input = {
-      start: {
-        dateTime: "2007-04-05T14:30Z"
-      },
-      end: {
-        dateTime: "2007-04-05T15:30Z"
-      }
-    }
-    let actual_output = action.processEvent(config_input, json_input);
+  
 
-    expect('2007-04-05T16:30:00').toEqual(actual_output.start.dateTime);
-    expect('2007-04-05T17:30:00').toEqual(actual_output.end.dateTime);
-
-  });
-
-  it('formats utc format start and end time to YYYY-MM-DDTHH:mm:ss for non all day events - t2', function () {
-    let config_input = {};
-    let json_input = {
-      start: {
-        dateTime: "2007-04-05T12:30-04:00"
-      },
-      end: {
-        dateTime: "2007-04-05T15:30-04:00"
-      }
-    }
-    let actual_output = action.processEvent(config_input, json_input);
-
-    expect('2007-04-05T18:30:00').toEqual(actual_output.start.dateTime);
-    expect('2007-04-05T21:30:00').toEqual(actual_output.end.dateTime);
-
-  });
 
 
 });
