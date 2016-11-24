@@ -72,6 +72,7 @@ describe('Outlook Process Event Data', function () {
     expect('2016-12-20T21:00:00').toEqual(actual_output.end.dateTime);
   });
 
+  /*
   it('formats unix millisec format start and end time to YYYY-MM-DDTHH:mm:ss for non all day events', function () {
     let config_input = {};
     let json_input = {
@@ -88,8 +89,8 @@ describe('Outlook Process Event Data', function () {
     expect('2014-09-14T19:28:10').toEqual(actual_output.end.dateTime);
 
   });
+*/
 
-  
 
 
 
