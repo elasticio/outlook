@@ -52,16 +52,37 @@
           "required": true,
           "model": "getCalendars"
         },
+        "timeZone": {
+          "viewClass": "SelectView",
+          "prompt": "Select Even Timezone",
+          "label": "Time Zone",
+          "required": true,
+          "model": "getTimeZoneEnum"
+        },
+        "allDay": {
+          "label": "All Day Event",
+          "viewClass": "CheckBoxView"
+        },
         "importance": {
           "viewClass": "SelectView",
           "prompt": "Select Event Importance",
           "label": "Importance",
-          "required": true,
-          "model": {
-             "1": "Low",
-             "2": "Normal",
-             "3": "High"
-          }
+          "required": false,
+          "model": "getImportanceEnum"
+        },
+        "showAs": {
+          "viewClass": "SelectView",
+          "prompt": "Select Show As value",
+          "label": "Show As",
+          "required": false,
+          "model": "getShowAsEnum"
+        },
+        "sensitivity": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Sensitivity",
+          "label": "Sensitivity",
+          "required": false,
+          "model": "getSensitivityEnum"
         }
       },
       "metadata": {
