@@ -12,7 +12,10 @@
       "properties": {
         "contentType": {
           "type": "string",
-          "enum": [ "Text", "HTML"] ,
+          "enum": [
+            "Text",
+            "HTML"
+          ],
           "required": false
         },
         "content": {
@@ -27,10 +30,6 @@
         "dateTime": {
           "type": "string",
           "required": true
-        },
-        "timeZone": {
-          "type": "string",
-          "required": false
         }
       }
     },
@@ -40,10 +39,6 @@
         "dateTime": {
           "type": "string",
           "required": true
-        },
-        "timeZone": {
-          "type": "string",
-          "required": false
         }
       }
     },
@@ -83,34 +78,9 @@
         }
       }
     },
-    "isAllDay": {
-      "type": "string",
-      "enum": [ "false", "true"],
-      "required": false
-    },
-    "importance": {
-      "type": "string",
-      "enum": [ "Low", "Normal", "High"],
-      "required": false
-    },
     "reminderMinutesBeforeStart": {
       "type": "number",
       "required": false
-    },
-    "isReminderOn": {
-      "type": "boolean",
-      "required": false
-    },
-    "sensitivity": {
-      "type": "string",
-      "enum": [ "Normal", "Personal", "Private", "Confidential"],
-      "required": false
-    },
-    "showAs": {
-      "type": "string",
-      "enum": ["Free", "Tentative", "Busy", "Oof", "WorkingElsewhere", "Unknown"],
-      "required": false
     }
-
   }
 }
