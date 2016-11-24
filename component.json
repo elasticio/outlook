@@ -51,6 +51,17 @@
           "label": "Calendar",
           "required": true,
           "model": "getCalendars"
+        },
+        "importance": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Importance",
+          "label": "Importance",
+          "required": true,
+          "model": {
+             "1": "Low",
+             "2": "Normal",
+             "3": "High"
+          }
         }
       },
       "metadata": {
