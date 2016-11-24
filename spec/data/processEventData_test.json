@@ -1,0 +1,114 @@
+{
+  "t1_all_config_values": {
+    "cfg_in": {
+      "calendarId": "AAMkAGYyNmJlYj",
+      "bodyContentType": "HTML",
+      "isAllDay": "true",
+      "showAs": "Busy",
+      "timeZone": "Europe/Berlin",
+      "sensitivity": "Personal",
+      "importance": "High"
+    },
+    "json_in": {
+      "subject": "Simple Event",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "2016-12-19T18:00:00"
+      },
+      "end": {
+        "dateTime": "2016-12-20T19:00:00"
+      }
+    }
+  },
+  "t2_all_config_values_isAllDay_false": {
+    "cfg_in": {
+      "calendarId": "AAMkAGYyNmJlYj",
+      "bodyContentType": "HTML",
+      "isAllDay": "false",
+      "showAs": "Busy",
+      "timeZone": "Europe/Berlin",
+      "sensitivity": "Personal",
+      "importance": "High"
+    },
+    "json_in": {
+      "subject": "Simple Event",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "2016-12-19T18:00:00"
+      },
+      "end": {
+        "dateTime": "2016-12-20T19:00:00"
+      }
+    }
+  },
+  "t3_no_postbody_config_values": {
+    "cfg_in": {
+     },
+    "json_in": {
+      "subject": "Simple Event",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "2016-12-19T18:00:00"
+      },
+      "end": {
+        "dateTime": "2016-12-20T19:00:00"
+      }
+    }
+  },
+  "t4_add_1_day_for_all_day_events": {
+    "cfg_in": {
+      "isAllDay": "true"
+    },
+    "json_in": {
+      "subject": "Simple Event",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "2016-12-19"
+      },
+      "end": {
+        "dateTime": "2016-12-19"
+      }
+    }
+  },
+  "t5_format_for_all_day_events": {
+    "cfg_in": {
+      "isAllDay": "true"
+    },
+    "json_in": {
+      "subject": "Simple Event",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "2016-12-19T18:00"
+      },
+      "end": {
+        "dateTime": "2016-12-19T19:00"
+      }
+    }
+  },
+  "t6_format_for_non_all_day_events": {
+    "cfg_in": {
+     },
+    "json_in": {
+      "subject": "Test REST API - Simple Event Start/End date - Special date - All day 2 days",
+      "body": {
+        "content": "This is a test."
+      },
+      "start": {
+        "dateTime": "19 December 2016 18:00:00"
+      },
+      "end": {
+        "dateTime": "12 20 2016 09:00 PM"
+      }
+    }
+  }
+}

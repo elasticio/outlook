@@ -1,7 +1,6 @@
 {
   "subject": "Unit Test - Simple Event",
   "body": {
-    "contentType": "HTML",
     "content": "This is a test."
   },
   "start": {
