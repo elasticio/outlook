@@ -3,7 +3,13 @@
   "properties":{
     "id": {
       "type":"string",
-      "required":false
+      "required":false,
+      "title":"Event ID"
+    },
+    "calendarId": {
+      "type":"string",
+      "required":false,
+      "title":"Event Calendar ID"
     }
   }
 }

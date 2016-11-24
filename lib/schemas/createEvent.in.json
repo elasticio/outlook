@@ -4,7 +4,8 @@
   "properties": {
     "subject": {
       "type": "string",
-      "required": false
+      "required": false,
+      "title":"Subject"
     },
     "body": {
       "type": "object",
@@ -12,7 +13,8 @@
       "properties": {
         "content": {
           "type": "string",
-          "required": false
+          "required": false,
+          "title":"Body Content"
         }
       }
     },
@@ -21,7 +23,8 @@
       "properties": {
         "dateTime": {
           "type": "string",
-          "required": true
+          "required": true,
+          "title":"Start Time"
         }
       }
     },
@@ -30,7 +33,8 @@
       "properties": {
         "dateTime": {
           "type": "string",
-          "required": true
+          "required": true,
+          "title":"End Time"
         }
       }
     },
@@ -44,35 +48,42 @@
           "properties": {
             "city": {
               "type": "string",
-              "required": false
+              "required": false,
+              "title":"Location - City"
             },
             "countryOrRegion": {
               "type": "string",
-              "required": false
+              "required": false,
+              "title":"Location - Country or Region"
             },
             "postalCode": {
               "type": "string",
-              "required": false
+              "required": false,
+              "title":"Location - Postal Code"
             },
             "state": {
               "type": "string",
-              "required": false
+              "required": false,
+              "title":"Location - State"
             },
             "street": {
               "type": "string",
-              "required": false
+              "required": false,
+              "title":"Location - Street"
             }
           }
         },
         "displayName": {
           "type": "string",
-          "required": false
+          "required": false,
+          "title":"Location - Display Name"
         }
       }
     },
     "reminderMinutesBeforeStart": {
       "type": "number",
-      "required": false
+      "required": false,
+      "title":"Reminder - Minutes before Start"
     }
   }
 }

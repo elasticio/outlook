@@ -39,7 +39,7 @@ describe('Outlook Create Event', function () {
       let calls = self.emit.calls;
       expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('data');
-      expect(calls[0].args[1].body).toEqual({"id":"testid12345"});
+      expect(calls[0].args[1].body).toEqual({ "id" : "testid12345", "calendarId" : "AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW" });
       expect(calls[1].args[0]).toEqual('end');
     });
   });
@@ -65,7 +65,7 @@ describe('Outlook Create Event', function () {
       let calls = self.emit.calls;
       expect(calls.length).toEqual(2);
       expect(calls[0].args[0]).toEqual('data');
-      expect(calls[0].args[1].body).toEqual({"id":"testid12345"});
+      expect(calls[0].args[1].body).toEqual({ "id" : "testid12345", "calendarId" : "AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW" });
       expect(calls[1].args[0]).toEqual('end');
     });
   });
@@ -140,5 +140,6 @@ describe('Outlook Create Event', function () {
       expect(calls[1].args[0]).toEqual('end');
     });
   });
+
 
 });
