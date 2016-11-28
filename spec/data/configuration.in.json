@@ -1,5 +1,6 @@
 {
   "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW",
+  "timeZone": "Europe/Berlin",
   "oauth": {
     "expires_in": 3600,
     "token_type": "Bearer",

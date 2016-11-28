@@ -47,12 +47,10 @@
   },
   "t3_no_postbody_config_values": {
     "cfg_in": {
+      "calendarId": "AAMkAGYyNmJlYj",
+      "timeZone": "Europe/Berlin"
      },
     "json_in": {
-      "subject": "Simple Event",
-      "body": {
-        "content": "This is a test."
-      },
       "start": {
         "dateTime": "2016-12-19T18:00:00"
       },
@@ -63,7 +61,9 @@
   },
   "t4_add_1_day_for_all_day_events": {
     "cfg_in": {
-      "isAllDay": "true"
+      "isAllDay": "true",
+      "calendarId": "AAMkAGYyNmJlYj",
+      "timeZone": "Europe/Berlin"
     },
     "json_in": {
       "subject": "Simple Event",
@@ -80,7 +80,9 @@
   },
   "t5_format_for_all_day_events": {
     "cfg_in": {
-      "isAllDay": "true"
+      "isAllDay": "true",
+      "calendarId": "AAMkAGYyNmJlYj",
+      "timeZone": "Europe/Berlin"
     },
     "json_in": {
       "subject": "Simple Event",
@@ -97,6 +99,8 @@
   },
   "t6_format_for_non_all_day_events": {
     "cfg_in": {
+      "calendarId": "AAMkAGYyNmJlYj",
+      "timeZone": "Europe/Berlin"
      },
     "json_in": {
       "subject": "Test REST API - Simple Event Start/End date - Special date - All day 2 days",

@@ -34,7 +34,7 @@ describe('Outlook Process Event Data', function () {
     expect(config_input.bodyContentType).toEqual(actual_output.body.contentType);
   });
 
-  it('does NOT add any default properties in the event post body when properties are not defined in cfg', function () {
+  it('does NOT add any default properties in the event post body when (not required) properties are not defined in CFG', function () {
     let config_input = data["t3_no_postbody_config_values"].cfg_in;
     let json_input = data["t3_no_postbody_config_values"].json_in;
     let actual_output = action.processEvent(config_input, json_input);
@@ -43,9 +43,8 @@ describe('Outlook Process Event Data', function () {
     expect(undefined).toEqual(actual_output.showAs);
     expect(undefined).toEqual(actual_output.sensitivity);
     expect(undefined).toEqual(actual_output.isAllDay);
-    expect(undefined).toEqual(actual_output.start.timeZone);
-    expect(undefined).toEqual(actual_output.end.timeZone);
-    expect(undefined).toEqual(actual_output.body.contentType);
+    expect(undefined).toEqual(actual_output.body);
+    expect(undefined).toEqual(actual_output.subject);
   });
 
   it('formats start/end time to YYYY-MM-DD for all day events', function () {
@@ -68,7 +67,8 @@ describe('Outlook Process Event Data', function () {
 
   it('does not change start/end time when no utc offset is provided - case: europe/kiev', function () {
     let config_input = {
-      timeZone: "Europe/Kiev"
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -85,7 +85,8 @@ describe('Outlook Process Event Data', function () {
 
   it('does not change start/end time when no utc offset is provided - case: europe/berlin', function () {
     let config_input = {
-      timeZone: "Europe/Berlin"
+      timeZone: "Europe/Berlin",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -102,7 +103,8 @@ describe('Outlook Process Event Data', function () {
 
   it('converts unix millisec input for start/end time to iso datetime (timeZone as defined in cfg) - case: europe/berlin, isAllDay false', function () {
     let config_input = {
-    timeZone: "Europe/Berlin"
+    timeZone: "Europe/Berlin",
+    calendarId : "gxdfgsdfgID"
   };
   let json_input = {
     start: {
@@ -120,7 +122,8 @@ describe('Outlook Process Event Data', function () {
 
   it('converts unix millisec input for start/end time to iso datetime (timeZone as defined in cfg) - case: europe/berlin, isAllDay false', function () {
     let config_input = {
-      timeZone: "Europe/Kiev"
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -138,7 +141,8 @@ describe('Outlook Process Event Data', function () {
 
   it('changes start/end time when utc offset is provided, to the timeZone time as defined in cfg - case: europe/berlin', function () {
     let config_input = {
-      timeZone: "Europe/Berlin"
+      timeZone: "Europe/Berlin",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -157,7 +161,8 @@ describe('Outlook Process Event Data', function () {
 
   it('changes start/end time when utc offset is provided, to the timeZone time as defined in cfg - case: europe/kiev', function () {
     let config_input = {
-      timeZone: "Europe/Kiev"
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -184,7 +189,8 @@ describe('Outlook Process Event Data', function () {
 
   it('processes start/end times values even if the user entered spaces', function () {
     let config_input = {
-      timeZone: "Europe/Kiev"
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
     };
     let json_input = {
       start: {
@@ -199,5 +205,123 @@ describe('Outlook Process Event Data', function () {
     expect('2018-09-14T21:00:00').toEqual(actual_output.end.dateTime);
   });
 
+  it('throws an error when required cfg field calendarId is missing', function () {
+     let config_input = {
+       timeZone: "Europe/Kiev"
+     };
+     let json_input = {
+       start: {
+         dateTime: "2018-09-14T20:00:00"
+       },
+       end: {
+         dateTime:  "2018-09-14T21:00:00"
+       }
+     }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Calendar ID missing! This field is required!"));
+   });
+
+  it('throws an error when required cfg field timeZone is missing', function () {
+    let config_input = {
+      calendarId : "gxdfgsdfgID"
+    };
+    let json_input = {
+      start: {
+        dateTime: "2018-09-14T20:00:00"
+      },
+      end: {
+        dateTime:  "2018-09-14T21:00:00"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Time Zone missing! This field is required!"));
+  });
+
+  it('throws an error when required input message field start.dateTime is missing', function () {
+    let config_input = {
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
+    };
+    let json_input = {
+      end: {
+        dateTime: "2018-09-14T21:00:00"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Start Time missing! This field is required!"));
+  });
+
+  it('throws an error when required input message field end.dateTime is missing', function () {
+    let config_input = {
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
+    };
+    let json_input = {
+      start: {
+        dateTime: "2018-09-14T21:00:00"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("End Time missing! This field is required!"));
+  });
+
+  it('throws an error when bodyContentType is provided in the cfg, but no body.content is provided in the input message', function () {
+    let config_input = {
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID",
+      bodyContentType: "HTML"
+    };
+    let json_input = {
+      start: {
+        dateTime: "2018-09-14T21:00:00"
+      },
+      end: {
+        dateTime: "2018-09-14T22:00:00"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Body Type provided, but Body Content is missing!"));
+  });
+
+  it('throws an error when an invalid start date is provided', function () {
+    let config_input = {
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
+    };
+    let json_input = {
+      start: {
+        dateTime: "this_is_an_invalid_date_string"
+      },
+      end: {
+        dateTime: "2018-09-14T22:00:00"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Invalid date this_is_an_invalid_date_string"));
+  });
+
+  it('throws an error when an invalid end date is provided', function () {
+    let config_input = {
+      timeZone: "Europe/Kiev",
+      calendarId : "gxdfgsdfgID"
+    };
+    let json_input = {
+      start: {
+        dateTime: "2018-09-14T22:00:00"
+      },
+      end: {
+        dateTime: "this_is_an_invalid_date_string"
+      }
+    }
+    expect(function() {
+      action.processEvent(config_input, json_input);
+    }).toThrow(new Error("Invalid date this_is_an_invalid_date_string"));
+  });
 
 });
