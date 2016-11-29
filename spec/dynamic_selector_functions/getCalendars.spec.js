@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 describe('Outlook Get Calendars', function () {
   const nock = require('nock');
   const action = require('../../lib/actions/createEvent');
@@ -19,7 +19,7 @@ describe('Outlook Get Calendars', function () {
   it('should return calendar info on success get request', function () {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
-      .reply(200, {access_token: 1})
+      .reply(200, {access_token: 1});
 
     nock(microsoftGraphUri)
       .get(microsoftGraphApi)
@@ -34,14 +34,14 @@ describe('Outlook Get Calendars', function () {
     runs(function () {
       expect(cb).toHaveBeenCalled();
       expect(cb.calls.length).toEqual(1);
-      expect(cb).toHaveBeenCalledWith(null, { "AAMkAGI2TGuLAAA=" : "Calendar" });
+      expect(cb).toHaveBeenCalledWith(null, { 'AAMkAGI2TGuLAAA=' : 'Calendar' });
     });
   });
 
   it('should return errors on refresh token failure ', function () {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
-      .reply(401, {access_token: 1})
+      .reply(401, {access_token: 1});
 
     nock(microsoftGraphUri)
       .get(microsoftGraphApi)
