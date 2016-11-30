@@ -22,7 +22,7 @@ describe('Outlook Create Event', function () {
   it('should emit (data and end events on success create request - case: http 200', function (done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
-      .reply(200, {access_token: 1});
+      .reply(200, { access_token: 1 });
 
     const scope2 = nock(microsoftGraphUri)
       .post(microsoftGraphApi)
@@ -72,7 +72,7 @@ describe('Outlook Create Event', function () {
   it('should emit error and end events on unsuccessful refresh token request', function (done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
-      .reply(401, {access_token: 1});
+      .reply(401, { access_token: 1 });
 
     action.process.call(self, { body: jsonIn }, cfg, {})
       .then(checkResults)
@@ -109,7 +109,7 @@ describe('Outlook Create Event', function () {
       expect(calls[1].args[0]).toEqual('end');
       expect(scope1).toBeTruthy();
       expect(scope2).toBeTruthy();
-
+    }
   });
 
   it('should emit error and end events on unsuccessful create request - case: consent problems', function (done) {
