@@ -11,10 +11,10 @@ describe('Outlook Process Event Data', function () {
     let configInput = data['t1_all_config_values'].cfg_in;
     let jsonInput = data['t1_all_config_values'].json_in;
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect(configInput.importance).toEqual(actualInput.importance);
@@ -31,10 +31,10 @@ describe('Outlook Process Event Data', function () {
     let configInput = data['t2_all_config_values_isAllDay_false'].cfg_in;
     let jsonInput = data['t2_all_config_values_isAllDay_false'].json_in;
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect(configInput.importance).toEqual(actualInput.importance);
@@ -51,10 +51,10 @@ describe('Outlook Process Event Data', function () {
     let configInput = data['t3_no_postbody_config_values'].cfg_in;
     let jsonInput = data['t3_no_postbody_config_values'].json_in;
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect(undefined).toEqual(actualInput.importance);
@@ -70,10 +70,10 @@ describe('Outlook Process Event Data', function () {
     let configInput = data['t5_format_for_all_day_events'].cfg_in;
     let jsonInput = data['t5_format_for_all_day_events'].json_in;
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('YYYY-MM-DD').toEqual(moment(actualInput.start.dateTime).creationData().format);
@@ -85,10 +85,10 @@ describe('Outlook Process Event Data', function () {
     let configInput = data['t6_format_for_non_all_day_events'].cfg_in;
     let jsonInput = data['t6_format_for_non_all_day_events'].json_in;
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('YYYY-MM-DDTHH:mm:ss').toEqual(moment(actualInput.start.dateTime).creationData().format);
@@ -109,10 +109,10 @@ describe('Outlook Process Event Data', function () {
         dateTime:  '2018-09-14T21:00:00'
       }
     };
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2018-09-14T20:00:00').toEqual(actualInput.start.dateTime);
@@ -133,7 +133,7 @@ describe('Outlook Process Event Data', function () {
         dateTime:  '2018-09-14T21:00:00'
       }
     };
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done);
@@ -157,10 +157,10 @@ describe('Outlook Process Event Data', function () {
       dateTime: '1410715690579'
     }
   };
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2014-09-14T19:27:20').toEqual(actualInput.start.dateTime);
@@ -181,10 +181,10 @@ describe('Outlook Process Event Data', function () {
         dateTime: '1410715690579'
       }
     };
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2014-09-14T20:27:20').toEqual(actualInput.start.dateTime);
@@ -207,10 +207,10 @@ describe('Outlook Process Event Data', function () {
       }
     };
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2016-12-19T17:00:00').toEqual(actualInput.start.dateTime);
@@ -232,10 +232,10 @@ describe('Outlook Process Event Data', function () {
       }
     };
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2016-12-19T18:00:00').toEqual(actualInput.start.dateTime);
@@ -246,10 +246,10 @@ describe('Outlook Process Event Data', function () {
   it('adds an extra day to end time for all day events', function (done) {
     let configInput = data['t4_add_1_day_for_all_day_events'].cfg_in;
     let jsonInput = data['t4_add_1_day_for_all_day_events'].json_in;
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults(actualInput) {
       expect('2016-12-19').toEqual(actualInput.start.dateTime);
@@ -270,7 +270,7 @@ describe('Outlook Process Event Data', function () {
         dateTime:  '     2018-09-14T21:00:00         '
       }
     };
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done);
@@ -296,7 +296,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Calendar ID missing! This field is required!';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -327,7 +327,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Time Zone missing! This field is required!';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -355,7 +355,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Start Time missing! This field is required!';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -381,9 +381,9 @@ describe('Outlook Process Event Data', function () {
       }
     };
 
-    let errMessage = 'Ent Time missing! This field is required!';
+    let errMessage = 'End Time missing! This field is required!';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -415,7 +415,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Body Type provided, but Body Content is missing!';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -446,7 +446,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Invalid date this_is_an_invalid_date_string';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);
@@ -477,7 +477,7 @@ describe('Outlook Process Event Data', function () {
 
     let errMessage = 'Invalid date this_is_an_invalid_date_string';
 
-    action.processEvent(configInput, jsonInput)
+    action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .catch(checkError)
       .finally(done);

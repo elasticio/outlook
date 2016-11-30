@@ -31,7 +31,7 @@ describe('Outlook Create Event', function () {
     action.process.call(self, {body: jsonIn}, cfg, {})
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;
@@ -56,7 +56,7 @@ describe('Outlook Create Event', function () {
     action.process.call(self, {body: jsonIn}, cfg, {})
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;
@@ -77,7 +77,7 @@ describe('Outlook Create Event', function () {
     action.process.call(self, {body: jsonIn}, cfg, {})
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;
@@ -100,7 +100,7 @@ describe('Outlook Create Event', function () {
     action.process.call(self, {body: jsonIn}, cfg, {})
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;
@@ -124,7 +124,7 @@ describe('Outlook Create Event', function () {
     action.process.call(self, {body: jsonIn}, cfg, {})
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;

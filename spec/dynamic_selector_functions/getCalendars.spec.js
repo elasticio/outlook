@@ -29,7 +29,7 @@ describe('Outlook Get Calendars', function () {
     Q.ninvoke(action, "getCalendars", cfg)
       .then(checkResults)
       .then(done)
-      .catch(done)
+      .catch(done.fail)
 
     function checkResults(data) {
       expect(data).toEqual({ 'AAMkAGI2TGuLAAA=' : 'Calendar' });
@@ -53,6 +53,7 @@ describe('Outlook Get Calendars', function () {
     function checkResults(data) {
       expect(data).toBeUndefined();
     }
+
     function checkError(err) {
       expect('StatusCodeError').toEqual(err.name);
       expect(401).toEqual(err.statusCode);
