@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "pretest": "eslint lib --fix",
-    "test": "./node_modules/.bin/grunt test"
+    "test": "jasmine-node --test-dir spec"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -40,11 +40,9 @@
     "elasticio-cli": "1.0.0",
     "eslint": "^3.1.2",
     "eslint-config-xo-space": "^0.15.0",
-    "nock": "9.0.2",
-    "grunt": "~1.0.1",
-    "grunt-cli": "~1.2.0",
-    "grunt-contrib-clean": "~1.0.0",
-    "grunt-jasmine-node": "0.3.1"
+    "jasmine": "^2.5.2",
+    "jasmine-node": "^1.14.5",
+    "nock": "9.0.2"
   },
   "eslintConfig": {
     "extends": "xo-space",
