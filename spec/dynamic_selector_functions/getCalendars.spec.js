@@ -2,6 +2,7 @@
 describe('Outlook Get Calendars', function () {
   const nock = require('nock');
   const action = require('../../lib/actions/createEvent');
+  const Q = require('q');
 
   const cfg = require('../data/configuration.in.json');
   const jsonOut = require('../data/getCalendars_test.out.json');
@@ -16,7 +17,7 @@ describe('Outlook Get Calendars', function () {
     cb = jasmine.createSpy('cb');
   });
 
-  it('should return calendar info on success get request', function () {
+  it('should return calendar info on success get request', function (done) {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, {access_token: 1});
@@ -25,20 +26,17 @@ describe('Outlook Get Calendars', function () {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    action.getCalendars(cfg, cb);
+    Q.ninvoke(action, "getCalendars", cfg)
+      .then(checkResults)
+      .then(done)
+      .catch(done)
 
-    waitsFor(function () {
-      return cb.callCount;
-    });
-
-    runs(function () {
-      expect(cb).toHaveBeenCalled();
-      expect(cb.calls.length).toEqual(1);
-      expect(cb).toHaveBeenCalledWith(null, { 'AAMkAGI2TGuLAAA=' : 'Calendar' });
-    });
+    function checkResults(data) {
+      expect(data).toEqual({ 'AAMkAGI2TGuLAAA=' : 'Calendar' });
+    }
   });
 
-  it('should return errors on refresh token failure ', function () {
+  it('should return errors on refresh token failure ', function (done) {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, {access_token: 1});
@@ -47,17 +45,20 @@ describe('Outlook Get Calendars', function () {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    action.getCalendars(cfg, cb);
+    Q.ninvoke(action, "getCalendars", cfg)
+      .then(checkResults)
+      .catch(checkError)
+      .finally(done);
 
-    waitsFor(function () {
-      return cb.callCount;
-    });
+    function checkResults(data) {
+      expect(data).toBeUndefined();
+    }
+    function checkError(err) {
+      expect('StatusCodeError').toEqual(err.name);
+      expect(401).toEqual(err.statusCode);
+    }
 
-    runs(function () {
-      expect(cb).toHaveBeenCalled();
-      expect(cb.calls.length).toEqual(1);
-      expect(cb).toHaveBeenCalledWith({ statusCode : 401 });
-    });
   });
+
 
 });
