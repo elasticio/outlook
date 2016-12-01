@@ -18,11 +18,11 @@ describe('Outlook Create Event', function () {
 
 
   var self;
-  beforeEach(function() {
+  beforeEach(function createSpy () {
     self = jasmine.createSpyObj('self', ['emit']);
   });
 
-  it('should emit (data and end events on success create request - case: http 200', function (done) {
+  it('should emit (data and end events on success create request - case: http 200', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -31,7 +31,7 @@ describe('Outlook Create Event', function () {
       .post(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    action.process.call(self, { body : jsonIn }, cfg, {})
+    action.process.call(self, { body: jsonIn }, cfg, {})
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -47,7 +47,7 @@ describe('Outlook Create Event', function () {
     }
   });
 
-  it('should emit (data and end events on success create request - case: http 201', function (done) {
+  it('should emit (data and end events on success create request - case: http 201', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -72,7 +72,7 @@ describe('Outlook Create Event', function () {
     }
   });
 
-  it('should emit error and end events on unsuccessful refresh token request', function (done) {
+  it('should emit error and end events on unsuccessful refresh token request', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, { access_token: 1 });
@@ -91,7 +91,7 @@ describe('Outlook Create Event', function () {
     }
   });
 
-  it('should emit error and end events on unsuccessful create request - case: bad request', function (done) {
+  it('should emit error and end events on unsuccessful create request - case: bad request', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -115,7 +115,7 @@ describe('Outlook Create Event', function () {
     }
   });
 
-  it('should emit error and end events on unsuccessful create request - case: consent problems', function (done) {
+  it('should emit error and end events on unsuccessful create request - case: consent problems', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });

@@ -14,12 +14,7 @@ describe('Outlook Get Calendars', function () {
   const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const microsoftGraphApi = '/me/calendars';
 
-  var cb;
-  beforeEach(function () {
-    cb = jasmine.createSpy('cb');
-  });
-
-  it('should return calendar info on success get request', function (done) {
+  it('should return calendar info on success get request', function test(done) {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -38,7 +33,7 @@ describe('Outlook Get Calendars', function () {
     }
   });
 
-  it('should return errors on refresh token failure ', function (done) {
+  it('should return errors on refresh token failure ', function test(done) {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, { access_token: 1 });
