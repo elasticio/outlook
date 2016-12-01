@@ -1,7 +1,10 @@
 'use strict';
+
 describe('Outlook Create Event', function () {
 
   const nock = require('nock');
+  const expect = require('chai').expect;
+
   const action = require('../../lib/actions/createEvent');
 
   const cfg = require('../data/configuration.in.json');
@@ -35,12 +38,12 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.count()).toEqual(2);
-      expect(calls.argsFor(0)[0]).toEqual('data');
-      expect(calls.argsFor(1)[0]).toEqual('end');
-      expect(calls.argsFor(0)[1].body).toEqual({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
-      expect(scope1).toBeTruthy();
-      expect(scope2).toBeTruthy();
+      expect(calls.count()).to.equal(2);
+      expect(calls.argsFor(0)[0]).to.equal('data');
+      expect(calls.argsFor(1)[0]).to.equal('end');
+      expect(calls.argsFor(0)[1].body).to.deep.equal({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
+      expect(scope1.isDone()).to.be.true;
+      expect(scope2.isDone()).to.be.true;
     }
   });
 
@@ -60,12 +63,12 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.count()).toEqual(2);
-      expect(calls.argsFor(0)[0]).toEqual('data');
-      expect(calls.argsFor(1)[0]).toEqual('end');
-      expect(calls.argsFor(0)[1].body).toEqual({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
-      expect(scope1).toBeTruthy();
-      expect(scope2).toBeTruthy();
+      expect(calls.count()).to.equal(2);
+      expect(calls.argsFor(0)[0]).to.equal('data');
+      expect(calls.argsFor(1)[0]).to.equal('end');
+      expect(calls.argsFor(0)[1].body).to.deep.equal({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
+      expect(scope1.isDone()).to.be.true;
+      expect(scope2.isDone()).to.be.true;
     }
   });
 
@@ -81,10 +84,10 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.count()).toEqual(2);
-      expect(calls.argsFor(0)[0]).toEqual('error');
-      expect(calls.argsFor(1)[0]).toEqual('end');
-      expect(scope1).toBeTruthy();
+      expect(calls.count()).to.equal(2);
+      expect(calls.argsFor(0)[0]).to.equal('error');
+      expect(calls.argsFor(1)[0]).to.equal('end');
+      expect(scope1.isDone()).to.be.true;
     }
   });
 
@@ -104,11 +107,11 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.count()).toEqual(2);
-      expect(calls.argsFor(0)[0]).toEqual('error');
-      expect(calls.argsFor(1)[0]).toEqual('end');
-      expect(scope1).toBeTruthy();
-      expect(scope2).toBeTruthy();
+      expect(calls.count()).to.equal(2);
+      expect(calls.argsFor(0)[0]).to.equal('error');
+      expect(calls.argsFor(1)[0]).to.equal('end');
+      expect(scope1.isDone()).to.be.true;
+      expect(scope2.isDone()).to.be.true;
     }
   });
 
@@ -128,11 +131,11 @@ describe('Outlook Create Event', function () {
 
     function checkResults() {
       let calls = self.emit.calls;
-      expect(calls.count()).toEqual(2);
-      expect(calls.argsFor(0)[0]).toEqual('error');
-      expect(calls.argsFor(1)[0]).toEqual('end');
-      expect(scope1).toBeTruthy();
-      expect(scope2).toBeTruthy();
+      expect(calls.count()).to.equal(2);
+      expect(calls.argsFor(0)[0]).to.equal('error');
+      expect(calls.argsFor(1)[0]).to.equal('end');
+      expect(scope1.isDone()).to.be.true;
+      expect(scope2.isDone()).to.be.true;
     }
   });
 

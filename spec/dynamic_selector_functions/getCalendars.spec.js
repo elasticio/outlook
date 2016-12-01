@@ -1,8 +1,10 @@
 'use strict';
+
 describe('Outlook Get Calendars', function () {
   const nock = require('nock');
   const action = require('../../lib/actions/createEvent');
   const Q = require('q');
+  const expect = require('chai').expect;
 
   const cfg = require('../data/configuration.in.json');
   const jsonOut = require('../data/getCalendars_test.out.json');
@@ -32,7 +34,7 @@ describe('Outlook Get Calendars', function () {
       .catch(done.fail);
 
     function checkResults(data) {
-      expect(data).toEqual({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
+      expect(data).to.deep.equal({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
     }
   });
 
@@ -55,8 +57,8 @@ describe('Outlook Get Calendars', function () {
     }
 
     function checkError(err) {
-      expect('StatusCodeError').toEqual(err.name);
-      expect(401).toEqual(err.statusCode);
+      expect('StatusCodeError').to.equal(err.name);
+      expect(401).to.equal(err.statusCode);
     }
 
   });

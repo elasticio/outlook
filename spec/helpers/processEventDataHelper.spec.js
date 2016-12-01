@@ -5,7 +5,7 @@ describe('Outlook Process Event Data', function () {
 
   const action = require('../../lib/processEventDataHelper');
   const data = require('../data/processEventData_test.json');
-
+  const expect = require('chai').expect;
 
   it('adds the importance/showas/sensitivity/timezone/isallday(when true)/contentbodytype from the cfg param to the event post body', function (done) {
     let configInput = data['t1_all_config_values'].cfg_in;
@@ -17,13 +17,13 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect(configInput.importance).toEqual(actualOutput.importance);
-      expect(configInput.showAs).toEqual(actualOutput.showAs);
-      expect(configInput.sensitivity).toEqual(actualOutput.sensitivity);
-      expect(configInput.isAllDay).toEqual(actualOutput.isAllDay);
-      expect(configInput.timeZone).toEqual(actualOutput.start.timeZone);
-      expect(configInput.timeZone).toEqual(actualOutput.end.timeZone);
-      expect(configInput.bodyContentType).toEqual(actualOutput.body.contentType);
+      expect(configInput.importance).to.equal(actualOutput.importance);
+      expect(configInput.showAs).to.equal(actualOutput.showAs);
+      expect(configInput.sensitivity).to.equal(actualOutput.sensitivity);
+      expect(configInput.isAllDay).to.equal(actualOutput.isAllDay);
+      expect(configInput.timeZone).to.equal(actualOutput.start.timeZone);
+      expect(configInput.timeZone).to.equal(actualOutput.end.timeZone);
+      expect(configInput.bodyContentType).to.equal(actualOutput.body.contentType);
     }
   });
 
@@ -37,13 +37,13 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect(configInput.importance).toEqual(actualOutput.importance);
-      expect(configInput.showAs).toEqual(actualOutput.showAs);
-      expect(configInput.sensitivity).toEqual(actualOutput.sensitivity);
-      expect(undefined).toEqual(actualOutput.isAllDay);
-      expect(configInput.timeZone).toEqual(actualOutput.start.timeZone);
-      expect(configInput.timeZone).toEqual(actualOutput.end.timeZone);
-      expect(configInput.bodyContentType).toEqual(actualOutput.body.contentType);
+      expect(configInput.importance).to.equal(actualOutput.importance);
+      expect(configInput.showAs).to.equal(actualOutput.showAs);
+      expect(configInput.sensitivity).to.equal(actualOutput.sensitivity);
+      expect(undefined).to.equal(actualOutput.isAllDay);
+      expect(configInput.timeZone).to.equal(actualOutput.start.timeZone);
+      expect(configInput.timeZone).to.equal(actualOutput.end.timeZone);
+      expect(configInput.bodyContentType).to.equal(actualOutput.body.contentType);
     }
   });
 
@@ -57,12 +57,12 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect(undefined).toEqual(actualOutput.importance);
-      expect(undefined).toEqual(actualOutput.showAs);
-      expect(undefined).toEqual(actualOutput.sensitivity);
-      expect(undefined).toEqual(actualOutput.isAllDay);
-      expect(undefined).toEqual(actualOutput.body);
-      expect(undefined).toEqual(actualOutput.subject);
+      expect(undefined).to.equal(actualOutput.importance);
+      expect(undefined).to.equal(actualOutput.showAs);
+      expect(undefined).to.equal(actualOutput.sensitivity);
+      expect(undefined).to.equal(actualOutput.isAllDay);
+      expect(undefined).to.equal(actualOutput.body);
+      expect(undefined).to.equal(actualOutput.subject);
     }
   });
 
@@ -76,8 +76,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('YYYY-MM-DD').toEqual(moment(actualOutput.start.dateTime).creationData().format);
-      expect('YYYY-MM-DD').toEqual(moment(actualOutput.end.dateTime).creationData().format);
+      expect('YYYY-MM-DD').to.equal(moment(actualOutput.start.dateTime).creationData().format);
+      expect('YYYY-MM-DD').to.equal(moment(actualOutput.end.dateTime).creationData().format);
     }
   });
 
@@ -91,8 +91,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('YYYY-MM-DDTHH:mm:ss').toEqual(moment(actualOutput.start.dateTime).creationData().format);
-      expect('YYYY-MM-DDTHH:mm:ss').toEqual(moment(actualOutput.end.dateTime).creationData().format);
+      expect('YYYY-MM-DDTHH:mm:ss').to.equal(moment(actualOutput.start.dateTime).creationData().format);
+      expect('YYYY-MM-DDTHH:mm:ss').to.equal(moment(actualOutput.end.dateTime).creationData().format);
     }
   });
 
@@ -115,8 +115,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2018-09-14T20:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2018-09-14T21:00:00').toEqual(actualOutput.end.dateTime);
+      expect('2018-09-14T20:00:00').to.equal(actualOutput.start.dateTime);
+      expect('2018-09-14T21:00:00').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -139,8 +139,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done);
 
     function checkResults(actualOutput) {
-      expect('2018-09-14T20:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2018-09-14T21:00:00').toEqual(actualOutput.end.dateTime);
+      expect('2018-09-14T20:00:00').to.equal(actualOutput.start.dateTime);
+      expect('2018-09-14T21:00:00').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -163,8 +163,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2014-09-14T19:27:20').toEqual(actualOutput.start.dateTime);
-      expect('2014-09-14T19:28:10').toEqual(actualOutput.end.dateTime);
+      expect('2014-09-14T19:27:20').to.equal(actualOutput.start.dateTime);
+      expect('2014-09-14T19:28:10').to.equal(actualOutput.end.dateTime);
     }
 });
 
@@ -187,8 +187,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2014-09-14T20:27:20').toEqual(actualOutput.start.dateTime);
-      expect('2014-09-14T20:28:10').toEqual(actualOutput.end.dateTime);
+      expect('2014-09-14T20:27:20').to.equal(actualOutput.start.dateTime);
+      expect('2014-09-14T20:28:10').to.equal(actualOutput.end.dateTime);
     }
 
   });
@@ -213,8 +213,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2016-12-19T17:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2016-12-19T18:00:00').toEqual(actualOutput.end.dateTime);
+      expect('2016-12-19T17:00:00').to.equal(actualOutput.start.dateTime);
+      expect('2016-12-19T18:00:00').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -238,8 +238,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2016-12-19T18:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2016-12-19T19:00:00').toEqual(actualOutput.end.dateTime);
+      expect('2016-12-19T18:00:00').to.equal(actualOutput.start.dateTime);
+      expect('2016-12-19T19:00:00').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -252,8 +252,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done.fail);
 
     function checkResults(actualOutput) {
-      expect('2016-12-19').toEqual(actualOutput.start.dateTime);
-      expect('2016-12-20').toEqual(actualOutput.end.dateTime);
+      expect('2016-12-19').to.equal(actualOutput.start.dateTime);
+      expect('2016-12-20').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -276,8 +276,8 @@ describe('Outlook Process Event Data', function () {
       .catch(done);
 
     function checkResults(actualOutput) {
-      expect('2018-09-14T20:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2018-09-14T21:00:00').toEqual(actualOutput.end.dateTime);
+      expect('2018-09-14T20:00:00').to.equal(actualOutput.start.dateTime);
+      expect('2018-09-14T21:00:00').to.equal(actualOutput.end.dateTime);
     }
   });
 
@@ -306,7 +306,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
    });
@@ -337,7 +337,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
@@ -365,7 +365,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
@@ -393,7 +393,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
@@ -425,7 +425,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
@@ -456,7 +456,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
@@ -487,7 +487,7 @@ describe('Outlook Process Event Data', function () {
     }
 
     function checkError(err) {
-      expect(err).toEqual(new Error(errMessage));
+      expect(err).to.equal(new Error(errMessage));
     }
 
   });
