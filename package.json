@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "pretest": "eslint lib --fix",
-    "test": "jasmine-node --test-dir spec"
+    "test": "jasmine"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -41,7 +41,6 @@
     "eslint": "^3.1.2",
     "eslint-config-xo-space": "^0.15.0",
     "jasmine": "^2.5.2",
-    "jasmine-node": "^1.14.5",
     "nock": "9.0.2"
   },
   "eslintConfig": {
