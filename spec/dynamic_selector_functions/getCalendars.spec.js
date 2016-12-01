@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Outlook Get Calendars', function () {
+describe('Outlook Get Calendars', function test() {
   const nock = require('nock');
   const action = require('../../lib/actions/createEvent');
   const Q = require('q');
@@ -23,14 +23,14 @@ describe('Outlook Get Calendars', function () {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
+    function checkResults(data) {
+      expect(data).to.deep.equal({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
+    }
+
     Q.ninvoke(action, 'getCalendars', cfg)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
-
-    function checkResults(data) {
-      expect(data).to.deep.equal({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
-    }
   });
 
   it('should return errors on refresh token failure ', function test(done) {
@@ -42,11 +42,6 @@ describe('Outlook Get Calendars', function () {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    Q.ninvoke(action, 'getCalendars', cfg)
-      .then(checkResults)
-      .catch(checkError)
-      .finally(done);
-
     function checkResults(data) {
       expect(data).toBeUndefined();
     }
@@ -55,6 +50,11 @@ describe('Outlook Get Calendars', function () {
       expect('StatusCodeError').to.equal(err.name);
       expect(401).to.equal(err.statusCode);
     }
+
+    Q.ninvoke(action, 'getCalendars', cfg)
+      .then(checkResults)
+      .catch(checkError)
+      .finally(done);
 
   });
 

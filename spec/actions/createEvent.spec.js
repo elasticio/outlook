@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Outlook Create Event', function () {
+describe('Outlook Create Event', function test() {
 
   const nock = require('nock');
   const expect = require('chai').expect;
@@ -31,11 +31,6 @@ describe('Outlook Create Event', function () {
       .post(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    action.process.call(self, { body: jsonIn }, cfg, {})
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
-
     function checkResults() {
       let calls = self.emit.calls;
       expect(calls.count()).to.equal(2);
@@ -45,6 +40,11 @@ describe('Outlook Create Event', function () {
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
+
+    action.process.call(self, { body: jsonIn }, cfg, {})
+      .then(checkResults)
+      .then(done)
+      .catch(done.fail);
   });
 
   it('should emit (data and end events on success create request - case: http 201', function test(done) {
@@ -56,11 +56,6 @@ describe('Outlook Create Event', function () {
       .post(microsoftGraphApi)
       .reply(201, jsonOut);
 
-    action.process.call(self, { body: jsonIn }, cfg, {})
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
-
     function checkResults() {
       let calls = self.emit.calls;
       expect(calls.count()).to.equal(2);
@@ -70,17 +65,17 @@ describe('Outlook Create Event', function () {
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
+
+    action.process.call(self, { body: jsonIn }, cfg, {})
+      .then(checkResults)
+      .then(done)
+      .catch(done.fail);
   });
 
   it('should emit error and end events on unsuccessful refresh token request', function test(done) {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, { access_token: 1 });
-
-    action.process.call(self, { body: jsonIn }, cfg, {})
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
 
     function checkResults() {
       let calls = self.emit.calls;
@@ -89,7 +84,13 @@ describe('Outlook Create Event', function () {
       expect(calls.argsFor(1)[0]).to.equal('end');
       expect(scope1.isDone()).to.be.true;
     }
-  });
+
+    action.process.call(self, { body: jsonIn }, cfg, {})
+      .then(checkResults)
+      .then(done)
+      .catch(done.fail);
+
+   });
 
   it('should emit error and end events on unsuccessful create request - case: bad request', function test(done) {
     const scope1 = nock(refreshTokenUri)
@@ -100,11 +101,6 @@ describe('Outlook Create Event', function () {
       .post(microsoftGraphApi)
       .reply(400, jsonOut);
 
-    action.process.call(self, { body: jsonIn }, cfg, {})
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
-
     function checkResults() {
       let calls = self.emit.calls;
       expect(calls.count()).to.equal(2);
@@ -113,6 +109,11 @@ describe('Outlook Create Event', function () {
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
+
+    action.process.call(self, { body: jsonIn }, cfg, {})
+      .then(checkResults)
+      .then(done)
+      .catch(done.fail);
   });
 
   it('should emit error and end events on unsuccessful create request - case: consent problems', function test(done) {
@@ -124,11 +125,6 @@ describe('Outlook Create Event', function () {
       .post(microsoftGraphApi)
       .reply(403, jsonOut);
 
-    action.process.call(self, { body: jsonIn }, cfg, {})
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
-
     function checkResults() {
       let calls = self.emit.calls;
       expect(calls.count()).to.equal(2);
@@ -137,6 +133,11 @@ describe('Outlook Create Event', function () {
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
+
+    action.process.call(self, { body: jsonIn }, cfg, {})
+      .then(checkResults)
+      .then(done)
+      .catch(done.fail);
   });
 
 });
