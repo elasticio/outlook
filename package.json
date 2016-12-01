@@ -12,7 +12,7 @@
     "lib"
   ],
   "scripts": {
-    "pretest": "eslint lib --fix",
+    "pretest": "eslint lib spec --fix",
     "test": "jasmine"
   },
   "main": "lib/index.js",
