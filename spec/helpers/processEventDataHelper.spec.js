@@ -97,7 +97,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('does not change start/end time when no utc offset is provided (europe/kiev)', function test(done) {
+  it('does not change ISO start/end time when no utc offset is provided (europe/kiev)', function test(done) {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -152,14 +152,14 @@ describe('Outlook Process Event Data', function test() {
     timeZone: 'Europe/Berlin',
     calendarId : 'gxdfgsdfgID'
     };
-   let jsonInput = {
-    start: {
-      dateTime: '1410715640579'
-    },
-    end: {
-      dateTime: '1410715690579'
-    }
-  };
+    let jsonInput = {
+     start: {
+       dateTime: '1410715640579'
+     },
+     end: {
+       dateTime: '1410715690579'
+     }
+    };
 
     function checkResults(actualOutput) {
       expect('2014-09-14T19:27:20').to.equal(actualOutput.start.dateTime);
@@ -171,7 +171,7 @@ describe('Outlook Process Event Data', function test() {
       .then(done)
       .catch(done.fail);
 
-});
+  });
 
   it('converts unix millisec start/end time to iso datetime & cfg timezone (europe/kiev)', function test(done) {
     let configInput = {
@@ -500,5 +500,66 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
+  it('is rejected when a non ISO-8601 format end date is provided', function test(done) {
+    let configInput = {
+      timeZone: 'Europe/Berlin',
+      calendarId : 'gxdfgsdfgID'
+    };
+    let jsonInput = {
+      "start": {
+        "dateTime": "2016-12-18T20:00"
+      },
+      "end": {
+        "dateTime":  "Dec 20 2016 09:00:00 GMT+0200"
+      }
+    };
+
+    let errMessage = 'non ISO-8601 date formats are currently not supported: 19 December 2016 18:00:00';
+
+    function checkResults(actualOutput) {
+      expect(actualOutput).toBeUndefined();
+    }
+
+    function checkError(err) {
+      expect(err).to.equal(new Error(errMessage));
+    }
+
+    action.processEventData(configInput, jsonInput)
+      .then(checkResults)
+      .catch(checkError)
+      .finally(done);
+    ;
+  });
+
+  it('is rejected when a non ISO-8601 format start date is provided', function test(done) {
+    let configInput = {
+      timeZone: 'Europe/Berlin',
+      calendarId : 'gxdfgsdfgID'
+    };
+    let jsonInput = {
+      "start": {
+        "dateTime": "Dec 19 2016 09:00:00 GMT+0200"
+      },
+      "end": {
+        "dateTime":  "2016-12-18T20:00"
+      }
+    };
+
+    let errMessage = 'non ISO-8601 date formats are currently not supported: 19 December 2016 18:00:00';
+
+    function checkResults(actualOutput) {
+      expect(actualOutput).toBeUndefined();
+    }
+
+    function checkError(err) {
+      expect(err).to.equal(new Error(errMessage));
+    }
+
+    action.processEventData(configInput, jsonInput)
+      .then(checkResults)
+      .catch(checkError)
+      .finally(done);
+    ;
+  });
 
 });

@@ -108,10 +108,10 @@
         "content": "This is a test."
       },
       "start": {
-        "dateTime": "19 December 2016 18:00:00"
+        "dateTime": "2016 12 19T19:00"
       },
       "end": {
-        "dateTime": "12 20 2016 09:00 PM"
+        "dateTime":  "2016 12 19T20:00"
       }
     }
   }
