@@ -41,19 +41,15 @@ describe('Outlook Get Calendars', function test() {
       .get(microsoftGraphApi)
       .reply(200, jsonOut);
 
-    function checkResults(data) {
-      expect(data).toBeUndefined();
-    }
-
-    function checkError(err) {
-      expect('StatusCodeError').toEqual(err.name);
-      expect(401).toEqual(err.statusCode);
+     function checkError(err) {
+      expect(err.name).toEqual('StatusCodeError');
+      expect(err.statusCode).toEqual(401);
     }
 
     Q.ninvoke(action, 'getCalendars', cfg)
-      .then(checkResults)
+      .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
-      .finally(done);
+      .then(done, done.fail);
 
   });
 
