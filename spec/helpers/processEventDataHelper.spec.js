@@ -6,7 +6,8 @@ describe('Outlook Process Event Data', function test() {
   const action = require('../../lib/processEventDataHelper');
   const data = require('../data/processEventData_test.json');
 
-  it('adds the action config properties to the event post body', function test(done) {
+ 
+  it('adds the action config properties to the event post body', done => {
     let configInput = data.t1_all_config_values.cfg_in;
     let jsonInput = data.t1_all_config_values.json_in;
 
@@ -27,7 +28,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('does NOT add the isallday config property - when false - to the event post body', function test(done) {
+  it('does NOT add the isallday config property - when false - to the event post body', done => {
     let configInput = data.t2_all_config_values_isAllDay_false.cfg_in;
     let jsonInput = data.t2_all_config_values_isAllDay_false.json_in;
 
@@ -47,7 +48,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('does NOT add any default properties in the event post body', function test(done) {
+  it('does NOT add any default properties in the event post body', done => {
     let configInput = data.t3_no_postbody_config_values.cfg_in;
     let jsonInput = data.t3_no_postbody_config_values.json_in;
 
@@ -66,7 +67,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('formats start/end time to YYYY-MM-DD for all day events', function test(done) {
+  it('formats start/end time to YYYY-MM-DD for all day events', done => {
     let configInput = data.t5_format_for_all_day_events.cfg_in;
     let jsonInput = data.t5_format_for_all_day_events.json_in;
 
@@ -81,7 +82,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('formats start/end time to YYYY-MM-DDTHH:mm:ss for non all day events', function test(done) {
+  it('formats start/end time to YYYY-MM-DDTHH:mm:ss for non all day events', done => {
     let configInput = data.t6_format_for_non_all_day_events.cfg_in;
     let jsonInput = data.t6_format_for_non_all_day_events.json_in;
 
@@ -96,7 +97,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('does not change ISO start/end time when no utc offset is provided (europe/kiev)', function test(done) {
+  it('does not change ISO start/end time when no utc offset is provided (europe/kiev)', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -121,7 +122,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('does not change start/end time when no utc offset is provided (europe/berlin)', function test(done) {
+  it('does not change start/end time when no utc offset is provided (europe/berlin)', done => {
     let configInput = {
       timeZone: 'Europe/Berlin',
       calendarId : 'gxdfgsdfgID'
@@ -143,10 +144,10 @@ describe('Outlook Process Event Data', function test() {
     action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
   });
 
-  it('converts unix millisec start/end time to iso datetime in cfg timezone (europe/berlin)', function test(done) {
+  it('converts unix millisec start/end time to iso datetime in cfg timezone (europe/berlin)', done => {
     let configInput = {
     timeZone: 'Europe/Berlin',
     calendarId : 'gxdfgsdfgID'
@@ -172,7 +173,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('converts unix millisec start/end time to iso datetime & cfg timezone (europe/kiev)', function test(done) {
+  it('converts unix millisec start/end time to iso datetime & cfg timezone (europe/kiev)', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -198,7 +199,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('changes start/end time when utc offset is provided, to cfg timezone time (europe/berlin)', function test(done) {
+  it('changes start/end time when utc offset is provided, to cfg timezone time (europe/berlin)', done => {
     let configInput = {
       timeZone: 'Europe/Berlin',
       calendarId: 'gxdfgsdfgID'
@@ -224,7 +225,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('changes start/end time when utc offset is provided, to cfg time zone time (europe/kiev)', function test(done) {
+  it('changes start/end time when utc offset is provided, to cfg time zone time (europe/kiev)', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId : 'gxdfgsdfgID'
@@ -250,7 +251,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('adds an extra day to end time for all day events', function test(done) {
+  it('adds an extra day to end time for all day events', done => {
     let configInput = data.t4_add_1_day_for_all_day_events.cfg_in;
     let jsonInput = data.t4_add_1_day_for_all_day_events.json_in;
 
@@ -265,7 +266,7 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('processes start/end times values even if the user entered spaces', function test(done) {
+  it('processes start/end times values even if the user entered spaces', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -287,11 +288,11 @@ describe('Outlook Process Event Data', function test() {
     action.processEventData(configInput, jsonInput)
       .then(checkResults)
       .then(done)
-      .catch(done);
+      .catch(done.fail);
   });
 
 
-  it('is rejected when required cfg field calendarId is missing', function test(done) {
+  it('is rejected when required cfg field calendarId is missing', done => {
      let configInput = {
        timeZone: 'Europe/Kiev'
      };
@@ -321,7 +322,7 @@ describe('Outlook Process Event Data', function test() {
       .finally(done);
    });
 
-  it('is rejected when required cfg field timeZone is missing', function test(done) {
+  it('is rejected when required cfg field timeZone is missing', done => {
     let configInput = {
       calendarId: 'gxdfgsdfgID'
     };
@@ -351,7 +352,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when required input message field start.dateTime is missing', function test(done) {
+  it('is rejected when required input message field start.dateTime is missing', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -379,7 +380,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when required input message field end.dateTime is missing', function test(done) {
+  it('is rejected when required input message field end.dateTime is missing', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId : 'gxdfgsdfgID'
@@ -406,7 +407,7 @@ describe('Outlook Process Event Data', function test() {
       .finally(done);
   });
 
-  it('is rejected when bodyContentType is provided AND body.content is NOT provided', function test(done) {
+  it('is rejected when bodyContentType is provided AND body.content is NOT provided', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId : 'gxdfgsdfgID',
@@ -438,7 +439,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when an invalid start date is provided', function test(done) {
+  it('is rejected when an invalid start date is provided', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId : 'gxdfgsdfgID'
@@ -469,7 +470,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when an invalid end date is provided', function test(done) {
+  it('is rejected when an invalid end date is provided', done => {
     let configInput = {
       timeZone: 'Europe/Kiev',
       calendarId: 'gxdfgsdfgID'
@@ -500,7 +501,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when a non ISO-8601 format end date is provided', function test(done) {
+  it('is rejected when a non ISO-8601 format end date is provided', done => {
     let configInput = {
       timeZone: 'Europe/Berlin',
       calendarId : 'gxdfgsdfgID'
@@ -531,7 +532,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('is rejected when a non ISO-8601 format start date is provided', function test(done) {
+  it('is rejected when a non ISO-8601 format start date is provided', done => {
     let configInput = {
       timeZone: 'Europe/Berlin',
       calendarId : 'gxdfgsdfgID'
@@ -561,5 +562,6 @@ describe('Outlook Process Event Data', function test() {
       .finally(done);
     ;
   });
+
 
 });

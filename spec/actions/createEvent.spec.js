@@ -20,7 +20,7 @@ describe('Outlook Create Event', function test() {
     self = jasmine.createSpyObj('self', ['emit']);
   });
 
-  it('should emit (data and end events on success create request - case: http 200', function test(done) {
+  it('should emit (data and end events on success create request - case: http 200', done => {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -48,7 +48,7 @@ describe('Outlook Create Event', function test() {
       .catch(done.fail);
   });
 
-  it('should emit (data and end events on success create request - case: http 201', function test(done) {
+  it('should emit (data and end events on success create request - case: http 201', done => {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -76,7 +76,7 @@ describe('Outlook Create Event', function test() {
       .catch(done.fail);
   });
 
-  it('should emit error and end events on unsuccessful refresh token request', function test(done) {
+  it('should emit error and end events on unsuccessful refresh token request', done => {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, { access_token: 1 });
@@ -96,7 +96,7 @@ describe('Outlook Create Event', function test() {
 
    });
 
-  it('should emit error and end events on unsuccessful create request - case: bad request', function test(done) {
+  it('should emit error and end events on unsuccessful create request - case: bad request', done => {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -120,7 +120,7 @@ describe('Outlook Create Event', function test() {
       .catch(done.fail);
   });
 
-  it('should emit error and end events on unsuccessful create request - case: consent problems', function test(done) {
+  it('should emit error and end events on unsuccessful create request - case: consent problems', done => {
     const scope1 = nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });

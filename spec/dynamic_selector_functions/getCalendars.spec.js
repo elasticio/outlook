@@ -13,7 +13,7 @@ describe('Outlook Get Calendars', function test() {
   const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const microsoftGraphApi = '/me/calendars';
 
-  it('should return calendar info on success get request', function test(done) {
+  it('should return calendar info on success get request', done => {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(200, { access_token: 1 });
@@ -32,7 +32,7 @@ describe('Outlook Get Calendars', function test() {
       .catch(done.fail);
   });
 
-  it('should return errors on refresh token failure ', function test(done) {
+  it('should return errors on refresh token failure ', done => {
     nock(refreshTokenUri)
       .post(refreshTokenApi)
       .reply(401, { access_token: 1 });
