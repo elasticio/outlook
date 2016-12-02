@@ -506,11 +506,11 @@ describe('Outlook Process Event Data', function test() {
       calendarId : 'gxdfgsdfgID'
     };
     let jsonInput = {
-      "start": {
-        "dateTime": "2016-12-18T20:00"
+      start: {
+        dateTime: "2016-12-18T20:00"
       },
-      "end": {
-        "dateTime":  "Dec 20 2016 09:00:00 GMT+0200"
+      end: {
+        dateTime:  "Dec 20 2016 09:00:00 GMT+0200"
       }
     };
 
@@ -528,7 +528,7 @@ describe('Outlook Process Event Data', function test() {
       .then(checkResults)
       .catch(checkError)
       .finally(done);
-    ;
+
   });
 
   it('is rejected when a non ISO-8601 format start date is provided', function test(done) {
@@ -537,11 +537,11 @@ describe('Outlook Process Event Data', function test() {
       calendarId : 'gxdfgsdfgID'
     };
     let jsonInput = {
-      "start": {
-        "dateTime": "Dec 19 2016 09:00:00 GMT+0200"
+      start: {
+        dateTime: "Dec 19 2016 09:00:00 GMT+0200"
       },
-      "end": {
-        "dateTime":  "2016-12-18T20:00"
+      end: {
+        dateTime:  "2016-12-18T20:00"
       }
     };
 

@@ -36,7 +36,10 @@ describe('Outlook Create Event', function test() {
       expect(calls.count()).to.equal(2);
       expect(calls.argsFor(0)[0]).to.equal('data');
       expect(calls.argsFor(1)[0]).to.equal('end');
-      expect(calls.argsFor(0)[1].body).to.deep.equal({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
+      expect(calls.argsFor(0)[1].body).to.deep.equal({
+        'id' : 'testid12345',
+        'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
+      });
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
@@ -61,7 +64,10 @@ describe('Outlook Create Event', function test() {
       expect(calls.count()).to.equal(2);
       expect(calls.argsFor(0)[0]).to.equal('data');
       expect(calls.argsFor(1)[0]).to.equal('end');
-      expect(calls.argsFor(0)[1].body).to.deep.equal({ 'id' : 'testid12345', 'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW' });
+      expect(calls.argsFor(0)[1].body).to.deep.equal({
+        'id' : 'testid12345',
+        'calendarId' : 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
+      });
       expect(scope1.isDone()).to.be.true;
       expect(scope2.isDone()).to.be.true;
     }
