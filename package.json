@@ -41,8 +41,7 @@
     "eslint": "^3.1.2",
     "eslint-config-xo-space": "^0.15.0",
     "jasmine": "^2.5.2",
-    "nock": "9.0.2",
-    "chai": "3.5.0"
+    "nock": "9.0.2"
   },
   "eslintConfig": {
     "extends": "xo-space",

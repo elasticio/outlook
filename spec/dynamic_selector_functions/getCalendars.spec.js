@@ -4,7 +4,6 @@ describe('Outlook Get Calendars', function test() {
   const nock = require('nock');
   const action = require('../../lib/actions/createEvent');
   const Q = require('q');
-  const expect = require('chai').expect;
 
   const cfg = require('../data/configuration.in.json');
   const jsonOut = require('../data/getCalendars_test.out.json');
@@ -24,7 +23,7 @@ describe('Outlook Get Calendars', function test() {
       .reply(200, jsonOut);
 
     function checkResults(data) {
-      expect(data).to.deep.equal({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
+      expect(data).toEqual({ 'AAMkAGI2TGuLAAA=': 'Calendar' });
     }
 
     Q.ninvoke(action, 'getCalendars', cfg)
@@ -47,8 +46,8 @@ describe('Outlook Get Calendars', function test() {
     }
 
     function checkError(err) {
-      expect('StatusCodeError').to.equal(err.name);
-      expect(401).to.equal(err.statusCode);
+      expect('StatusCodeError').toEqual(err.name);
+      expect(401).toEqual(err.statusCode);
     }
 
     Q.ninvoke(action, 'getCalendars', cfg)
