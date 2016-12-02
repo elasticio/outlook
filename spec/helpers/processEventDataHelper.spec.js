@@ -562,31 +562,4 @@ describe('Outlook Process Event Data', function test() {
     ;
   });
 
-  /*
-  it('custom_test', function test(done) {
-    let configInput = {
-      timeZone: 'Europe/Kiev',
-      calendarId: 'gxdfgsdfgID'
-    };
-    let jsonInput = {
-      start: {
-        dateTime: '2018-09-14 08:00 GMT'
-      },
-      end: {
-        dateTime: '2018-09-14 09:00 GMT'
-      }
-    };
-
-    function checkResults(actualOutput) {
-      console.log(actualOutput);
-      expect('2018-09-14T20:00:00').toEqual(actualOutput.start.dateTime);
-      expect('2018-09-14T21:00:00').toEqual(actualOutput.end.dateTime);
-    }
-
-    action.processEventData(configInput, jsonInput)
-      .then(checkResults)
-      .then(done)
-      .catch(done);
-  });
-*/
 });
