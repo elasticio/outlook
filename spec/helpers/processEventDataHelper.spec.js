@@ -432,7 +432,7 @@ describe('Outlook Process Event Data', function test() {
       }
     };
 
-    let errMessage = 'Invalid date this_is_an_invalid_date_string';
+    let errMessage = 'Invalid date this_is_an_invalid_date_string.';
 
     function checkError(err) {
      expect(err).toEqual(new Error(errMessage));
@@ -458,7 +458,7 @@ describe('Outlook Process Event Data', function test() {
       }
     };
 
-    let errMessage = 'Invalid date this_is_an_invalid_date_string';
+    let errMessage = 'Invalid date this_is_an_invalid_date_string.';
 
     function checkError(err) {
       expect(err).toEqual(new Error(errMessage));

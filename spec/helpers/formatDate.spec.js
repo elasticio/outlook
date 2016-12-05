@@ -1,0 +1,144 @@
+'use strict';
+const moment = require('moment');
+
+describe('Outlook Format Date', function test() {
+
+  const action = require('../../lib/processEventDataHelper');
+  const data = require('../data/processEventData_test.json');
+
+  //Check if the date FORMAT itself is as expected.
+  describe('formats input date string based on given parameter ', function test() {
+
+    let timeZone = 'Europe/Berlin';
+
+    it(' - YYYY-MM-DD - ISO Date, No UTC Offset', function test() {
+      let inputDate = '2016-12-19T18:00:00';
+      let format = 'YYYY-MM-DD';
+      let expectedOutput = format;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+   });
+
+    it(' -  YYYY-MM-DDTHH:mm:ss - ISO Date, No UTC Offset', function test() {
+      let inputDate = '2016-12-19T18:00:00';
+      let format = 'YYYY-MM-DDTHH:mm:ss';
+      let expectedOutput = format;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+   });
+
+    it(' - YYYY-MM-DDTHH:mm:ss - ISO Date, UTC Offset', function test() {
+      let inputDate = '2016-12-19T18:00:00+02:00';
+      let format = 'YYYY-MM-DDTHH:mm:ss';
+      let expectedOutput = format;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+   });
+
+    it(' - YYYY-MM-DDTHH:mm:ss - milliseconds input ', function test() {
+      let inputDate = '1410715640579';
+      let format = 'YYYY-MM-DDTHH:mm:ss';
+      let expectedOutput = format;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+    });
+
+  });
+
+  //Check if the VALUE of the returned string is as expected.
+  describe('supports ISO input and converts it to given timezone parameter ', function test() {
+
+    let format = 'YYYY-MM-DDTHH:mm:ss';
+
+    it(' - ISO input date with no UTC offset is not changed (1)', function test() {
+      let inputDate = '2016-12-19T18:00:00';
+      let timeZone = 'Europe/Berlin';
+      let expectedOutput = inputDate;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+    it(' - ISO input date with no UTC offset is not changed (2)', function test() {
+      let inputDate = '2016-12-19T18:00:00';
+      let timeZone = 'Europe/Kiev';
+      let expectedOutput = inputDate;
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+    it(' - ISO input date with UTC offset is converted (1)', function test() {
+      let inputDate = '2016-12-19T18:00:00+02:00';
+      let timeZone = 'Europe/Berlin';
+      let expectedOutput =  '2016-12-19T17:00:00';
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+    it(' - ISO input date with UTC offset is converted (2)', function test() {
+      let inputDate = '2016-12-19T18:00:00+02:00';
+      let timeZone = 'Europe/Kiev';
+      let expectedOutput =  '2016-12-19T18:00:00';
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+   });
+
+  //Check if the VALUE of the returned string is as expected.
+  describe('supports millisec input and converts it to given timezone parameter ', function test() {
+
+    let format = 'YYYY-MM-DDTHH:mm:ss';
+    let inputDate = '1410715640579';
+
+    it(' - adapts date to given timezone for millisec input', function test() {
+      let timeZone = 'Europe/Kiev';
+      let expectedOutput =  '2014-09-14T20:27:20';
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+    it(' - adapts date to given timezone for millisec input', function test() {
+      let timeZone = 'Europe/Berlin';
+      let expectedOutput =  '2014-09-14T19:27:20';
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+  });
+
+  //Check errors thrown
+   describe('throws errors when unsupported or invalid date times are used ', function test() {
+     let format = 'YYYY-MM-DDTHH:mm:ss';
+     let timeZone = 'Europe/Berlin';
+
+    it('- non iso date 1', function test() {
+       let inputDate = 'Dec 19 2016 18:00:00 GMT+0200';
+       expect(function test() {
+        action.formatDate(inputDate, timeZone, format);
+      }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
+    });
+
+    it('- non iso date 2', function test() {
+      let inputDate = 'October 30, 2014 11:13:00';
+      expect( function test() {
+        action.formatDate(inputDate, timeZone, format);
+      }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
+    });
+
+    it('- non iso date 3', function test() {
+      let inputDate = '2016-12-19 06:00:00 PM';
+      expect( function test() {
+        action.formatDate(inputDate, timeZone, format);
+      }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
+    });
+
+    it('- invalid date', function test() {
+       let inputDate = 'invalid_date';
+       expect( function test() {
+         action.formatDate(inputDate, timeZone, format);
+       }).toThrow(new Error(`Invalid date ${inputDate}.`));
+     });
+
+  });
+
+});
