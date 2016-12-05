@@ -19,7 +19,7 @@ describe('Outlook Check Required Fields', function test() {
       }
    };
    let errMessage = 'Calendar ID missing! This field is required!';
-   expect( function () {
+   expect( function check() {
       action.checkRequiredFields(configInput, jsonInput);
    }).toThrow(new Error(errMessage));
   });
@@ -38,7 +38,7 @@ describe('Outlook Check Required Fields', function test() {
   };
 
   let errMessage = 'Time Zone missing! This field is required!';
-  expect( function () {
+  expect( function check() {
     action.checkRequiredFields(configInput, jsonInput);
   }).toThrow(new Error(errMessage));
 
@@ -56,7 +56,7 @@ describe('Outlook Check Required Fields', function test() {
     };
 
     let errMessage = 'Start Time missing! This field is required!';
-    expect( function () {
+    expect( function check() {
       action.checkRequiredFields(configInput, jsonInput);
     }).toThrow(new Error(errMessage));
   });
@@ -73,7 +73,7 @@ describe('Outlook Check Required Fields', function test() {
   };
 
   let errMessage = 'End Time missing! This field is required!';
-  expect( function () {
+  expect( function check() {
     action.checkRequiredFields(configInput, jsonInput);
   }).toThrow(new Error(errMessage));
 
@@ -95,7 +95,7 @@ describe('Outlook Check Required Fields', function test() {
   };
 
   let errMessage = 'Body Type provided, but Body Content is missing!';
-  expect( function () {
+  expect( function check() {
     action.checkRequiredFields(configInput, jsonInput);
   }).toThrow(new Error(errMessage));
 
@@ -119,7 +119,7 @@ describe('Outlook Check Required Fields', function test() {
       }
     };
 
-    expect( function () {
+    expect( function check() {
       action.checkRequiredFields(configInput, jsonInput);
     }).not.toThrow();
 

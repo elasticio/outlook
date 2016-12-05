@@ -113,28 +113,28 @@ describe('Outlook Format Date', function test() {
 
     it('- non iso date 1', function test() {
        let inputDate = 'Dec 19 2016 18:00:00 GMT+0200';
-       expect(function test() {
+       expect(function check() {
         action.formatDate(inputDate, timeZone, format);
       }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
     });
 
     it('- non iso date 2', function test() {
       let inputDate = 'October 30, 2014 11:13:00';
-      expect( function test() {
+      expect( function check() {
         action.formatDate(inputDate, timeZone, format);
       }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
     });
 
     it('- non iso date 3', function test() {
       let inputDate = '2016-12-19 06:00:00 PM';
-      expect( function test() {
+      expect( function check() {
         action.formatDate(inputDate, timeZone, format);
       }).toThrow(new Error(`non ISO-8601 date formats are currently not supported: ${inputDate}.`));
     });
 
     it('- invalid date', function test() {
        let inputDate = 'invalid_date';
-       expect( function test() {
+       expect( function check() {
          action.formatDate(inputDate, timeZone, format);
        }).toThrow(new Error(`Invalid date ${inputDate}.`));
      });
