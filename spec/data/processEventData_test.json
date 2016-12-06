@@ -78,25 +78,6 @@
       }
     }
   },
-  "t5_format_for_all_day_events": {
-    "cfg_in": {
-      "isAllDay": "true",
-      "calendarId": "AAMkAGYyNmJlYj",
-      "timeZone": "Europe/Berlin"
-    },
-    "json_in": {
-      "subject": "Simple Event",
-      "body": {
-        "content": "This is a test."
-      },
-      "start": {
-        "dateTime": "2016-12-19T18:00"
-      },
-      "end": {
-        "dateTime": "2016-12-19T19:00"
-      }
-    }
-  },
   "t6_format_for_non_all_day_events": {
     "cfg_in": {
       "calendarId": "AAMkAGYyNmJlYj",

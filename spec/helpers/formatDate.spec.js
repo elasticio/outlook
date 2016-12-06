@@ -11,43 +11,28 @@ describe('Outlook Format Date', function test() {
 
     let timeZone = 'Europe/Berlin';
 
-    it(' - YYYY-MM-DD - ISO Date, No UTC Offset', function test() {
+    it(' - YYYY-MM-DD - ISO Date', function test() {
       let inputDate = '2016-12-19T18:00:00';
       let format = 'YYYY-MM-DD';
-      let expectedOutput = format;
+      let expectedOutput = '2016-12-19';
       let actualOutput = action.formatDate(inputDate, timeZone, format);
-      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
-      expect(actualOutput).toEqual('2016-12-19');
-   });
-
-    it(' -  YYYY-MM-DDTHH:mm:ss - ISO Date, No UTC Offset', function test() {
-      let inputDate = '2016-12-19T18:00:00';
-      let format = 'YYYY-MM-DDTHH:mm:ss';
-      let expectedOutput = format;
-      let actualOutput = action.formatDate(inputDate, timeZone, format);
-      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
-   });
-
-    it(' - YYYY-MM-DDTHH:mm:ss - ISO Date, UTC Offset', function test() {
-      let inputDate = '2016-12-19T18:00:00+02:00';
-      let format = 'YYYY-MM-DDTHH:mm:ss';
-      let expectedOutput = format;
-      let actualOutput = action.formatDate(inputDate, timeZone, format);
-      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
-   });
-
-    it(' - YYYY-MM-DDTHH:mm:ss - milliseconds input ', function test() {
-      let inputDate = '1410715640579';
-      let format = 'YYYY-MM-DDTHH:mm:ss';
-      let expectedOutput = format;
-      let actualOutput = action.formatDate(inputDate, timeZone, format);
-      expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+      expect(actualOutput).toEqual(expectedOutput);
     });
 
+    it(' - YYYY-MM-DD - millisec input', function test() {
+      let inputDate = '1410715640579';
+      let format = 'YYYY-MM-DD';
+      let expectedOutput = '2014-09-14';
+      let actualOutput = action.formatDate(inputDate, timeZone, format);
+      expect(actualOutput).toEqual(expectedOutput);
+    });
+
+    //Format 'YYYY-MM-DDTHH:mm:ss' requires more cases.
+    //They are covered in the test below.
   });
 
-  //Check if the VALUE of the returned string is as expected.
-  describe('supports ISO input and converts it to given timezone parameter ', function test() {
+
+  describe('supports ISO date input, converts it based on timezone param, formats it', function test() {
 
     let format = 'YYYY-MM-DDTHH:mm:ss';
 
@@ -86,7 +71,7 @@ describe('Outlook Format Date', function test() {
    });
 
   //Check if the VALUE of the returned string is as expected.
-  describe('supports millisec input and converts it to given timezone parameter ', function test() {
+  describe('supports millisec date input, converts it based on timezone param, formats it', function test() {
 
     let format = 'YYYY-MM-DDTHH:mm:ss';
     let inputDate = '1410715640579';

@@ -67,20 +67,6 @@ describe('Outlook Process Event Data', function test() {
       .catch(done.fail);
   });
 
-  it('formats start/end time to YYYY-MM-DD for all day events', done => {
-    let configInput = data.t5_format_for_all_day_events.cfg_in;
-    let jsonInput = data.t5_format_for_all_day_events.json_in;
-
-    function checkResults(actualOutput) {
-      expect(moment(actualOutput.start.dateTime).creationData().format).toEqual('YYYY-MM-DD');
-      expect(moment(actualOutput.end.dateTime).creationData().format).toEqual('YYYY-MM-DD');
-    }
-
-    action.processEventData(configInput, jsonInput)
-      .then(checkResults)
-      .then(done)
-      .catch(done.fail);
-  });
 
   it('formats start/end time to YYYY-MM-DDTHH:mm:ss for non all day events', done => {
     let configInput = data.t6_format_for_non_all_day_events.cfg_in;
@@ -251,7 +237,7 @@ describe('Outlook Process Event Data', function test() {
 
   });
 
-  it('adds an extra day to end time for all day events', done => {
+  it('adds an extra day to end time for all day events and formats start/end dates as YYYY-MM-DD ', done => {
     let configInput = data.t4_add_1_day_for_all_day_events.cfg_in;
     let jsonInput = data.t4_add_1_day_for_all_day_events.json_in;
 
