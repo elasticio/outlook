@@ -17,6 +17,7 @@ describe('Outlook Format Date', function test() {
       let expectedOutput = format;
       let actualOutput = action.formatDate(inputDate, timeZone, format);
       expect(moment(actualOutput).creationData().format).toEqual(expectedOutput);
+      expect(actualOutput).toEqual('2016-12-19');
    });
 
     it(' -  YYYY-MM-DDTHH:mm:ss - ISO Date, No UTC Offset', function test() {
