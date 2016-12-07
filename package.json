@@ -39,15 +39,8 @@
   "devDependencies": {
     "elasticio-cli": "1.0.0",
     "eslint": "^3.1.2",
-    "eslint-config-xo-space": "^0.15.0",
     "jasmine": "^2.5.2",
     "nock": "9.0.2"
-  },
-  "eslintConfig": {
-    "extends": "xo-space",
-    "env": {
-      "mocha": true
-    }
   },
   "repository": "elasticio/outlook",
   "license": "Apache-2.0"
