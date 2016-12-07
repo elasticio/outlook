@@ -33,9 +33,9 @@ describe('Outlook Process Event Data', function test() {
     let jsonInput = data.t2_all_config_values_isAllDay_false.json_in;
 
     function checkResults(actualOutput) {
-      expect(actualOutput.importance).toEqual(configOutput.importance);
-      expect(actualOutput.showAs).toEqual(configOutput.showAs);
-      expect(actualOutput.sensitivity).toEqual(configOutput.sensitivity);
+      expect(actualOutput.importance).toEqual(configInput.importance);
+      expect(actualOutput.showAs).toEqual(configInput.showAs);
+      expect(actualOutput.sensitivity).toEqual(configInput.sensitivity);
       expect(actualOutput.isAllDay).toEqual(undefined);
       expect(actualOutput.start.timeZone).toEqual(configInput.timeZone);
       expect(actualOutput.end.timeZone).toEqual(configInput.timeZone);
