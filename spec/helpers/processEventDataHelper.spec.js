@@ -33,13 +33,13 @@ describe('Outlook Process Event Data', function test() {
     let jsonInput = data.t2_all_config_values_isAllDay_false.json_in;
 
     function checkResults(actualOutput) {
-      expect(configInput.importance).toEqual(actualOutput.importance);
-      expect(configInput.showAs).toEqual(actualOutput.showAs);
-      expect(configInput.sensitivity).toEqual(actualOutput.sensitivity);
-      expect(undefined).toEqual(actualOutput.isAllDay);
-      expect(configInput.timeZone).toEqual(actualOutput.start.timeZone);
-      expect(configInput.timeZone).toEqual(actualOutput.end.timeZone);
-      expect(configInput.bodyContentType).toEqual(actualOutput.body.contentType);
+      expect(actualOutput.importance).toEqual(configOutput.importance);
+      expect(actualOutput.showAs).toEqual(configOutput.showAs);
+      expect(actualOutput.sensitivity).toEqual(configOutput.sensitivity);
+      expect(actualOutput.isAllDay).toEqual(undefined);
+      expect(actualOutput.start.timeZone).toEqual(configInput.timeZone);
+      expect(actualOutput.end.timeZone).toEqual(configInput.timeZone);
+      expect(actualOutput.body.contentType).toEqual(configInput.bodyContentType);
     }
 
     action.processEventData(configInput, jsonInput)
@@ -53,12 +53,12 @@ describe('Outlook Process Event Data', function test() {
     let jsonInput = data.t3_no_postbody_config_values.json_in;
 
     function checkResults(actualOutput) {
-      expect(undefined).toEqual(actualOutput.importance);
-      expect(undefined).toEqual(actualOutput.showAs);
-      expect(undefined).toEqual(actualOutput.sensitivity);
-      expect(undefined).toEqual(actualOutput.isAllDay);
-      expect(undefined).toEqual(actualOutput.body);
-      expect(undefined).toEqual(actualOutput.subject);
+      expect(actualOutput.importance).toEqual(undefined);
+      expect(actualOutput.showAs).toEqual(undefined);
+      expect(actualOutput.sensitivity).toEqual(undefined);
+      expect(actualOutput.isAllDay).toEqual(undefined);
+      expect(actualOutput.body).toEqual(undefined);
+      expect(actualOutput.subject).toEqual(undefined);
     }
 
     action.processEventData(configInput, jsonInput)
