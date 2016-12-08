@@ -1,0 +1,14 @@
+{
+  "calendarId":"AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW",
+  "timeZone": "Europe/Berlin",
+  "oauth": {
+    "expires_in": 3600,
+    "token_type": "Bearer",
+    "refresh_token": "testoken3435446gdfcff6f75",
+    "access_token": "testtokenfcghcxfghfhxfhy5t457567"
+  },
+  "envVars": {
+    "MSAPP_CLIENT_ID": "testidxfghxfbyd567587",
+    "MSAPP_CLIENT_SECRET": "testidaygdfg45757568"
+  }
+}

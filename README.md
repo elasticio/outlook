@@ -54,6 +54,18 @@ for public cloud default tenant just use ``https://app.elastic.io/callback/oauth
 Apart from the OAuth 2.0 button you would need to specify the __AD tenant ID__
  if you not sure about that just use ``common``.
 
+## Scope and Consent
+
+Before using this component certain Microsoft Graph scopes need to be defined for your application. 
+This can be done via https://apps.dev.microsoft.com.
+For the current version of this component, user consent needs to be provided before using the component.
+See here for more information: https://docs.microsoft.com/en-us/azure/active-directory/active-directory-v2-scopes .
+For many use cases, admin consent will likely be the most suitable version.
+
+The "Contacts" trigger requires the "openid offline_access calendars.read contacts.read user.read" scopes.
+The "createEvent" action requires the "Calendar.ReadWrite" scope.
+
+
 ## Known issues and limitations
 
 ### Current implementation uses AD V2.0 OAuth2

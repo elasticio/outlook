@@ -1,0 +1,12 @@
+{
+  "subject": "Unit Test - Simple Event",
+  "body": {
+    "content": "This is a test."
+  },
+  "start": {
+    "dateTime": "2017-05-19T18:00:00"
+  },
+  "end": {
+    "dateTime": "2017-05-20T19:00:00"
+  }
+}
