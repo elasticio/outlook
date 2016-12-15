@@ -4,6 +4,7 @@
   "oauth": {
     "expires_in": 3600,
     "token_type": "Bearer",
+    "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
     "refresh_token": "testoken3435446gdfcff6f75",
     "access_token": "testtokenfcghcxfghfhxfhy5t457567"
   },

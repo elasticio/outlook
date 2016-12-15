@@ -9,6 +9,7 @@
          "oauth": {
             "expires_in": 3600,
             "token_type": "Bearer",
+            "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
             "refresh_token": "{{MS365_REFRESH_TOKEN}}",
             "access_token": "{{MS365_ACCESS_TOKEN}}"
           },
@@ -41,6 +42,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
@@ -74,6 +76,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
@@ -119,6 +122,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
@@ -151,6 +155,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
@@ -183,6 +188,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
@@ -216,6 +222,7 @@
         "oauth": {
           "expires_in": 3600,
           "token_type": "Bearer",
+          "scope": "calendars.read calendars.readwrite contacts.read mail.read mail.send user.read",
           "refresh_token": "{{MS365_REFRESH_TOKEN}}",
           "access_token": "{{MS365_ACCESS_TOKEN}}"
         },
