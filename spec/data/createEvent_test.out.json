@@ -1,4 +1,6 @@
 {
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#users('89a51905-7f06-48bc-938e-546dc98ff0f0')/calendars('AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NWFlLTU2ZTMwY2JlNDhkZgBGAAAAAABcc3udxmt-T5OeQSKuwfgVBwAluK5-nwXiS66fQePzIjR0AAAAAAEGAAAluK5-nwXiS66fQePzIjR0AAAOrV-7AAA%3D')/events/$entity",
+  "@odata.etag": "W/\"Jbiuf58F4kuun0Hj8yI0dAAAPmJyew==\"",
   "id":"testid12345",
   "subject": "Unit Test - Simple Event",
   "body": {
