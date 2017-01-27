@@ -23,8 +23,8 @@ describe('Outlook Create Event', function test() {
     it('should emit (data and end events on success create request - case: http 200', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
-                                             access_token: 1
-                                             });
+                                                access_token: 1
+                                            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
                                               .reply(200, jsonOut);
@@ -36,6 +36,19 @@ describe('Outlook Create Event', function test() {
             expect(calls.argsFor(1)[0]).toEqual('end');
             expect(calls.argsFor(0)[1].body).toEqual({
                 id: 'testid12345',
+                subject: 'Unit Test - Simple Event',
+                body: {
+                    contentType: 'HTML',
+                    content: 'This is a test.'
+                },
+                start: {
+                    dateTime: '2017-05-19T18:00:00',
+                    timeZone: 'Central European Standard Time'
+                },
+                end: {
+                    dateTime: '2017-05-20T19:00:00',
+                    timeZone: 'Central European Standard Time'
+                },
                 calendarId: 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
             });
             expect(scope1.isDone()).toBeTruthy();
@@ -53,8 +66,8 @@ describe('Outlook Create Event', function test() {
     it('should emit (data and end events on success create request - case: http 201', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
-                                              access_token: 1
-                                             });
+                                                access_token: 1
+                                            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
                                               .reply(201, jsonOut);
@@ -66,6 +79,19 @@ describe('Outlook Create Event', function test() {
             expect(calls.argsFor(1)[0]).toEqual('end');
             expect(calls.argsFor(0)[1].body).toEqual({
                 id: 'testid12345',
+                subject: 'Unit Test - Simple Event',
+                body: {
+                    contentType: 'HTML',
+                    content: 'This is a test.'
+                },
+                start: {
+                    dateTime: '2017-05-19T18:00:00',
+                    timeZone: 'Central European Standard Time'
+                },
+                end: {
+                    dateTime: '2017-05-20T19:00:00',
+                    timeZone: 'Central European Standard Time'
+                },
                 calendarId: 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
             });
             expect(scope1.isDone()).toBeTruthy();
@@ -83,7 +109,7 @@ describe('Outlook Create Event', function test() {
     it('should emit error and end events on unsuccessful refresh token request', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(401, {
-                                             access_token: 1
+                                                access_token: 1
                                             });
 
         function checkResults() {
@@ -106,8 +132,8 @@ describe('Outlook Create Event', function test() {
     it('should emit error and end events on unsuccessful create request - case: bad request', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
-                                             access_token: 1
-                                             });
+                                                access_token: 1
+                                            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
                                               .reply(400, jsonOut);
@@ -132,8 +158,8 @@ describe('Outlook Create Event', function test() {
     it('should emit error and end events on unsuccessful create request - case: consent problems', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
-                                             access_token: 1
-                                             });
+                                                access_token: 1
+                                            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
                                               .reply(403, jsonOut);
