@@ -36,19 +36,6 @@ describe('Outlook Create Event', function test() {
             expect(calls.argsFor(1)[0]).toEqual('end');
             expect(calls.argsFor(0)[1].body).toEqual({
                 id: 'testid12345',
-                subject: 'Unit Test - Simple Event',
-                body: {
-                    contentType: 'HTML',
-                    content: 'This is a test.'
-                },
-                start: {
-                    dateTime: '2017-05-19T18:00:00',
-                    timeZone: 'Central European Standard Time'
-                },
-                end: {
-                    dateTime: '2017-05-20T19:00:00',
-                    timeZone: 'Central European Standard Time'
-                },
                 calendarId: 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
             });
             expect(scope1.isDone()).toBeTruthy();
@@ -79,19 +66,6 @@ describe('Outlook Create Event', function test() {
             expect(calls.argsFor(1)[0]).toEqual('end');
             expect(calls.argsFor(0)[1].body).toEqual({
                 id: 'testid12345',
-                subject: 'Unit Test - Simple Event',
-                body: {
-                    contentType: 'HTML',
-                    content: 'This is a test.'
-                },
-                start: {
-                    dateTime: '2017-05-19T18:00:00',
-                    timeZone: 'Central European Standard Time'
-                },
-                end: {
-                    dateTime: '2017-05-20T19:00:00',
-                    timeZone: 'Central European Standard Time'
-                },
                 calendarId: 'AAMkAGYyNmJlYjBmLTgwOWYtNGU0Mi04NW'
             });
             expect(scope1.isDone()).toBeTruthy();
