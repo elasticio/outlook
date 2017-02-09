@@ -16,8 +16,8 @@ describe('Outlook Get Calendars', function test() {
     it('should return calendar info on success get request', done => {
         nock(refreshTokenUri).post(refreshTokenApi)
                              .reply(200, {
-                              access_token: 1
-                              });
+                                 access_token: 1
+                             });
 
         nock(microsoftGraphUri).get(microsoftGraphApi)
                                .reply(200, jsonOut);
@@ -37,7 +37,7 @@ describe('Outlook Get Calendars', function test() {
     it('should return errors on refresh token failure ', done => {
         nock(refreshTokenUri).post(refreshTokenApi)
                              .reply(401, {
-                               access_token: 1
+                                 access_token: 1
                              });
 
         nock(microsoftGraphUri).get(microsoftGraphApi)
