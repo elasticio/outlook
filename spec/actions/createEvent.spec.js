@@ -20,7 +20,7 @@ describe('Outlook Create Event', function test() {
         self = jasmine.createSpyObj('self', ['emit']);
     });
 
-    it('should emit (data and end events on success create request - case: http 200', done => {
+    it('should emit updateKeys, data and end events on success create request - case: http 200', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
                                                 access_token: 1
@@ -31,10 +31,11 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('data');
-            expect(calls.argsFor(1)[0]).toEqual('end');
-            expect(calls.argsFor(0)[1].body).toEqual({
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(1)[0]).toEqual('data');
+            expect(calls.argsFor(2)[0]).toEqual('end');
+            expect(calls.argsFor(1)[1].body).toEqual({
                 id: 'testid12345',
                 subject: 'Unit Test - Simple Event',
                 body: {
@@ -63,7 +64,7 @@ describe('Outlook Create Event', function test() {
         .catch(done.fail);
     });
 
-    it('should emit (data and end events on success create request - case: http 201', done => {
+    it('should emit updateKeys, data and end events on success create request - case: http 201', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
                                                 access_token: 1
@@ -74,10 +75,11 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('data');
-            expect(calls.argsFor(1)[0]).toEqual('end');
-            expect(calls.argsFor(0)[1].body).toEqual({
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(1)[0]).toEqual('data');
+            expect(calls.argsFor(2)[0]).toEqual('end');
+            expect(calls.argsFor(1)[1].body).toEqual({
                 id: 'testid12345',
                 subject: 'Unit Test - Simple Event',
                 body: {
@@ -129,7 +131,7 @@ describe('Outlook Create Event', function test() {
 
     });
 
-    it('should emit error and end events on unsuccessful create request - case: bad request', done => {
+    it('should emit updateKeys, error and end events on unsuccessful create request - case: bad request', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
                                                 access_token: 1
@@ -140,9 +142,10 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('error');
-            expect(calls.argsFor(1)[0]).toEqual('end');
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(1)[0]).toEqual('error');
+            expect(calls.argsFor(2)[0]).toEqual('end');
             expect(scope1.isDone()).toBeTruthy();
             expect(scope2.isDone()).toBeTruthy();
         }
@@ -155,7 +158,7 @@ describe('Outlook Create Event', function test() {
         .catch(done.fail);
     });
 
-    it('should emit error and end events on unsuccessful create request - case: consent problems', done => {
+    it('should emit updateKeys, error and end events on unsuccessful create request - case: consent problems', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
                                             .reply(200, {
                                                 access_token: 1
@@ -166,9 +169,10 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('error');
-            expect(calls.argsFor(1)[0]).toEqual('end');
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(1)[0]).toEqual('error');
+            expect(calls.argsFor(2)[0]).toEqual('end');
             expect(scope1.isDone()).toBeTruthy();
             expect(scope2.isDone()).toBeTruthy();
         }
