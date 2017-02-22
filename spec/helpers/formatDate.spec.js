@@ -1,10 +1,8 @@
 'use strict';
-const moment = require('moment');
 
 describe('Outlook Format Date', function test() {
 
     const action = require('../../lib/processEventDataHelper');
-    const data = require('../data/processEventData_test.json');
 
   //Check if the date FORMAT itself is as expected.
     describe('formats input date string based on given parameter ', function test() {

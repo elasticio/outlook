@@ -1,10 +1,8 @@
 'use strict';
-const moment = require('moment');
 
 describe('Outlook Check Required Fields', function test() {
 
     const action = require('../../lib/processEventDataHelper');
-    const data = require('../data/processEventData_test.json');
 
     it('throws an error when required cfg field calendarId is missing', function test() {
         let configInput = {
