@@ -66,6 +66,11 @@ describe('Outlook Format Date', function test() {
             expect(actualOutput).toEqual(expectedOutput);
         });
 
+        it('should parse YYYY-MM-DDTHH:mm:ss.SSSZ', () => {
+            const actualOutput = action.formatDate('2017-01-14T10:00:00.000Z', 'Europe/Kiev', format);
+            expect(actualOutput).toEqual('2017-01-14T12:00:00');
+        });
+
     });
 
   //Check if the VALUE of the returned string is as expected.
