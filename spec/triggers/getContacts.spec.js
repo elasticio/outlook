@@ -40,10 +40,8 @@ describe('Outlook Contacts', function test() {
             let calls = self.emit.calls;
             expect(calls.count()).toEqual(4);
             expect(calls.argsFor(0)[0]).toEqual('updateKeys');
-            expect(calls.argsFor(1)[0]).toEqual('data');
             const [firstEvent, firstEmitData] = calls.argsFor(1);
             expect(firstEvent).toBe('data');
-            console.dir(firstEmitData);
             expect(firstEmitData.body).toEqual(Object.assign(
               _.omit(jsonOut.value[0], '@odata.etag'),
                 {
