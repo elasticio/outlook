@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('Outlook Check Required Fields', function test() {
 

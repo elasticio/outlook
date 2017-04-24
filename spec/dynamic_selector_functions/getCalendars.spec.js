@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('Outlook Get Calendars', function test() {
     const nock = require('nock');
@@ -15,12 +15,12 @@ describe('Outlook Get Calendars', function test() {
 
     it('should return calendar info on success get request', done => {
         nock(refreshTokenUri).post(refreshTokenApi)
-                             .reply(200, {
-                                 access_token: 1
-                             });
+            .reply(200, {
+                access_token: 1
+            });
 
         nock(microsoftGraphUri).get(microsoftGraphApi)
-                               .reply(200, jsonOut);
+            .reply(200, jsonOut);
 
         function checkResults(data) {
             expect(data).toEqual({
@@ -29,19 +29,19 @@ describe('Outlook Get Calendars', function test() {
         }
 
         Q.ninvoke(action, 'getCalendars', cfg)
-         .then(checkResults)
-         .then(done)
-         .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
     it('should return errors on refresh token failure ', done => {
         nock(refreshTokenUri).post(refreshTokenApi)
-                             .reply(401, {
-                                 access_token: 1
-                             });
+            .reply(401, {
+                access_token: 1
+            });
 
         nock(microsoftGraphUri).get(microsoftGraphApi)
-                               .reply(200, jsonOut);
+            .reply(200, jsonOut);
 
         function checkError(err) {
             expect(err.name).toEqual('StatusCodeError');
@@ -49,9 +49,9 @@ describe('Outlook Get Calendars', function test() {
         }
 
         Q.ninvoke(action, 'getCalendars', cfg)
-         .then(() => done.fail(new Error('Error is expected')))
-         .catch(checkError)
-         .then(done, done.fail);
+            .then(() => done.fail(new Error('Error is expected')))
+            .catch(checkError)
+            .then(done, done.fail);
 
     });
 

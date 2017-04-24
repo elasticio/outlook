@@ -1,10 +1,10 @@
-'use strict';
+
 
 describe('Outlook Format Date', function test() {
 
     const action = require('../../lib/processEventDataHelper');
 
-  //Check if the date FORMAT itself is as expected.
+    //Check if the date FORMAT itself is as expected.
     describe('formats input date string based on given parameter ', function test() {
 
         let timeZone = 'Europe/Berlin';
@@ -73,7 +73,7 @@ describe('Outlook Format Date', function test() {
 
     });
 
-  //Check if the VALUE of the returned string is as expected.
+    //Check if the VALUE of the returned string is as expected.
     describe('supports millisec date input, converts it based on timezone param, formats it', function test() {
 
         let format = 'YYYY-MM-DDTHH:mm:ss';
@@ -95,7 +95,7 @@ describe('Outlook Format Date', function test() {
 
     });
 
-  //Check errors thrown
+    //Check errors thrown
     describe('throws errors when unsupported or invalid date times are used ', function test() {
         let format = 'YYYY-MM-DDTHH:mm:ss';
         let timeZone = 'Europe/Berlin';

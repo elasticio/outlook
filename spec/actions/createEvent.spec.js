@@ -1,4 +1,4 @@
-'use strict';
+
 
 describe('Outlook Create Event', function test() {
 
@@ -22,12 +22,12 @@ describe('Outlook Create Event', function test() {
 
     it('should emit (data and end events on success create request - case: http 200', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                            .reply(200, {
-                                                access_token: 1
-                                            });
+            .reply(200, {
+                access_token: 1
+            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
-                                              .reply(200, jsonOut);
+            .reply(200, jsonOut);
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -58,19 +58,19 @@ describe('Outlook Create Event', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
     it('should emit (data and end events on success create request - case: http 201', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                            .reply(200, {
-                                                access_token: 1
-                                            });
+            .reply(200, {
+                access_token: 1
+            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
-                                              .reply(201, jsonOut);
+            .reply(201, jsonOut);
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -101,16 +101,16 @@ describe('Outlook Create Event', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
     it('should emit error and end events on unsuccessful refresh token request', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                            .reply(401, {
-                                                access_token: 1
-                                            });
+            .reply(401, {
+                access_token: 1
+            });
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -123,20 +123,20 @@ describe('Outlook Create Event', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
 
     });
 
     it('should emit error and end events on unsuccessful create request - case: bad request', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                            .reply(200, {
-                                                access_token: 1
-                                            });
+            .reply(200, {
+                access_token: 1
+            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
-                                              .reply(400, jsonOut);
+            .reply(400, jsonOut);
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -150,19 +150,19 @@ describe('Outlook Create Event', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
     it('should emit error and end events on unsuccessful create request - case: consent problems', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                            .reply(200, {
-                                                access_token: 1
-                                            });
+            .reply(200, {
+                access_token: 1
+            });
 
         const scope2 = nock(microsoftGraphUri).post(microsoftGraphApi)
-                                              .reply(403, jsonOut);
+            .reply(403, jsonOut);
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -176,9 +176,9 @@ describe('Outlook Create Event', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
 });
