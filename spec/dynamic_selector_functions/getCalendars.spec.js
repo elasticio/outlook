@@ -1,4 +1,4 @@
-
+'use strict';
 
 describe('Outlook Get Calendars', function test() {
     const nock = require('nock');

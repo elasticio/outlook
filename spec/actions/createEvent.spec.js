@@ -1,4 +1,4 @@
-
+'use strict';
 
 describe('Outlook Create Event', function test() {
 

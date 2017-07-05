@@ -1,4 +1,4 @@
-
+'use strict';
 
 describe('Outlook Format Date', function test() {
 
