@@ -66,4 +66,25 @@ describe('Outlook Contacts', function test() {
             .catch(done.fail);
     });
 
+    it('should emit error on unsuccessful refresh token request', done => {
+        const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
+                                            .reply(401, {
+                                                access_token: 1
+                                            });
+
+        function checkResults() {
+            let calls = self.emit.calls;
+            expect(calls.count()).toEqual(1);
+            expect(calls.argsFor(0)[0]).toEqual('error');
+            expect(calls.argsFor(0)[1]).toEqual(jasmine.any(Error));
+            expect(calls.argsFor(0)[1].message).toEqual('Failed to refresh token');
+            expect(scope1.isDone()).toBeTruthy();
+        }
+
+        trigger.process.call(self, {}, cfg, {})
+          .then(checkResults)
+          .then(done)
+          .catch(done.fail);
+    });
+
 });

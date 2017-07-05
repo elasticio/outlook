@@ -31,10 +31,16 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('data');
-            expect(calls.argsFor(1)[0]).toEqual('end');
-            expect(calls.argsFor(0)[1].body).toEqual({
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(0)[1]).toEqual({
+                oauth: {
+                    access_token: 1
+                }
+            });
+            expect(calls.argsFor(1)[0]).toEqual('data');
+            expect(calls.argsFor(2)[0]).toEqual('end');
+            expect(calls.argsFor(1)[1].body).toEqual({
                 id: 'testid12345',
                 subject: 'Unit Test - Simple Event',
                 body: {
@@ -74,10 +80,16 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('data');
-            expect(calls.argsFor(1)[0]).toEqual('end');
-            expect(calls.argsFor(0)[1].body).toEqual({
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(0)[1]).toEqual({
+                oauth: {
+                    access_token: 1
+                }
+            });
+            expect(calls.argsFor(1)[0]).toEqual('data');
+            expect(calls.argsFor(2)[0]).toEqual('end');
+            expect(calls.argsFor(1)[1].body).toEqual({
                 id: 'testid12345',
                 subject: 'Unit Test - Simple Event',
                 body: {
@@ -140,9 +152,15 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('error');
-            expect(calls.argsFor(1)[0]).toEqual('end');
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(0)[1]).toEqual({
+                oauth: {
+                    access_token: 1
+                }
+            });
+            expect(calls.argsFor(1)[0]).toEqual('error');
+            expect(calls.argsFor(2)[0]).toEqual('end');
             expect(scope1.isDone()).toBeTruthy();
             expect(scope2.isDone()).toBeTruthy();
         }
@@ -166,9 +184,15 @@ describe('Outlook Create Event', function test() {
 
         function checkResults() {
             let calls = self.emit.calls;
-            expect(calls.count()).toEqual(2);
-            expect(calls.argsFor(0)[0]).toEqual('error');
-            expect(calls.argsFor(1)[0]).toEqual('end');
+            expect(calls.count()).toEqual(3);
+            expect(calls.argsFor(0)[0]).toEqual('updateKeys');
+            expect(calls.argsFor(0)[1]).toEqual({
+                oauth: {
+                    access_token: 1
+                }
+            });
+            expect(calls.argsFor(1)[0]).toEqual('error');
+            expect(calls.argsFor(2)[0]).toEqual('end');
             expect(scope1.isDone()).toBeTruthy();
             expect(scope2.isDone()).toBeTruthy();
         }
