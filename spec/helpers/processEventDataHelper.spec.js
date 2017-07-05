@@ -26,8 +26,7 @@ describe('Outlook Process Event Data', function test() {
             .then(done)
             .catch(done.fail);
 
-    })
-    ;
+    });
 
     it('does NOT add the isallday config property - when false - to the event post body', done => {
         let configInput = data.t2_all_config_values_isAllDay_false.cfg_in;
@@ -47,8 +46,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
     it('does NOT add any default properties in the event post body', done => {
         let configInput = data.t3_no_postbody_config_values.cfg_in;
@@ -67,8 +65,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
 
     it('formats start/end time to YYYY-MM-DDTHH:mm:ss for non all day events', done => {
@@ -84,8 +81,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
     it('does not change ISO start/end time when no utc offset is provided (europe/kiev)', done => {
         let configInput = {
@@ -110,8 +106,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
     it('does not change start/end time when no utc offset is provided (europe/berlin)', done => {
         let configInput = {
@@ -136,8 +131,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
     it('converts unix millisec start/end time to iso datetime in cfg timezone (europe/berlin)', done => {
         let configInput = {
@@ -163,8 +157,7 @@ describe('Outlook Process Event Data', function test() {
             .then(done)
             .catch(done.fail);
 
-    })
-    ;
+    });
 
     it('converts unix millisec start/end time to iso datetime & cfg timezone (europe/kiev)', done => {
         let configInput = {
@@ -190,8 +183,7 @@ describe('Outlook Process Event Data', function test() {
             .then(done)
             .catch(done.fail);
 
-    })
-    ;
+    });
 
     it('changes start/end time when utc offset is provided, to cfg timezone time (europe/berlin)', done => {
         let configInput = {
@@ -217,8 +209,7 @@ describe('Outlook Process Event Data', function test() {
             .then(done)
             .catch(done.fail);
 
-    })
-    ;
+    });
 
     it('changes start/end time when utc offset is provided, to cfg time zone time (europe/kiev)', done => {
         let configInput = {
@@ -244,8 +235,7 @@ describe('Outlook Process Event Data', function test() {
             .then(done)
             .catch(done.fail);
 
-    })
-    ;
+    });
 
     it('adds an extra day to end time for all day events and formats start/end dates as YYYY-MM-DD ', done => {
         let configInput = data.t4_add_1_day_for_all_day_events.cfg_in;
@@ -260,8 +250,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
     it('processes start/end times values even if the user entered spaces', done => {
         let configInput = {
@@ -286,8 +275,7 @@ describe('Outlook Process Event Data', function test() {
             .then(checkResults)
             .then(done)
             .catch(done.fail);
-    })
-    ;
+    });
 
 
     it('is rejected when required cfg field calendarId is missing', done => {
@@ -313,8 +301,7 @@ describe('Outlook Process Event Data', function test() {
             .then(() => done.fail(new Error('Error is expected')))
             .catch(checkError)
             .then(done, done.fail);
-    })
-    ;
+    });
 
     it('is rejected when required cfg field timeZone is missing', done => {
         let configInput = {
@@ -340,8 +327,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
     it('is rejected when required input message field start.dateTime is missing', done => {
         let configInput = {
@@ -365,8 +351,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
     it('is rejected when required input message field end.dateTime is missing', done => {
         let configInput = {
@@ -389,8 +374,7 @@ describe('Outlook Process Event Data', function test() {
             .then(() => done.fail(new Error('Error is expected')))
             .catch(checkError)
             .then(done, done.fail);
-    })
-    ;
+    });
 
     it('is rejected when bodyContentType is provided AND body.content is NOT provided', done => {
         let configInput = {
@@ -418,8 +402,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
     it('is rejected when an invalid start date is provided', done => {
         let configInput = {
@@ -445,8 +428,7 @@ describe('Outlook Process Event Data', function test() {
             .then(() => done.fail(new Error('Error is expected')))
             .catch(checkError)
             .then(done, done.fail);
-    })
-    ;
+    });
 
     it('is rejected when an invalid end date is provided', done => {
         let configInput = {
@@ -473,8 +455,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
     it('is rejected when a non ISO-8601 format end date is provided', done => {
         let configInput = {
@@ -501,8 +482,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
     it('is rejected when a non ISO-8601 format start date is provided', done => {
         let configInput = {
@@ -529,8 +509,7 @@ describe('Outlook Process Event Data', function test() {
             .catch(checkError)
             .then(done, done.fail);
 
-    })
-    ;
+    });
 
 
 });
