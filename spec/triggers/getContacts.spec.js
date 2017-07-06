@@ -24,17 +24,17 @@ describe('Outlook Contacts', function test() {
 
     it('should emit data without @oauth property - case: http 200', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-                                        .reply(200, {
-                                            access_token: 1
-                                        });
+            .reply(200, {
+                access_token: 1
+            });
 
         const scope2 = nock(microsoftGraphUri).get(microsoftGraphApi)
-                                          .query({
-                                              $orderby: 'lastModifiedDateTime asc',
-                                              $top: 900,
-                                              $filter: 'lastModifiedDateTime gt 1970-01-01T00:00:00.000Z'
-                                          })
-                                          .reply(200, jsonOut);
+            .query({
+                $orderby: 'lastModifiedDateTime asc',
+                $top: 900,
+                $filter: 'lastModifiedDateTime gt 1970-01-01T00:00:00.000Z'
+            })
+            .reply(200, jsonOut);
 
         function checkResults() {
             let calls = self.emit.calls;
@@ -43,7 +43,7 @@ describe('Outlook Contacts', function test() {
             const [firstEvent, firstEmitData] = calls.argsFor(1);
             expect(firstEvent).toBe('data');
             expect(firstEmitData.body).toEqual(Object.assign(
-              _.omit(jsonOut.value[0], '@odata.etag'),
+                _.omit(jsonOut.value[0], '@odata.etag'),
                 {
                     calendarId: cfg.calendarId
                 }
@@ -51,7 +51,7 @@ describe('Outlook Contacts', function test() {
             const [secondEvent, secondEmitData] = calls.argsFor(2);
             expect(secondEvent).toBe('data');
             expect(secondEmitData.body).toEqual(Object.assign(
-              _.omit(jsonOut.value[1], '@odata.etag'),
+                _.omit(jsonOut.value[1], '@odata.etag'),
                 {
                     calendarId: cfg.calendarId
                 }
@@ -61,9 +61,9 @@ describe('Outlook Contacts', function test() {
         }
 
         trigger.process.call(self, {}, cfg, {})
-        .then(checkResults)
-        .then(done)
-        .catch(done.fail);
+            .then(checkResults)
+            .then(done)
+            .catch(done.fail);
     });
 
     it('should emit error on unsuccessful refresh token request', done => {

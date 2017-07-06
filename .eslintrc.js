@@ -6,6 +6,9 @@ const ALWAYS = 'always';
 const NEVER = 'never';
 
 module.exports = {
+    "parserOptions": {
+        "ecmaVersion": 8
+    },
     'env': {
         es6: true,
         node: true
@@ -93,7 +96,7 @@ module.exports = {
             WARN,
             ALWAYS
         ],
-        'object-curly-newline':  [
+        'object-curly-newline': [
             ERROR,
             {
                 ObjectExpression: {
