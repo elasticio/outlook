@@ -69,6 +69,7 @@ describe('Outlook Find next available time', function test() {
         action.process.call(self, {
             body: jsonIn
         }, cfg, {})
+          .then(() => done.fail(new Error('Error is expected')))
             .catch(err => {
                 expect(err).toEqual(jasmine.any(Error));
                 expect(err.message).toEqual('Failed to refresh token');
