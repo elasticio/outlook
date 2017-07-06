@@ -20,7 +20,7 @@ describe('Outlook Find next available time', function test() {
         self = jasmine.createSpyObj('self', ['emit']);
     });
 
-    it('should return available=true on success request - case: http 200', done => {
+    it('should return nextAvailable time on success request - case: http 200', done => {
         const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
             .reply(200, {
                 access_token: 1
