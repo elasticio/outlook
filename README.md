@@ -1,5 +1,5 @@
 # outlook [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> elastic.io integration component for Office 365 Outlook REST API
+> elastic.io integration component for the Office 365 Outlook REST API
 
 # MS Office 365 Outlook
 Microsoft Outlook component for the [elastic.io platform](http://www.elastic.io &#34;elastic.io platform&#34;)
