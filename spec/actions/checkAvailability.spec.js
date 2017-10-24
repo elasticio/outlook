@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('Outlook Check Availability', function test() {
+describe('Outlook Check Availability', function test() {
 
     const nock = require('nock');
     const action = require('../../lib/actions/checkAvailability');
