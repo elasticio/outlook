@@ -1,6 +1,6 @@
 'use strict';
 
-xdescribe('Outlook Find next available time', function test() {
+describe('Outlook Find next available time', function test() {
 
     const nock = require('nock');
     const action = require('../../lib/actions/findNextAvailableTime');
@@ -28,7 +28,7 @@ xdescribe('Outlook Find next available time', function test() {
 
         const scope2 = nock(microsoftGraphUri).get(microsoftGraphApi)
             .query({
-                $filter: `start/dateTime le '${jsonIn.time}' and end/dateTime ge '${jsonIn.time}'`
+                $filter: `end/dateTime ge '${jsonIn.time}'`
             })
             .reply(200, jsonOut);
 
