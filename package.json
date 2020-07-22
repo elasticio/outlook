@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
   "homepage": "http://www.outlook.com/",
-  "author": {
-    "name": "elastic.io GmbH",
-    "email": "info@elastic.io",
-    "url": "http://elastic.io"
+  "license": "Apache-2.0",
+  "author": "elastic.io GmbH",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:elasticio/outlook.git"
   },
   "engines": {
     "node": "14.5.0"
@@ -41,15 +42,13 @@
     "request-promise": "4.2.5"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "4.2.0",
     "elasticio-cli": "1.0.0",
     "eslint": "7.5.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-import": "2.22.0",
     "mocha": "8.0.1",
     "nock": "13.0.2",
-    "sinon": "^9.0.2"
-  },
-  "repository": "elasticio/outlook",
-  "license": "Apache-2.0"
+    "sinon": "9.0.2"
+  }
 }
