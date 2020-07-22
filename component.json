@@ -1,27 +1,29 @@
 {
     "title": "Outlook",
     "description": "elastic.io integration component for Office 365 Outlook REST API",
-    "envVars": {
-        "MSAPP_CLIENT_ID": {
+  "buildType": "docker",
+  "envVars": {
+        "OAUTH_CLIENT_ID": {
             "required": true,
             "description": "Your App Client ID"
         },
-        "MSAPP_CLIENT_SECRET": {
+        "OAUTH_CLIENT_SECRET": {
             "required": true,
             "description": "Your App Client Secret"
         }
     },
     "credentials": {
+      "useOAuthClient": true,
         "fields": {
-            "oauth": {
+            "oauth2": {
                 "label": "Authentication",
                 "viewClass": "OAuthFieldView",
                 "required": true
             }
         },
         "oauth2": {
-            "client_id": "{{MSAPP_CLIENT_ID}}",
-            "client_secret": "{{MSAPP_CLIENT_SECRET}}",
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
             "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
             "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
             "scopes": [
@@ -30,7 +32,8 @@
                 "User.Read",
                 "Contacts.Read",
                 "Profile",
-                "Calendars.ReadWrite"
+                "Calendars.ReadWrite",
+                "Mail.ReadWrite"
             ]
         }
     },
@@ -42,6 +45,15 @@
             "metadata": {
                 "in": {},
                 "out": "./lib/schemas/contacts.out.json"
+            }
+        },
+        "readMail": {
+            "title": "Read Mail",
+            "main": "./lib/triggers/readMail.js",
+            "type": "polling",
+            "metadata": {
+                "in": {},
+                "out": {}
             }
         }
     },
