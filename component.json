@@ -58,6 +58,13 @@
               "label": "Mail Folder",
               "required": true,
               "model": "getFolders"
+            },
+            "startTime": {
+              "label": "Start Time",
+              "viewClass": "TextFieldView",
+              "required": false,
+              "note": "Default: minimum time",
+              "placeholder": "Format ISO 8601: 2020-07-21T04:08:01Z"
             }
           },
             "metadata": {
