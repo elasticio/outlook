@@ -34,4 +34,9 @@ describe('Outlook Read Mail', () => {
     const result = await trigger.getFolders.call(self, cfg);
     expect(result).to.not.eql({});
   });
+
+  it('process test', async () => {
+    const result = await trigger.process.call(self, {}, cfg, {});
+    expect(result.body.length).to.not.eql(0);
+  });
 });
