@@ -36,7 +36,12 @@ describe('Outlook Read Mail', () => {
   });
 
   it('process test', async () => {
-    const result = await trigger.process.call(self, {}, cfg, {});
-    expect(result.body.length).to.not.eql(0);
+    await trigger.process.call(self, {}, cfg, {});
+    const { callCount, args } = self.emit;
+    expect(callCount).to.be.eql(3);
+    expect(args[0][0]).to.be.eql('data');
+    expect(args[0][1].body.length).to.not.eql(0);
+    expect(args[1][0]).to.be.eql('snapshot');
+    expect(args[2][0]).to.be.eql('end');
   });
 });
