@@ -51,9 +51,18 @@
             "title": "Read Mail",
             "main": "./lib/triggers/readMail.js",
             "type": "polling",
+          "fields": {
+            "folderId": {
+              "viewClass": "SelectView",
+              "prompt": "Select a Mail Folder",
+              "label": "Mail Folder",
+              "required": true,
+              "model": "getFolders"
+            }
+          },
             "metadata": {
                 "in": {},
-                "out": {}
+              "out": "./lib/schemas/readMail.out.json"
             }
         }
     },
