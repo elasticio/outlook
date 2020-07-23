@@ -1,8 +1,9 @@
 const moment = require('moment');
 const chai = require('chai');
+const { Logger } = require('@elastic.io/component-commons-library');
 
 const { expect } = chai;
-
+const logger = Logger.getLogger();
 const action = require('../../lib/processEventDataHelper');
 const data = require('../data/processEventData_test.json');
 
@@ -21,7 +22,7 @@ describe('Outlook Process Event Data', () => {
       expect(configInput.bodyContentType).to.eql(actualOutput.body.contentType);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -41,7 +42,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.body.contentType).to.eql(configInput.bodyContentType);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -60,7 +61,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.subject).to.eql(undefined);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -75,7 +76,7 @@ describe('Outlook Process Event Data', () => {
       expect(moment(actualOutput.end.dateTime).creationData().format).to.eql('YYYY-MM-DDTHH:mm:ss');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -100,7 +101,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2018-09-14T21:00:00');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -125,7 +126,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2018-09-14T21:00:00');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -150,7 +151,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2014-09-14T19:28:10');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -175,7 +176,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2014-09-14T20:28:10');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -200,7 +201,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2016-12-19T18:00:00');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -225,7 +226,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2016-12-19T19:00:00');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -240,7 +241,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2016-12-20');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -265,7 +266,7 @@ describe('Outlook Process Event Data', () => {
       expect(actualOutput.end.dateTime).to.eql('2018-09-14T21:00:00');
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(checkResults)
       .then(done)
       .catch(done.fail);
@@ -290,7 +291,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -315,7 +316,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -338,7 +339,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -361,7 +362,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -388,7 +389,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -414,7 +415,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -440,7 +441,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -466,7 +467,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);
@@ -492,7 +493,7 @@ describe('Outlook Process Event Data', () => {
       expect(err.message).to.eql(errMessage);
     }
 
-    action.processEventData(configInput, jsonInput)
+    action.processEventData(logger, configInput, jsonInput)
       .then(() => done.fail(new Error('Error is expected')))
       .catch(checkError)
       .then(done, done.fail);

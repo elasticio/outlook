@@ -1,6 +1,8 @@
 const chai = require('chai');
+const { Logger } = require('@elastic.io/component-commons-library');
 
 const { expect } = chai;
+const logger = Logger.getLogger();
 const action = require('../../lib/processEventDataHelper');
 
 describe('Outlook Check Required Fields', () => {
@@ -18,7 +20,7 @@ describe('Outlook Check Required Fields', () => {
     };
     const errMessage = 'Calendar ID missing! This field is required!';
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).to.throw(errMessage);
   });
 
@@ -37,7 +39,7 @@ describe('Outlook Check Required Fields', () => {
 
     const errMessage = 'Time Zone missing! This field is required!';
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).to.throw(errMessage);
   });
 
@@ -54,7 +56,7 @@ describe('Outlook Check Required Fields', () => {
 
     const errMessage = 'Start Time missing! This field is required!';
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).to.throw(errMessage);
   });
 
@@ -71,7 +73,7 @@ describe('Outlook Check Required Fields', () => {
 
     const errMessage = 'End Time missing! This field is required!';
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).to.throw(errMessage);
   });
 
@@ -92,7 +94,7 @@ describe('Outlook Check Required Fields', () => {
 
     const errMessage = 'Body Type provided, but Body Content is missing!';
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).to.throw(errMessage);
   });
 
@@ -115,7 +117,7 @@ describe('Outlook Check Required Fields', () => {
     };
 
     expect(() => {
-      action.checkRequiredFields(configInput, jsonInput);
+      action.checkRequiredFields(logger, configInput, jsonInput);
     }).not.to.throw();
   });
 });

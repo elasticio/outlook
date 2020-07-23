@@ -1,6 +1,8 @@
 const chai = require('chai');
+const { Logger } = require('@elastic.io/component-commons-library');
 
 const { expect } = chai;
+const logger = Logger.getLogger();
 const action = require('../../lib/processEventDataHelper');
 
 describe('Outlook Format Date', () => {
@@ -12,7 +14,7 @@ describe('Outlook Format Date', () => {
       const inputDate = '2016-12-19T18:00:00';
       const format = 'YYYY-MM-DD';
       const expectedOutput = '2016-12-19';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
@@ -20,7 +22,7 @@ describe('Outlook Format Date', () => {
       const inputDate = '1410715640579';
       const format = 'YYYY-MM-DD';
       const expectedOutput = '2014-09-14';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
@@ -35,7 +37,7 @@ describe('Outlook Format Date', () => {
       const inputDate = '2016-12-19T18:00:00';
       const timeZone = 'Europe/Berlin';
       const expectedOutput = inputDate;
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
@@ -43,7 +45,7 @@ describe('Outlook Format Date', () => {
       const inputDate = '2016-12-19T18:00:00';
       const timeZone = 'Europe/Kiev';
       const expectedOutput = inputDate;
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
@@ -51,7 +53,7 @@ describe('Outlook Format Date', () => {
       const inputDate = '2016-12-19T18:00:00+02:00';
       const timeZone = 'Europe/Berlin';
       const expectedOutput = '2016-12-19T17:00:00';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
@@ -59,12 +61,12 @@ describe('Outlook Format Date', () => {
       const inputDate = '2016-12-19T18:00:00+02:00';
       const timeZone = 'Europe/Kiev';
       const expectedOutput = '2016-12-19T18:00:00';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
     it('should parse YYYY-MM-DDTHH:mm:ss.SSSZ', () => {
-      const actualOutput = action.formatDate('2017-01-14T10:00:00.000Z', 'Europe/Kiev', format);
+      const actualOutput = action.formatDate(logger, '2017-01-14T10:00:00.000Z', 'Europe/Kiev', format);
       expect(actualOutput).to.eql('2017-01-14T12:00:00');
     });
   });
@@ -77,14 +79,14 @@ describe('Outlook Format Date', () => {
     it(' - adapts date to given timezone for millisec input', () => {
       const timeZone = 'Europe/Kiev';
       const expectedOutput = '2014-09-14T20:27:20';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
 
     it(' - adapts date to given timezone for millisec input', () => {
       const timeZone = 'Europe/Berlin';
       const expectedOutput = '2014-09-14T19:27:20';
-      const actualOutput = action.formatDate(inputDate, timeZone, format);
+      const actualOutput = action.formatDate(logger, inputDate, timeZone, format);
       expect(actualOutput).to.eql(expectedOutput);
     });
   });
@@ -97,28 +99,28 @@ describe('Outlook Format Date', () => {
     it('- non iso date 1', () => {
       const inputDate = 'Dec 19 2016 18:00:00 GMT+0200';
       expect(() => {
-        action.formatDate(inputDate, timeZone, format);
+        action.formatDate(logger, inputDate, timeZone, format);
       }).to.throw(`non ISO-8601 date formats are currently not supported: ${inputDate}.`);
     });
 
     it('- non iso date 2', () => {
       const inputDate = 'October 30, 2014 11:13:00';
       expect(() => {
-        action.formatDate(inputDate, timeZone, format);
+        action.formatDate(logger, inputDate, timeZone, format);
       }).to.throw(`non ISO-8601 date formats are currently not supported: ${inputDate}.`);
     });
 
     it('- non iso date 3', () => {
       const inputDate = '2016-12-19 06:00:00 PM';
       expect(() => {
-        action.formatDate(inputDate, timeZone, format);
+        action.formatDate(logger, inputDate, timeZone, format);
       }).to.throw(`non ISO-8601 date formats are currently not supported: ${inputDate}.`);
     });
 
     it('- invalid date', () => {
       const inputDate = 'invalid_date';
       expect(() => {
-        action.formatDate(inputDate, timeZone, format);
+        action.formatDate(logger, inputDate, timeZone, format);
       }).to.throw(`Invalid date ${inputDate}.`);
     });
   });
