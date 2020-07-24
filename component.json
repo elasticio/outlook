@@ -73,7 +73,7 @@
             "emitBehavior": {
               "viewClass": "SelectView",
               "prompt": "Select Emit Behavior, default to Emit Individually",
-              "label": "Importance",
+              "label": "Emit Behavior",
               "required": false,
               "model": {
                 "emitAll": "Emit All",
