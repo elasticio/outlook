@@ -11,7 +11,6 @@ const configuration = require('../data/configuration.new.in.json');
 
 const cfgString = JSON.stringify(configuration);
 const jsonOut = require('../data/readMail_test.out.json');
-const jsonOutMailFolders = require('../data/mailFolders_test.out.json');
 
 describe('Outlook Read Mail', () => {
   const folderId = 'folderId';
@@ -19,7 +18,6 @@ describe('Outlook Read Mail', () => {
   const refreshTokenApi = '/common/oauth2/v2.0/token';
   const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const microsoftGraphApi = `/me/mailFolders/${folderId}/messages`;
-  const microsoftGraphMailFolders = '/me/mailFolders';
 
   let self;
   let cfg;
@@ -75,24 +73,5 @@ describe('Outlook Read Mail', () => {
         expect(scope1.isDone()).to.eql(true);
         done();
       });
-  });
-
-  it('getFolder test', async () => {
-    const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-      .reply(200, {
-        access_token: 1,
-        expires_in: 3600,
-      });
-
-    const scope2 = nock(microsoftGraphUri).get(microsoftGraphMailFolders)
-      .reply(200, jsonOutMailFolders);
-
-    const result = await trigger.getFolders.call(self, cfg);
-    expect(result).to.eql({
-      1: 'Drafts',
-      2: 'Inbox',
-    });
-    expect(scope1.isDone()).to.eql(true);
-    expect(scope2.isDone()).to.eql(true);
   });
 });
