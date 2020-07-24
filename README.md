@@ -9,7 +9,6 @@
    * [API version / SDK version](#api-version--sdk-versio)
    * [Requirements](#requirements)
    * [Environment variables](#environment-variables)
-   * [<External System> environment configuration]
 * [Credentials](#credentials)
 * [Triggers](#triggers)
    * [Contacts](#contacts)
