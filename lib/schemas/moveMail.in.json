@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "required": true,
+  "properties": {
+    "messageId": {
+      "type": "string",
+      "required": true,
+      "name": "Message ID"
+    }
+  }
+}
