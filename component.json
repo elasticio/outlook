@@ -48,7 +48,7 @@
             }
         },
         "readMail": {
-            "title": "Read Mail",
+            "title": "Poll for New Mail",
             "main": "./lib/triggers/readMail.js",
             "type": "polling",
           "fields": {
@@ -65,6 +65,20 @@
               "required": false,
               "note": "Default: minimum time",
               "placeholder": "Format ISO 8601: 2020-07-21T04:08:01Z"
+            },
+            "pollOnlyUnreadMail": {
+              "label": "Poll Only Unread Mail",
+              "viewClass": "CheckBoxView"
+            },
+            "emitBehavior": {
+              "viewClass": "SelectView",
+              "prompt": "Select Emit Behavior, default to Emit Individually",
+              "label": "Emit Behavior",
+              "required": false,
+              "model": {
+                "emitAll": "Emit All",
+                "emitIndividually": "Emit Individually"
+              }
             }
           },
             "metadata": {
