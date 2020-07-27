@@ -17,7 +17,8 @@
   ],
   "scripts": {
     "pretest": "eslint lib spec verifyCredentials.js --fix",
-    "test": "mocha spec --recursive"
+    "test": "mocha spec --recursive",
+    "integration-test": "mocha spec-integration --recursive --timeout 3000"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -43,6 +44,7 @@
   },
   "devDependencies": {
     "chai": "4.2.0",
+    "dotenv": "8.2.0",
     "elasticio-cli": "1.0.0",
     "eslint": "7.5.0",
     "eslint-config-airbnb": "18.2.0",

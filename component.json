@@ -48,7 +48,7 @@
             }
         },
         "readMail": {
-            "title": "Read Mail",
+            "title": "Poll for New Mail",
             "main": "./lib/triggers/readMail.js",
             "type": "polling",
           "fields": {
@@ -58,6 +58,27 @@
               "label": "Mail Folder",
               "required": true,
               "model": "getFolders"
+            },
+            "startTime": {
+              "label": "Start Time",
+              "viewClass": "TextFieldView",
+              "required": false,
+              "note": "Default: minimum time",
+              "placeholder": "Format ISO 8601: 2020-07-21T04:08:01Z"
+            },
+            "pollOnlyUnreadMail": {
+              "label": "Poll Only Unread Mail",
+              "viewClass": "CheckBoxView"
+            },
+            "emitBehavior": {
+              "viewClass": "SelectView",
+              "prompt": "Select Emit Behavior, default to Emit Individually",
+              "label": "Emit Behavior",
+              "required": false,
+              "model": {
+                "emitAll": "Emit All",
+                "emitIndividually": "Emit Individually"
+              }
             }
           },
             "metadata": {
@@ -257,6 +278,30 @@
                 "in": "./lib/schemas/createEvent.in.json",
                 "out": "./lib/schemas/createEvent.out.json"
             }
-        }
+        },
+        "moveMail": {
+        "title": "Move Mail",
+        "main": "./lib/actions/moveMail.js",
+          "fields": {
+            "originalMailFolders": {
+              "viewClass": "SelectView",
+              "prompt": "Select an original Mail Folder",
+              "label": "Original Mail Folder",
+              "required": true,
+              "model": "getFolders"
+            },
+            "destinationFolder": {
+              "viewClass": "SelectView",
+              "prompt": "Select a Destination Mail Folder",
+              "label": "Destination Mail Folder",
+              "required": false,
+              "model": "getFolders"
+            }
+          },
+          "metadata": {
+            "in": "./lib/schemas/moveMail.in.json",
+            "out": "./lib/schemas/moveMail.out.json"
+          }
+      }
     }
 }

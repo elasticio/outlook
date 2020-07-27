@@ -1,0 +1,63 @@
+{
+  "@odata.context": "https://graph.microsoft.com/v1.0/$metadata#message",
+  "@odata.type": "#microsoft.graph.message",
+  "@odata.etag": "W/\"CQAAABYAAAC3XiR2ArVjRLdcBVOo1FGIAABiH5Jm\"",
+  "id": "AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz_JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAALdeJHYCtWNEt1wFU6jUUYgAAABiIf36AAAA",
+  "createdDateTime": "2020-07-24T00:01:02Z",
+  "lastModifiedDateTime": "2020-07-24T10:48:31Z",
+  "changeKey": "CQAAABYAAAC3XiR2ArVjRLdcBVOo1FGIAABiH5Jm",
+  "categories": [],
+  "receivedDateTime": "2020-07-24T00:01:02Z",
+  "sentDateTime": "2020-07-24T00:01:02Z",
+  "hasAttachments": false,
+  "internetMessageId": "<VE1P189MB107299EF553C3DC3759CE3D4EF770@VE1P189MB1072.EURP189.PROD.OUTLOOK.COM>",
+  "subject": "Today: Test event1 | Busy | created by outlook component",
+  "bodyPreview": "Hello PS Team,\r\nYour agenda for Friday, July 24, 2020\r\n\r\n2:00 PM\r\n9 hrs 30 min\r\n\r\n\r\n\r\n\r\nTest event1 | Busy | created by outlook component\r\n test location\r\n\r\n\r\n\r\n\r\n\r\nAgenda mail settings\r\nUnsubscribe • Privacy statement\r\nMicrosoft Corporation, One Micr",
+  "importance": "normal",
+  "parentFolderId": "AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAAA==",
+  "conversationId": "AQQkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoAEADS0gD4fZ8SAEG6zLxhyD7RSw==",
+  "conversationIndex": "AQHWYU2E0tL4fZ8SAEG6zLxhyD7RSw==",
+  "isDeliveryReceiptRequested": null,
+  "isReadReceiptRequested": false,
+  "isRead": false,
+  "isDraft": false,
+  "webLink": "https://outlook.live.com/owa/?ItemID=AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz%2BJauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAALdeJHYCtWNEt1wFU6jUUYgAAABiIf36AAAA&exvsurl=1&viewmodel=ReadMessageItem",
+  "inferenceClassification": "focused",
+  "body": {
+    "contentType": "html",
+    "content": "<html style=\"padding:0; margin:0; font-family:&quot;Segoe UI&quot;,&quot;Segoe WP&quot;,&quot;Segoe&quot;,Tahoma,Frutiger,&quot;Frutiger Linotype&quot;,&quot;Dejavu Sans&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif\"><head>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><meta content=\"text/html; charset=Windows-1252\"><meta content=\"IE=edge\"><meta name=\"description\" content=\"\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"></head><body style=\"padding:0; margin:0; font-family:&quot;Segoe UI&quot;,&quot;Segoe WP&quot;,&quot;Segoe&quot;,Tahoma,Frutiger,&quot;Frutiger Linotype&quot;,&quot;Dejavu Sans&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif\"><style>\r\n<!--\r\n:root, html, body\r\n\t{padding:0;\r\n\tmargin:0;\r\n\tfont-family:\"Segoe UI\",\"Segoe WP\",\"Segoe\",Tahoma,Frutiger,\"Frutiger Linotype\",\"Dejavu Sans\",\"Helvetica Neue\",Arial,sans-serif}\r\ntable\r\n\t{border-collapse:collapse}\r\ntd\r\n\t{padding:0;\r\n\tborder-collapse:collapse}\r\n.hello\r\n\t{text-align:left}\r\n.hello h1\r\n\t{font-size:24px;\r\n\tline-height:24px;\r\n\tcolor:#0B7ED9;\r\n\tmargin:0;\r\n\tpadding:0;\r\n\tfont-family:\"Segoe UI\",\"Segoe WP\",\"Segoe\",Tahoma,Frutiger,\"Frutiger Linotype\",\"Dejavu Sans\",\"Helvetica Neue\",Arial,sans-serif;\r\n\tfont-weight:300}\r\n.weather-location\r\n\t{text-align:right;\r\n\tline-height:9px}\r\n.weather\r\n\t{font-size:10px!important;\r\n\tline-height:9px;\r\n\ttext-align:right}\r\n.weather p\r\n\t{font-size:10px!important;\r\n\tline-height:12px!important;\r\n\tcolor:#7f7f7f;\r\n\tmargin:0;\r\n\ttext-align:right}\r\n.weather p span\r\n\t{font-weight:bold;\r\n\tfont-size:10px!important}\r\n.location img\r\n\t{margin:0 0 0 10px}\r\n.title h2\r\n\t{font-size:14px;\r\n\tline-height:14px;\r\n\tcolor:#333333;\r\n\tmargin:30px 0 20px 0;\r\n\tpadding:0;\r\n\tfont-family:\"Segoe UI\",\"Segoe WP\",\"Segoe\",Tahoma,Frutiger,\"Frutiger Linotype\",\"Dejavu Sans\",\"Helvetica Neue\",Arial,sans-serif;\r\n\tfont-weight:600}\r\n.event-list\r\n\t{width:100%}\r\n.event-list td\r\n\t{padding:0 0 5px 0}\r\n.event-date p\r\n\t{color:#333;\r\n\tfont-size:13px;\r\n\tline-height:17px;\r\n\tmargin:3px 0 0 0;\r\n\tfont-family:\"Segoe UI\",\"Segoe WP\",\"Segoe\",Tahoma,Frutiger,\"Frutiger Linotype\",\"Dejavu Sans\",\"Helvetica Neue\",Arial,sans-serif}\r\n.event-date p span\r\n\t{color:#666}\r\n.event-content p\r\n\t{margin:3px 0 20px 0;\r\n\tcolor:#333;\r\n\tfont-size:13px;\r\n\tline-height:19px}\r\n.smallstop .event-content p\r\n\t{margin:1px 0 20px 0}\r\n.event-content p span\r\n\t{color:#666}\r\n.event-list tbody tr:last-child .event-content\r\n\t{padding:0 0 30px 0}\r\n.event-list tbody:last-child tr:last-child .event-busstop\r\n\t{background:none}\r\n.event-list tbody tr:last-child\r\n\t{padding:0 0 20px 0}\r\n.keys\r\n\t{text-align:center}\r\n.keys td p\r\n\t{margin:0;\r\n\tpadding:0}\r\n.keys td span\r\n\t{font-size:13px;\r\n\tline-height:20px;\r\n\tfont-weight:600;\r\n\tvertical-align:top;\r\n\tmargin:0 10px}\r\n.tasks\r\n\t{border-top:1px solid #eaeaea}\r\n.tasks h3\r\n\t{font-size:14px;\r\n\tline-height:14px;\r\n\tcolor:#0B7ED9;\r\n\tmargin:25px 0 15px 0;\r\n\tpadding:0;\r\n\tfont-family:\"Segoe UI\",\"Segoe WP\",Tahoma,Frutiger,\"Frutiger Linotype\",\"Dejavu Sans\",\"Helvetica Neue\",Arial,sans-serif;\r\n\tfont-weight:600}\r\n.tasks ul\r\n\t{list-style:none;\r\n\tpadding:0;\r\n\tmargin:0}\r\n.tasks ul\r\n\t{margin:0 0 10px 0}\r\n.tasks ul li\r\n\t{font-size:13px;\r\n\tline-height:19px}\r\n.tasks ul li.complete\r\n\t{text-decoration:line-through;\r\n\tcolor:#666}\r\n.tasks span\r\n\t{color:#999;\r\n\tfont-size:13px;\r\n\tline-height:13px;\r\n\tdisplay:inline-block}\r\n.tasks span a, .tasks span a:visited\r\n\t{color:#999;\r\n\ttext-decoration:none}\r\n.tasks span a:hover\r\n\t{color:#000}\r\n.footer\r\n\t{border-top:1px solid #eaeaea;\r\n\ttext-align:center;\r\n\tcolor:#7b7b7b;\r\n\tmargin:0 0 15px 0}\r\n.footer p\r\n\t{font-size:12px;\r\n\tline-height:15px;\r\n\tmargin:25px 0 0 0}\r\n.footer a, .footer a:visited\r\n\t{color:#7b7b7b}\r\n.footer a:hover\r\n\t{color:#adadad}\r\n.footer p span\r\n\t{color:#adadad}\r\n@media screen and (max-width: 800px) {\r\n\r\n\t}\r\n.circle\r\n\t{border-radius:50%;\r\n\tz-index:2;\r\n\tmargin:auto}\r\n.circle_small\r\n\t{width:8px;\r\n\theight:8px}\r\n-->\r\n</style><table width=\"100%\" bgcolor=\"#ffffff\" align=\"left\" style=\"border-collapse:collapse\"><tbody><tr><td style=\"padding:8px 0 0 0px; border-collapse:collapse\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" bgcolor=\"#ffffff\" style=\"border-collapse:collapse\"><tbody><tr><td colspan=\"3\" height=\"40\" style=\"padding:0; border-collapse:collapse\">&nbsp;</td></tr><tr><td style=\"padding:10px; border-collapse:collapse\">&nbsp;</td><td width=\"440\" style=\"padding:0; border-collapse:collapse\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" style=\"border-collapse:collapse\"><tbody><tr><td class=\"hello\" style=\"padding:0; border-collapse:collapse; text-align:left\"><h1 style=\"font-size:21px; line-height:28px; color:#212121; margin:10px 0 0 0; padding:0; font-family:&quot;Segoe UI&quot;,&quot;Segoe WP&quot;,&quot;Segoe&quot;,Tahoma,Frutiger,&quot;Frutiger Linotype&quot;,&quot;Dejavu Sans&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif; font-weight:300\">Hello PS Team,</h1></td></tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" class=\"title\" style=\"border-collapse:collapse\"><tbody><tr><td width=\"100%\" style=\"padding:0; border-collapse:collapse\"><h2 style=\"font-size:17px; line-height:20px; color:#333333; margin:30px 0 20px 0; padding:0; font-family:&quot;Segoe UI&quot;,&quot;Segoe WP&quot;,&quot;Segoe&quot;,Tahoma,Frutiger,&quot;Frutiger Linotype&quot;,&quot;Dejavu Sans&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif; font-weight:300\">Your agenda for <span style=\"font-family:&quot;Segoe UI&quot;,&quot;Segoe WP&quot;,&quot;Segoe&quot;,Tahoma,Frutiger,&quot;Frutiger Linotype&quot;,&quot;Dejavu Sans&quot;,&quot;Helvetica Neue&quot;,Arial,sans-serif; font-weight:300\">Friday, July 24, 2020 </span></h2></td></tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" height=\"100%\" class=\"event-list\" style=\"border-collapse:collapse; width:100%\"><tbody><tr><td width=\"85\" valign=\"top\" style=\"min-width:80px; border-collapse:collapse; padding:0 0 5px 0\"><p style=\"color:#333; font-size:14px; line-height:20px; margin:3px 0 20px 0\"><span style=\"color:#333; text-decoration:none\">2:00 PM </span><br><span style=\"color:#666; font-size:12px; text-decoration:none\">9 hrs 30 min </span></p></td><td width=\"24\" valign=\"top\" style=\"min-width:24px; padding:0 0 0 0; border-collapse:collapse\"><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" style=\"border-collapse:collapse; width:100%\"><tbody><tr><td width=\"24\" height=\"24\" align=\"center\" valign=\"top\" style=\"padding:0 0 0 0; text-align:center; border-collapse:collapse\"><div style=\"\"><img src=\"cid:defaultCalendar\" width=\"24px\" height=\"24px\" style=\"background:#89BCE9; border-radius:12px\"> </div></td></tr></tbody></table></td><td width=\"23\" style=\"padding:0 0 5px 0; border-collapse:collapse\">&nbsp; </td><td width=\"500\" valign=\"top\" style=\"padding:0 0 5px 0; border-collapse:collapse\"><p style=\"margin:1px 0 20px 0; color:#333; font-size:14px; line-height:20px\"><a href=\"https://outlook.com/calendar/item/AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz+JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBDQAAALdeJHYCtWNEt1wFU6jUUYgAAABhhZSrAAAA\" itemscope=\"\" itemid=\"AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz_JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBDQAAALdeJHYCtWNEt1wFU6jUUYgAAABhhZSrAAAA\" itemtype=\"microsoft.graph.event\" style=\"text-decoration:none; color:#0078D7\">Test event1 | Busy | created by outlook component<br></a><span style=\"color:#666\"><img src=\"cid:locationMarker\" width=\"8\" height=\"12\">&nbsp;test location</span><br></p></td></tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" class=\"keys\" style=\"border-collapse:collapse; text-align:center\"><tbody><tr><td height=\"30px\" style=\"padding:0; border-collapse:collapse\">&nbsp; </td></tr></tbody></table><table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" width=\"100%\" class=\"footer\" style=\"border-collapse:collapse; border-top:1px solid #eaeaea; text-align:center; color:#7b7b7b; margin:0 0 15px 0\"><tbody><tr><td height=\"15px\" style=\"padding:0; border-collapse:collapse\">&nbsp; </td></tr><tr><td width=\"100%\" style=\"padding:0; border-collapse:collapse\"><a href=\"https://outlook.live.com/\"><img src=\"cid:outlookLogo\" width=\"120\" height=\"29\" style=\"margin:15px 0 0 10px\"> </a></td></tr><tr><td width=\"100%\" style=\"padding:0; border-collapse:collapse\"><p style=\"font-size:12px; line-height:15px; margin:15px 0 0 0\"><a href=\"https://outlook.com/calendar/options/calendar/agendaMail\" style=\"color:#7b7b7b\">Agenda mail settings</a> <br><a href=\"https://outlook.live.com/owa/calendar/00034001-2270-fd92-0000-000000000000@outlook.com/agendamail/unsubscribe/7560a337-99ac-4df4-b9a8-83b7439f2ec3\" style=\"color:#7b7b7b\">Unsubscribe</a> • <a href=\"https://go.microsoft.com/fwlink/?LinkId=521839\" style=\"color:#7b7b7b\">Privacy statement</a> <br><span style=\"color:#adadad\">Microsoft Corporation, One Microsoft Way, Redmond, WA 98052</span> </p></td></tr></tbody></table></td><td style=\"padding:10px; border-collapse:collapse\">&nbsp;</td></tr><tr><td colspan=\"3\" height=\"20\" style=\"padding:0; border-collapse:collapse\">&nbsp;</td></tr></tbody></table></td></tr></tbody></table></body></html>"
+  },
+  "sender": {
+    "emailAddress": {
+      "name": "Microsoft Outlook Calendar",
+      "address": "no-reply@microsoft.com"
+    }
+  },
+  "from": {
+    "emailAddress": {
+      "name": "Microsoft Outlook Calendar",
+      "address": "no-reply@microsoft.com"
+    }
+  },
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "name": "PS Team",
+        "address": "ps-team@outlook.com"
+      }
+    }
+  ],
+  "ccRecipients": [],
+  "bccRecipients": [],
+  "replyTo": [
+    {
+      "emailAddress": {
+        "name": "no-reply@microsoft.com",
+        "address": "no-reply@microsoft.com"
+      }
+    }
+  ],
+  "flag": {
+    "flagStatus": "notFlagged"
+  }
+}
