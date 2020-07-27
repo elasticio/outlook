@@ -51,10 +51,19 @@ describe('Outlook Move Mail', () => {
         })
       .reply(200, jsonOut);
 
+    const scope3 = nock(microsoftGraphUri)
+      .get(`/me/mailFolders/${destinationFolder}`)
+      .reply(200, { id: destinationFolder });
+
     const result = await action.process.call(self, msg, cfg, {});
-    expect(result.body).to.eql(jsonOut);
+    const expectedReult = jsonOut;
+    expectedReult.currentFolder = {
+      id: destinationFolder,
+    };
+    expect(result.body).to.eql(expectedReult);
     expect(scope1.isDone()).to.eql(true);
     expect(scope2.isDone()).to.eql(true);
+    expect(scope3.isDone()).to.eql(true);
   });
 
   it('should move message to Deleted Items folder', async () => {
@@ -77,7 +86,11 @@ describe('Outlook Move Mail', () => {
       .reply(200, jsonOut);
 
     const result = await action.process.call(self, msg, cfg, {});
-    expect(result.body).to.eql(jsonOut);
+    const expectedReult = jsonOut;
+    expectedReult.currentFolder = {
+      id: 'deletedItemsFolderId',
+    };
+    expect(result.body).to.eql(expectedReult);
     expect(scope1.isDone()).to.eql(true);
     expect(scope2.isDone()).to.eql(true);
     expect(scope3.isDone()).to.eql(true);
