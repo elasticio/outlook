@@ -6,7 +6,7 @@
 * [General information](#general-information)
    * [Description](#description)
    * [Completeness Matrix](#completeness-matrix)
-   * [API version / SDK version](#api-version--sdk-versio)
+   * [API version](#api-version)
    * [Requirements](#requirements)
    * [Environment variables](#environment-variables)
 * [Credentials](#credentials)
@@ -30,7 +30,7 @@
 
 [Completeness Matrix](https://docs.google.com/spreadsheets/d/1fN6keU6GVFGfPSLyNpXilPzsLWJ_leIzAoZZS9BoQ-Y/edit#gid=0)
 
-### API version / SDK version
+### API version
 It is used [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/overview?view=graph-rest-1.0).
 
 ### Requirements
@@ -38,6 +38,14 @@ This component uses [OAuth 2.0 protocol](https://docs.microsoft.com/en-us/azure/
 For more details, learn how to register an [app](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app).
 A Redirect URI for your tenant is: `https://your-tenant.elastic.io/callback/oauth2`, for default EIO tenant just use `https://app.elastic.io/callback/oauth2`.
 Client ID and Secret (that you get after app registration) need to be configured in the environment variables ```OAUTH_CLIENT_ID``` and ```OAUTH_CLIENT_SECRET```
+The component uses following Microsoft Graph scopes:
+* "openid"
+* offline_access"
+* User.Read"
+* Contacts.Read"
+* Profile"
+* Calendars.ReadWrite"
+* Mail.ReadWrite"
 
 ### Environment variables
 Name|Mandatory|Description|Values|
@@ -52,55 +60,72 @@ To create new credentials you need to authorize in Microsoft system using OAuth2
 
 ## Triggers
 ### Contacts
-#### List of Expected Config fields
+Triggers to poll all new contacts from Outlook since last polling. Polling is provided by `lastModifiedDateTime` contact's property. 
+Per one execution it is possible to poll 900 contacts.
 #### Expected output metadata
 [/lib/schemas/contacts.out.json](/lib/schemas/contacts.out.json)
 
 ### Poll for New Mail
+Triggers to poll all new mails from specified folder since last polling. Polling is provided by `lastModifiedDateTime` mail's property. 
+Per one execution it is possible to poll 1000 mails by defaults, this can be changed by using environment variable `MAIL_RETRIEVE_MAX_COUNT`.
+
 #### List of Expected Config fields
+* **Mail Folder** - Dropdown list with available Outlook mail folders
+* **Start Time** - Start datetime of polling. Defaults: `1970-01-01T00:00:00.000Z`
+* **Poll Only Unread Mail** - CheckBox, if set, only unread mails will be poll
+* **Emit Behavior** -  Options are: default is `Emit Individually` emits each mail in separate message, `Emit All` emits all found mails in one message
+
 #### Expected output metadata
 [/lib/schemas/readMail.out.json](/lib/schemas/readMail.out.json)
 
 ## Actions
 
 ### Check Availability
-#### List of Expected Config fields
+The action retrieves events for the time specified in `Time` field or for the current time (in case if `Time` field is empty) and returns `true` if no events found, or `false` otherwise.
+
 #### Expected input metadata
 [/lib/schemas/checkAvailability.in.json](/lib/schemas/checkAvailability.in.json)
 #### Expected output metadata
 [/lib/schemas/checkAvailability.out.json](/lib/schemas/checkAvailability.out.json)
-#### Sample pseudo-code (optional)
-#### Known limitations for the particular trigger/action / Planned future stages
-#### Links to trigger/action specific documentation
 
 ### Find Next Available Time
-#### List of Expected Config fields
+The action retrieves events for the time specified in `Time` field or for the current time (in case if `Time` field is empty).
+Returns specified time if no events found, otherwise calculates the new available time based on found event.
+
 #### Expected input metadata
 [/lib/schemas/findNextAvailableTime.in.json](/lib/schemas/findNextAvailableTime.in.json)
 #### Expected output metadata
 [/lib/schemas/findNextAvailableTime.out.json](/lib/schemas/findNextAvailableTime.out.json)
-#### Sample pseudo-code (optional)
-#### Known limitations for the particular trigger/action / Planned future stages
-#### Links to trigger/action specific documentation
 
 ### Create Event
+The action creates event in specified calendar with specified options.
+
 #### List of Expected Config fields
+* **Calendar** - Dropdown list with available Outlook calendars
+* **Time Zone** - Dropdown list with available time zones
+* **Importance** - Dropdown list, options are: `Low`, `Normal`, `High`
+* **Show As** - Dropdown list, options are: `Free`, `Tentative`, `Busy`, `Out of Office`, `Working Elsewhere`, `Unknown`
+* **Sensitivity** - Dropdown list, options are: `Normal`, `Personal`, `Private`, `Confidential`
+* **Body Content Type** - Dropdown list, options are: `Text`, `HTML`
+* **All Day Event** - CheckBox, if set, all day event will be created
+
 #### Expected input metadata
 [/lib/schemas/createEvent.in.json](/lib/schemas/createEvent.in.json)
 #### Expected output metadata
 [/lib/schemas/createEvent.out.json](/lib/schemas/createEvent.out.json)
-#### Sample pseudo-code (optional)
-#### Known limitations for the particular trigger/action / Planned future stages
-#### Links to trigger/action specific documentation
 
 ### Move Mail
+The action moves message with specified id from the original mail folder to a specified destination mail folder or soft-deletes message if the destination folder isn't specified.
+
 #### List of Expected Config fields
+* **Original Mail Folder** - Dropdown list with available Outlook mail folders - from where mail should be moved, required field.
+* **Destination Mail Folder** - Dropdown list with available Outlook mail folders - where mail should be moved, not required field.
+If not specified, the message will be soft-deleted (moved to the folder with property `deleteditems`).
+
 #### Expected input metadata
 [/lib/schemas/moveMail.in.json](/lib/schemas/moveMail.in.json)
 #### Expected output metadata
+Input metadata contains field `Message ID` - what exactly message should be moved.
 [/lib/schemas/moveMail.out.json](/lib/schemas/moveMail.out.json)
-#### Sample pseudo-code (optional)
-#### Known limitations for the particular trigger/action / Planned future stages
-#### Links to trigger/action specific documentation
 
-## Known limitations (common for the component)
+## Known limitations
