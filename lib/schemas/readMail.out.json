@@ -1,0 +1,175 @@
+{
+  "type": "object",
+  "required": true,
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "createdDateTime": {
+      "type": "string",
+      "required": true
+    },
+    "lastModifiedDateTime": {
+      "type": "string",
+      "required": true
+    },
+    "changeKey": {
+      "type": "string",
+      "required": true
+    },
+    "categories": {
+      "type": "array",
+      "required": true,
+      "items": {}
+    },
+    "receivedDateTime": {
+      "type": "string",
+      "required": true
+    },
+    "sentDateTime": {
+      "type": "string",
+      "required": true
+    },
+    "hasAttachments": {
+      "type": "boolean",
+      "required": true
+    },
+    "internetMessageId": {
+      "type": "string",
+      "required": true
+    },
+    "subject": {
+      "type": "string",
+      "required": true
+    },
+    "bodyPreview": {
+      "type": "string",
+      "required": true
+    },
+    "importance": {
+      "type": "string",
+      "required": true
+    },
+    "parentFolderId": {
+      "type": "string",
+      "required": true
+    },
+    "conversationId": {
+      "type": "string",
+      "required": true
+    },
+    "conversationIndex": {
+      "type": "string",
+      "required": true
+    },
+    "isDeliveryReceiptRequested": {
+      "type": "string",
+      "required": true
+    },
+    "isReadReceiptRequested": {
+      "type": "boolean",
+      "required": true
+    },
+    "isRead": {
+      "type": "boolean",
+      "required": true
+    },
+    "isDraft": {
+      "type": "boolean",
+      "required": true
+    },
+    "webLink": {
+      "type": "string",
+      "required": true
+    },
+    "inferenceClassification": {
+      "type": "string",
+      "required": true
+    },
+    "body": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "contentType": {
+          "type": "string",
+          "required": true
+        },
+        "content": {
+          "type": "string",
+          "required": true
+        }
+      }
+    },
+    "sender": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "emailAddress": {
+          "type": "object",
+          "required": true,
+          "properties": {
+            "name": {
+              "type": "string",
+              "required": true
+            },
+            "address": {
+              "type": "string",
+              "required": true
+            }
+          }
+        }
+      }
+    },
+    "from": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "emailAddress": {
+          "type": "object",
+          "required": true,
+          "properties": {
+            "name": {
+              "required": true,
+              "type": "string"
+            },
+            "address": {
+              "required": true,
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "toRecipients": {
+      "type": "array",
+      "required": true,
+      "properties": {}
+    },
+    "ccRecipients": {
+      "type": "array",
+      "required": true,
+      "properties": {}
+    },
+    "bccRecipients": {
+      "type": "array",
+      "required": true,
+      "properties": {}
+    },
+    "replyTo": {
+      "type": "array",
+      "required": true,
+      "properties": {}
+    },
+    "flag": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "flagStatus": {
+          "type": "string",
+          "required": true
+        }
+      }
+    }
+  }
+}

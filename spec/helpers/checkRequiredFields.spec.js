@@ -1,126 +1,123 @@
-'use strict';
+const chai = require('chai');
+const { Logger } = require('@elastic.io/component-commons-library');
 
-describe('Outlook Check Required Fields', function test() {
+const { expect } = chai;
+const logger = Logger.getLogger();
+const action = require('../../lib/processEventDataHelper');
 
-    const action = require('../../lib/processEventDataHelper');
+describe('Outlook Check Required Fields', () => {
+  it('throws an error when required cfg field calendarId is missing', () => {
+    const configInput = {
+      timeZone: 'Europe/Kiev',
+    };
+    const jsonInput = {
+      start: {
+        dateTime: '2018-09-14T20:00:00',
+      },
+      end: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+    };
+    const errMessage = 'Calendar ID missing! This field is required!';
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).to.throw(errMessage);
+  });
 
-    it('throws an error when required cfg field calendarId is missing', function test() {
-        let configInput = {
-            timeZone: 'Europe/Kiev'
-        };
-        let jsonInput = {
-            start: {
-                dateTime: '2018-09-14T20:00:00'
-            },
-            end: {
-                dateTime: '2018-09-14T21:00:00'
-            }
-        };
-        let errMessage = 'Calendar ID missing! This field is required!';
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).toThrow(new Error(errMessage));
-    });
+  it('throws an error when required cfg field timeZone is missing', () => {
+    const configInput = {
+      calendarId: 'gxdfgsdfgID',
+    };
+    const jsonInput = {
+      start: {
+        dateTime: '2018-09-14T20:00:00',
+      },
+      end: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+    };
 
-    it('throws an error when required cfg field timeZone is missing', function test() {
-        let configInput = {
-            calendarId: 'gxdfgsdfgID'
-        };
-        let jsonInput = {
-            start: {
-                dateTime: '2018-09-14T20:00:00'
-            },
-            end: {
-                dateTime: '2018-09-14T21:00:00'
-            }
-        };
+    const errMessage = 'Time Zone missing! This field is required!';
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).to.throw(errMessage);
+  });
 
-        let errMessage = 'Time Zone missing! This field is required!';
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).toThrow(new Error(errMessage));
+  it('throws an error when required input message field start.dateTime is missing', () => {
+    const configInput = {
+      timeZone: 'Europe/Kiev',
+      calendarId: 'gxdfgsdfgID',
+    };
+    const jsonInput = {
+      end: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+    };
 
-    });
+    const errMessage = 'Start Time missing! This field is required!';
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).to.throw(errMessage);
+  });
 
-    it('throws an error when required input message field start.dateTime is missing', function test() {
-        let configInput = {
-            timeZone: 'Europe/Kiev',
-            calendarId: 'gxdfgsdfgID'
-        };
-        let jsonInput = {
-            end: {
-                dateTime: '2018-09-14T21:00:00'
-            }
-        };
+  it('throws an error when required input message field end.dateTime is missing', () => {
+    const configInput = {
+      timeZone: 'Europe/Kiev',
+      calendarId: 'gxdfgsdfgID',
+    };
+    const jsonInput = {
+      start: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+    };
 
-        let errMessage = 'Start Time missing! This field is required!';
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).toThrow(new Error(errMessage));
-    });
+    const errMessage = 'End Time missing! This field is required!';
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).to.throw(errMessage);
+  });
 
-    it('throws an error when required input message field end.dateTime is missing', function test() {
-        let configInput = {
-            timeZone: 'Europe/Kiev',
-            calendarId: 'gxdfgsdfgID'
-        };
-        let jsonInput = {
-            start: {
-                dateTime: '2018-09-14T21:00:00'
-            }
-        };
+  it('throws an error when bodyContentType is provided AND body.content is NOT provided', () => {
+    const configInput = {
+      timeZone: 'Europe/Kiev',
+      calendarId: 'gxdfgsdfgID',
+      bodyContentType: 'HTML',
+    };
+    const jsonInput = {
+      start: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+      end: {
+        dateTime: '2018-09-14T22:00:00',
+      },
+    };
 
-        let errMessage = 'End Time missing! This field is required!';
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).toThrow(new Error(errMessage));
+    const errMessage = 'Body Type provided, but Body Content is missing!';
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).to.throw(errMessage);
+  });
 
-    });
+  it('throws NO errors when all required fields are provided', () => {
+    const configInput = {
+      timeZone: 'Europe/Kiev',
+      calendarId: 'gxdfgsdfgID',
+      bodyContentType: 'HTML',
+    };
+    const jsonInput = {
+      body: {
+        content: 'test',
+      },
+      start: {
+        dateTime: '2018-09-14T21:00:00',
+      },
+      end: {
+        dateTime: '2018-09-14T22:00:00',
+      },
+    };
 
-    it('throws an error when bodyContentType is provided AND body.content is NOT provided', function test() {
-        let configInput = {
-            timeZone: 'Europe/Kiev',
-            calendarId: 'gxdfgsdfgID',
-            bodyContentType: 'HTML'
-        };
-        let jsonInput = {
-            start: {
-                dateTime: '2018-09-14T21:00:00'
-            },
-            end: {
-                dateTime: '2018-09-14T22:00:00'
-            }
-        };
-
-        let errMessage = 'Body Type provided, but Body Content is missing!';
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).toThrow(new Error(errMessage));
-
-    });
-
-    it('throws NO errors when all required fields are provided', function test() {
-        let configInput = {
-            timeZone: 'Europe/Kiev',
-            calendarId: 'gxdfgsdfgID',
-            bodyContentType: 'HTML'
-        };
-        let jsonInput = {
-            body: {
-                content: 'test'
-            },
-            start: {
-                dateTime: '2018-09-14T21:00:00'
-            },
-            end: {
-                dateTime: '2018-09-14T22:00:00'
-            }
-        };
-
-        expect(function check() {
-            action.checkRequiredFields(configInput, jsonInput);
-        }).not.toThrow();
-
-    });
-
+    expect(() => {
+      action.checkRequiredFields(logger, configInput, jsonInput);
+    }).not.to.throw();
+  });
 });

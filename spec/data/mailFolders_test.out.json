@@ -1,0 +1,20 @@
+{
+  "value": [
+    {
+      "id": 1,
+      "displayName": "Drafts",
+      "parentFolderId": "AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBCAAAAA==",
+      "childFolderCount": 0,
+      "unreadItemCount": 0,
+      "totalItemCount": 0
+    },
+    {
+      "id": 2,
+      "displayName": "Inbox",
+      "parentFolderId": "AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBCAAAAA==",
+      "childFolderCount": 0,
+      "unreadItemCount": 9,
+      "totalItemCount": 12
+    }
+  ]
+}
