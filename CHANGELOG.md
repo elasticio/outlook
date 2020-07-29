@@ -1,4 +1,4 @@
-# 1.0.0 (August 5, 2020)
+# 1.0.0 (July 29, 2020)
 
 * Use this.logger functionality instead of console.log
 * Update libs to latest versions
