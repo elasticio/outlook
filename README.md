@@ -54,6 +54,7 @@ Name|Mandatory|Description|Values|
 |`OAUTH_CLIENT_SECRET`| true | Microsoft Graph Application OAuth2 Client Secret | Can be found in your application page on [https://portal.azure.com](https://portal.azure.com) |
 |`LOG_LEVEL`| false | Controls logger level | `trace`, `debug`, `info`, `warn`, `error` |
 |`MAIL_RETRIEVE_MAX_COUNT`| false | Define max count mails could be retrieved per one `Poll for New Mail` trigger execution. Default to 1000| 1000 |
+|`TOP_LIST_MAIL_FOLDER`| false | Define the maximum number of folders that can be found for dropdown fields containing a list of Mail Folder. Default to 100| 100 |
 
 ## Credentials
 To create new credentials you need to authorize in Microsoft system using OAuth2 protocol - details are described in [Requirements](#requirements) section.
