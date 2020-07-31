@@ -1,3 +1,7 @@
+# 1.0.1 (July 31, 2020)
+
+* Fix retrieving mail folders issue
+
 # 1.0.0 (July 29, 2020)
 
 * Use this.logger functionality instead of console.log
