@@ -1,6 +1,6 @@
 {
   "name": "outlook-component",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
   "homepage": "http://www.outlook.com/",
   "license": "Apache-2.0",
@@ -29,15 +29,12 @@
     "elasticio-component"
   ],
   "dependencies": {
-    "@elastic.io/component-commons-library": "1.1.2",
-    "bluebird": "3.7.2",
-    "co": "4.6.0",
+    "@elastic.io/component-commons-library": "1.1.5",
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.6.14",
+    "elasticio-sailor-nodejs": "2.6.19",
     "lodash": "4.17.19",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
-    "msgraph-sdk-javascript": "0.1.4",
     "q": "1.5.1",
     "request": "2.88.2",
     "request-promise": "4.2.5"
@@ -45,11 +42,10 @@
   "devDependencies": {
     "chai": "4.2.0",
     "dotenv": "8.2.0",
-    "elasticio-cli": "1.0.0",
     "eslint": "7.5.0",
     "eslint-config-airbnb": "18.2.0",
     "eslint-plugin-import": "2.22.0",
-    "mocha": "8.0.1",
+    "mocha": "8.2.1",
     "nock": "13.0.2",
     "sinon": "9.0.2"
   }
