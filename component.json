@@ -44,7 +44,7 @@
           "type": "polling",
           "help": {
             "description": "Contacts",
-            "link": "/components/outlook/triggers#contacts"
+            "link": "/components/outlook/#contacts"
           },
           "metadata": {
             "in": {},
@@ -56,7 +56,7 @@
           "main": "./lib/triggers/readMail.js",
           "help": {
             "description": "Poll for New Mail",
-            "link": "/components/outlook/triggers#poll-for-new-mail"
+            "link": "/components/outlook/#poll-for-new-mail"
           },
           "type": "polling",
           "fields": {
@@ -101,7 +101,7 @@
           "main": "./lib/actions/checkAvailability.js",
           "help": {
             "description": "Action for checking availability",
-            "link": "/components/outlook/actions#check-availability"
+            "link": "/components/outlook/#check-availability"
           },
           "metadata": {
             "in": "./lib/schemas/checkAvailability.in.json",
@@ -113,7 +113,7 @@
           "main": "./lib/actions/findNextAvailableTime.js",
           "help": {
             "description": "Action for calculating next availability time",
-            "link": "/components/outlook/actions#find-next-available-time"
+            "link": "/components/outlook/#find-next-available-time"
           },
           "metadata": {
             "in": "./lib/schemas/findNextAvailableTime.in.json",
@@ -125,7 +125,7 @@
           "main": "./lib/actions/createEvent.js",
           "help": {
             "description": "Action for creating new event",
-            "link": "/components/outlook/actions#create-event"
+            "link": "/components/outlook/#create-event"
           },
           "fields": {
             "calendarId": {
@@ -304,7 +304,7 @@
           "main": "./lib/actions/moveMail.js",
           "help": {
             "description": "Action for moving message between folders or soft-deleting message if the `Destination Mail Folder` folder isn't specified",
-            "link": "/components/outlook/actions#move-mail"
+            "link": "/components/outlook/#move-mail"
           },
           "fields": {
             "originalMailFolders": {

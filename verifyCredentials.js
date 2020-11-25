@@ -1,11 +1,11 @@
 const { Client } = require('./lib/Client');
 
 module.exports = async function verifyCredentials(credentials) {
-  this.logger.trace('Credentials passed for verification %j', credentials);
+  this.logger.info('Verify Credentials started');
   const client = new Client(this, credentials);
   try {
-    const userInfo = await client.getUserInfo();
-    this.logger.info('Found user: %j', userInfo);
+    await client.getUserInfo();
+    this.logger.info('User information is retrieved, credentials are valid');
   } catch (e) {
     this.logger.error('Cannot retrieve user information. Credentials are invalid, please check them');
     throw e;
