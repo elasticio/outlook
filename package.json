@@ -32,7 +32,7 @@
     "@elastic.io/component-commons-library": "1.1.5",
     "elasticio-node": "0.0.9",
     "elasticio-sailor-nodejs": "2.6.19",
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
     "q": "1.5.1",
