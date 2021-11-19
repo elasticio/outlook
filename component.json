@@ -1,8 +1,9 @@
 {
     "title": "Outlook",
+    "version": "1.0.3",
     "description": "elastic.io integration component for Office 365 Outlook REST API",
-  "buildType": "docker",
-  "envVars": {
+    "buildType": "docker",
+    "envVars": {
         "OAUTH_CLIENT_ID": {
             "required": true,
             "description": "Your App Client ID"

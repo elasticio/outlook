@@ -1,6 +1,5 @@
 {
   "name": "outlook-component",
-  "version": "1.0.2",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
   "homepage": "http://www.outlook.com/",
   "license": "Apache-2.0",
@@ -31,7 +30,7 @@
   "dependencies": {
     "@elastic.io/component-commons-library": "1.1.5",
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.6.19",
+    "elasticio-sailor-nodejs": "2.6.26",
     "lodash": "4.17.20",
     "moment": "2.27.0",
     "moment-timezone": "0.5.31",
