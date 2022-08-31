@@ -34,7 +34,7 @@
     "elasticio-sailor-nodejs": "2.6.19",
     "lodash": "4.17.20",
     "moment": "2.27.0",
-    "moment-timezone": "0.5.31",
+    "moment-timezone": "0.5.35",
     "q": "1.5.1",
     "request": "2.88.2",
     "request-promise": "4.2.5"
