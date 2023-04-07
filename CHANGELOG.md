@@ -1,3 +1,6 @@
+# 1.0.3 (April 07, 2023)
+* Fixed version mismatch
+
 # 1.0.2 (November 27, 2020)
 
 * Update Sailor version to 2.6.19

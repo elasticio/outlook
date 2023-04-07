@@ -1,6 +1,5 @@
 {
   "name": "outlook-component",
-  "version": "1.0.2",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
   "homepage": "http://www.outlook.com/",
   "license": "Apache-2.0",
