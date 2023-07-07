@@ -1,10 +1,15 @@
 module.exports = {
   extends: 'airbnb-base',
-  rules: {
+  parserOptions: {
+    ecmaVersion: 2020,
   },
   env: {
     node: true,
     mocha: true,
+  },
+  rules: {
+    'no-await-in-loop': 0,
+    'no-plusplus': 0,
   },
   overrides: [
     {
@@ -22,7 +27,6 @@ module.exports = {
       ],
       rules: {
         'max-len': ['error', { code: 180 }],
-
       },
     },
   ],

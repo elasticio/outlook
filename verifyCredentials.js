@@ -1,4 +1,4 @@
-const { Client } = require('./lib/Client');
+const { Client } = require('./lib/OutlookClient');
 
 module.exports = async function verifyCredentials(credentials) {
   this.logger.info('Verify Credentials started');

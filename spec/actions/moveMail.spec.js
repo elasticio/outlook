@@ -45,10 +45,12 @@ describe('Outlook Move Mail', () => {
       });
 
     const scope2 = nock(microsoftGraphUri)
-      .post(`/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
+      .post(
+        `/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
         {
           destinationId: destinationFolder,
-        })
+        },
+      )
       .reply(200, jsonOut);
 
     const scope3 = nock(microsoftGraphUri)
@@ -79,10 +81,12 @@ describe('Outlook Move Mail', () => {
       .reply(200, { id: deletedItemsFolderId });
 
     const scope3 = nock(microsoftGraphUri)
-      .post(`/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
+      .post(
+        `/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
         {
           destinationId: deletedItemsFolderId,
-        })
+        },
+      )
       .reply(200, jsonOut);
 
     const result = await action.process.call(self, msg, cfg, {});

@@ -1,3 +1,6 @@
+## 2.0.0 (July 19, 2023)
+* Breaking! Reworked authentication mechanism - implemented Secrets feature
+
 # 1.0.3 (April 07, 2023)
 * Fixed version mismatch
 
