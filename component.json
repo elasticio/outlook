@@ -1,7 +1,7 @@
 {
   "title": "Outlook",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
-  "version": "2.0.0-dev.4",
+  "version": "2.0.0-dev.6",
   "authClientTypes": [
     "oauth2"
   ],
@@ -299,10 +299,6 @@
           "required": false,
           "model": "getFolders"
         }
-      },
-      "metadata": {
-        "in": "./lib/schemas/moveMail.in.json",
-        "out": "./lib/schemas/moveMail.out.json"
       }
     },
     "sendMail": {
@@ -311,6 +307,10 @@
       "help": {
         "description": "Action for sending messages",
         "link": "/components/outlook/index.html#send-mail"
+      },
+      "metadata": {
+        "in": "./lib/schemas/sendMail.in.json",
+        "out": "./lib/schemas/sendMail.out.json"
       }
     }
   }
