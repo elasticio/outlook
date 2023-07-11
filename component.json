@@ -313,8 +313,7 @@
         "link": "/components/outlook/index.html#send-mail"
       },
       "metadata": {
-        "in": "./lib/schemas/sendMail.in.json",
-        "out": "./lib/schemas/sendMail.out.json"
+        "in": "./lib/schemas/sendMail.in.json"
       }
     }
   }
