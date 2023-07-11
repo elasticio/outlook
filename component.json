@@ -299,6 +299,10 @@
           "required": false,
           "model": "getFolders"
         }
+      },
+      "metadata": {
+        "in": "./lib/schemas/moveMail.in.json",
+        "out": "./lib/schemas/moveMail.out.json"
       }
     },
     "sendMail": {
