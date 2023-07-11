@@ -1,7 +1,7 @@
 {
   "title": "Outlook",
   "description": "elastic.io integration component for Office 365 Outlook REST API",
-  "version": "2.0.0-dev.5",
+  "version": "2.0.0-dev.6",
   "authClientTypes": [
     "oauth2"
   ],
@@ -313,7 +313,8 @@
         "link": "/components/outlook/index.html#send-mail"
       },
       "metadata": {
-        "in": "./lib/schemas/sendMail.in.json"
+        "in": "./lib/schemas/sendMail.in.json",
+        "out": "./lib/schemas/sendMail.in.json"
       }
     }
   }

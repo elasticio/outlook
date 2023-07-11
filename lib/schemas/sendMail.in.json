@@ -33,23 +33,26 @@
     },
     "toRecipients": {
       "type": "array",
-      "required": false,
+      "required": true,
       "name": "The To: recipients for the message",
       "items": {
-        "emailAddress": {
-          "type": "object",
-          "required": true,
-          "name": "The subject of the message",
-          "properties": {
-            "address": {
-              "type": "string",
-              "required": true,
-              "name": "The email address of the person or entity"
-            },
-            "name": {
-              "type": "string",
-              "required": false,
-              "name": "The display name of the person or entity"
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "object",
+            "required": true,
+            "name": "The subject of the message",
+            "properties": {
+              "address": {
+                "type": "string",
+                "required": true,
+                "name": "The email address of the person or entity"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "name": "The display name of the person or entity"
+              }
             }
           }
         }

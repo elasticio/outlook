@@ -32,9 +32,23 @@ describe('Outlook Send Mail', () => {
 
   it('Send mail', async () => {
     const msg = {
-      body: {},
+      body: {
+        subject: 'Hello',
+        toRecipients: [
+          {
+            emailAddress: {
+              address: 'voropaiev@gmail.com',
+              name: 'Pavlo',
+            },
+          },
+        ],
+        body: {
+          content: 'sdf',
+          contentType: 'text',
+        },
+      },
     };
     const result = await action.process.call(self, msg, cfg);
-    expect(result.body.id).to.eql(msg.body.messageId);
+    expect(result.body).to.deep.equal(msg.body);
   });
 });

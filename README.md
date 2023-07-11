@@ -31,27 +31,46 @@
 [Completeness Matrix](https://docs.google.com/spreadsheets/d/1fN6keU6GVFGfPSLyNpXilPzsLWJ_leIzAoZZS9BoQ-Y/edit#gid=0)
 
 ### API version
-It is used [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/overview?view=graph-rest-1.0).
+The component uses [Microsoft Graph REST API v1.0](https://docs.microsoft.com/en-us/graph/overview?view=graph-rest-1.0).
 
 ### Requirements
 This component uses [OAuth 2.0 protocol](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols), so you should register your app.
 For more details, learn how to register an [app](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app).
 A Redirect URI for your tenant is: `https://your-tenant.elastic.io/callback/oauth2`, for default EIO tenant just use `https://app.elastic.io/callback/oauth2`.
-Client ID and Secret (that you get after app registration) need to be configured in the environment variables ```OAUTH_CLIENT_ID``` and ```OAUTH_CLIENT_SECRET```
-The component uses following Microsoft Graph scopes:
-* "openid"
-* offline_access"
-* User.Read"
-* Contacts.Read"
-* Profile"
-* Calendars.ReadWrite"
-* Mail.ReadWrite"
+
+To create the credentials you would need:
+- select existing Auth Client from drop-down list `Choose Auth Client` or create a new one.
+  to create a new client you should specify the following fields:
+
+| Field name             | Mandatory | Description                                                                                                              |
+|------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------|
+| Name                   | true      | your Auth Client's name                                                                                                  |
+| Client ID              | true      | your OAuth client key                                                                                                    |
+| Client Secret          | true      | your OAuth client secret                                                                                                 |
+| Authorization Endpoint | true      | your OAuth authorization endpoint. Use `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`                  |
+| Token Endpoint         | true      | your OAuth Token endpoint for refreshing access token. Use `https://login.microsoftonline.com/common/oauth2/v2.0/token`  |
+
+- fill field ``Name Your Credential``
+- click on ``Authenticate`` button - if you have not logged in Salesforce before then log in by entering data in the login window that appears
+- click on ``Verify`` button for verifying your credentials
+- click on ``Save`` button for saving your credentials
+
+This is the list of the scopes that the credentials for the entire component might require. If you want to limit the scope of the credentials, feel free to only select the required scopes (space separated list):
+* openid
+* offline_access
+* User.Read
+* Contacts.Read
+* Profile
+* Calendars.ReadWrite
+* Mail.ReadWrite
+* Mail.Send
+
+offline_access is required for each credential.
+Example of the scopes for the `Send Mail` action: `offline_access Mail.Send`
 
 ### Environment variables
 Name|Mandatory|Description|Values|
 |----|---------|-----------|------|
-|`OAUTH_CLIENT_ID`| true | Microsoft Graph Application OAuth2 Client ID | Can be found in your application page on [https://portal.azure.com](https://portal.azure.com) |
-|`OAUTH_CLIENT_SECRET`| true | Microsoft Graph Application OAuth2 Client Secret | Can be found in your application page on [https://portal.azure.com](https://portal.azure.com) |
 |`LOG_LEVEL`| false | Controls logger level | `trace`, `debug`, `info`, `warn`, `error` |
 |`MAIL_RETRIEVE_MAX_COUNT`| false | Define max count mails could be retrieved per one `Poll for New Mail` trigger execution. Defaults to 1000| 1000 |
 |`TOP_LIST_MAIL_FOLDER`| false | Define the maximum number of folders that can be found for dropdown fields containing a list of Mail Folder. Defaults to 100| 100 |
