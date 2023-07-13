@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "pretest": "eslint lib spec verifyCredentials.js --fix",
-    "test": "exit 0",
+    "test": "mocha spec --recursive",
     "integration-test": "mocha spec-integration --recursive --timeout 3000"
   },
   "main": "lib/index.js",

@@ -26,21 +26,21 @@ describe('Outlook Read Mail', () => {
         client_secret: process.env.OAUTH_CLIENT_SECRET,
         access_token: process.env.ACCESS_TOKEN,
       },
-      folderId: process.env.FOLDER_ID,
+      folderId: 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBDAAAAA==',
     };
   });
 
   it('getFolder test', async () => {
     const result = await trigger.getFolders.call(self, cfg);
-    expect(result).to.not.eql({});
+    expect(Object.keys(result).length).to.be.greaterThan(0);
   });
 
   it('process test', async () => {
     await trigger.process.call(self, {}, cfg, {});
     const { callCount, args } = self.emit;
     expect(args[0][0]).to.be.eql('data');
+    expect(Object.keys(args[0][1].body).length).to.be.greaterThan(0);
     expect(args[0][1].body.id).to.not.eql(0);
-    expect(args[callCount - 2][0]).to.be.eql('snapshot');
-    expect(args[callCount - 1][0]).to.be.eql('end');
+    expect(args[callCount - 1][0]).to.be.eql('snapshot');
   });
 });

@@ -18,8 +18,8 @@
    * [Find Next Available Time](#find-next-available-time)
    * [Create Event](#create-event)
    * [Move Mail](#move-mail)
+   * [Send Mail](#send-mail)
 * [Known Limitations](#known-limitations)
-
 
 ## General information
 ### Description
@@ -149,5 +149,34 @@ If not specified, the message will be soft-deleted (moved to the folder with pro
 #### Expected output metadata
 Input metadata contains field `Message ID` - what exactly message should be moved.
 [/lib/schemas/moveMail.out.json](/lib/schemas/moveMail.out.json)
+
+### Send Mail
+The action simply send a message to a recipient(s).
+
+#### Expected input metadata
+[/lib/schemas/sendMail.in.json](/lib/schemas/sendMail.in.json)
+#### Expected output metadata
+In case of a success, output metadata simply repeats the incoming message. I.e. output message schema is exactly the same as for input message.
+[/lib/schemas/sendMail.out.json](/lib/schemas/sendMail.in.json)
+
+#### Message Example
+
+```json
+{
+  "subject": "Hello",
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "address": "email@example.com",
+        "name": "John"
+      }
+    }
+  ],
+  "body": {
+    "content": "sdf",
+    "contentType": "text"
+  }
+}
+```
 
 ## Known limitations

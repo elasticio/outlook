@@ -5,9 +5,9 @@ require('dotenv').config();
 
 const { expect } = chai;
 const logger = Logger.getLogger();
-const action = require('../../lib/actions/moveMail');
+const action = require('../../lib/actions/createEvent');
 
-describe('Outlook Move Mail', () => {
+describe('Outlook Create Event', () => {
   let self;
   let cfg;
   beforeEach(() => {
@@ -27,23 +27,33 @@ describe('Outlook Move Mail', () => {
         access_token: process.env.ACCESS_TOKEN,
       },
       folderId: process.env.FOLDER_ID,
+      calendarId: 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz_JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBBgAAALdeJHYCtWNEt1wFU6jUUYgAAAIhdQAAAA==',
+      timeZone: 'Europe/Kiev',
+      importance: 'Normal',
+      showAs: 'Busy',
     };
   });
 
-  it('getFolder test', async () => {
-    const result = await action.getFolders.call(self, cfg);
+  it('getCalendars test', async () => {
+    const result = await action.getCalendars.call(self, cfg);
     expect(result).to.not.eql({});
   });
 
-  it('process test', async () => {
-    cfg.originalMailFolders = 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAAA==';
-    cfg.destinationFolder = 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAABl7rNzAAAA';
+  it('Process Action', async () => {
     const msg = {
       body: {
-        messageId: 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz_JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAALdeJHYCtWNEt1wFU6jUUYgAAynDa-QAAAA=',
+        subject: 'PS Test Event',
+        body: {
+          content: 'PS Test Event',
+        },
+        start: {
+          dateTime: '2023-07-18T10:00:00.0000000',
+        },
+        end: {
+          dateTime: '2023-07-18T12:00:00.0000000',
+        },
       },
     };
-    const result = await action.process.call(self, msg, cfg);
-    expect(result.body.id).to.eql(msg.body.messageId);
+    await action.process.call(self, msg, cfg);
   });
 });
