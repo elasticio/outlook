@@ -173,7 +173,7 @@ In case of a success, output metadata simply repeats the incoming message. I.e. 
     }
   ],
   "body": {
-    "content": "sdf",
+    "content": "Hello, I am an email content text",
     "contentType": "text"
   }
 }
