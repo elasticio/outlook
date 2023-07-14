@@ -68,7 +68,7 @@ This is the list of the scopes that the credentials for the entire component mig
 offline_access is required for each credential.
 Example of the scopes for the `Send Mail` action: `offline_access Mail.Send`
 
-**Please Note!** To verify be able to verify the credentials you need these scopes: `offline_access User.Read`
+**Please Note!** To be able to verify the credentials you need these scopes: `offline_access User.Read`
 
 ### Environment variables
 | Name                      |Mandatory|Description|Values|
