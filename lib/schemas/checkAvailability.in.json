@@ -5,7 +5,7 @@
         "time": {
             "type": "string",
             "required": false,
-            "title": "Time"
+            "title": "Time (YYYY-MM-DDTHH:MM:SS format)"
         }
     }
 }
