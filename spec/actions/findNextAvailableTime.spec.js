@@ -33,7 +33,6 @@ describe('Outlook Find next available time', () => {
     const result = await action.process.call(self, { body: jsonIn }, cfg, {});
     expect(result.body).to.eql({
       time: jsonIn.time,
-      subject: jsonIn.subject,
     });
   });
 });

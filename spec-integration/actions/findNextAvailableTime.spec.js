@@ -38,6 +38,5 @@ describe('Outlook Find Next Available Time', () => {
     };
     const result = await action.process.call(self, msg, cfg);
     expect(result.body).to.have.property('time');
-    expect(result.body).to.have.property('subject');
   });
 });

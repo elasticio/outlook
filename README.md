@@ -111,7 +111,10 @@ The action retrieves events for the time specified in `Time` field or for the cu
 
 ### Find Next Available Time
 The action retrieves events for the time specified in `Time` field or for the current time (in case if `Time` field is empty).
+
 Returns specified time if no events found, otherwise calculates the new available time based on found event.
+
+If no time specified, the result time will be emitted in UTC time zone (e.g. 2023-08-20T10:00:00Z)
 
 #### Expected input metadata
 [/lib/schemas/findNextAvailableTime.in.json](/lib/schemas/findNextAvailableTime.in.json)
