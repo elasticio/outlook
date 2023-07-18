@@ -1,332 +1,321 @@
 {
-    "title": "Outlook",
-    "description": "elastic.io integration component for Office 365 Outlook REST API",
-  "version": "1.0.3",
-  "envVars": {
-        "OAUTH_CLIENT_ID": {
-            "required": true,
-            "description": "Your App Client ID"
-        },
-        "OAUTH_CLIENT_SECRET": {
-            "required": true,
-            "description": "Your App Client Secret"
-        }
-    },
-    "credentials": {
-      "useOAuthClient": true,
-        "fields": {
-            "oauth2": {
-                "label": "Authentication",
-                "viewClass": "OAuthFieldView",
-                "required": true
-            }
-        },
-        "oauth2": {
-            "client_id": "{{OAUTH_CLIENT_ID}}",
-            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
-            "auth_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
-            "token_uri": "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-            "scopes": [
-                "openid",
-                "offline_access",
-                "User.Read",
-                "Contacts.Read",
-                "Profile",
-                "Calendars.ReadWrite",
-                "Mail.ReadWrite"
-            ]
-        }
-    },
-    "triggers": {
-        "getContacts": {
-          "title": "Contacts",
-          "main": "./lib/triggers/contacts.js",
-          "type": "polling",
-          "help": {
-            "description": "Contacts",
-            "link": "/components/outlook/#contacts"
-          },
-          "metadata": {
-            "in": {},
-            "out": "./lib/schemas/contacts.out.json"
-          }
-        },
-        "readMail": {
-          "title": "Poll for New Mail",
-          "main": "./lib/triggers/readMail.js",
-          "help": {
-            "description": "Poll for New Mail",
-            "link": "/components/outlook/#poll-for-new-mail"
-          },
-          "type": "polling",
-          "fields": {
-            "folderId": {
-              "viewClass": "SelectView",
-              "prompt": "Select a Mail Folder",
-              "label": "Mail Folder",
-              "required": true,
-              "model": "getFolders"
-            },
-            "startTime": {
-              "label": "Start Time",
-              "viewClass": "TextFieldView",
-              "required": false,
-              "note": "Default: minimum time 1970-01-01T00:00:00.000Z",
-              "placeholder": "2020-07-20T11:44:53.999Z"
-            },
-            "pollOnlyUnreadMail": {
-              "label": "Poll Only Unread Mail",
-              "viewClass": "CheckBoxView"
-            },
-            "emitBehavior": {
-              "viewClass": "SelectView",
-              "prompt": "Select Emit Behavior, defaults to Emit Individually",
-              "label": "Emit Behavior",
-              "required": false,
-              "model": {
-                "emitAll": "Emit All",
-                "emitIndividually": "Emit Individually"
-              }
-            }
-          },
-            "metadata": {
-                "in": {},
-              "out": "./lib/schemas/readMail.out.json"
-            }
-        }
-    },
-    "actions": {
-        "checkAvailability": {
-          "title": "Check Availability",
-          "main": "./lib/actions/checkAvailability.js",
-          "help": {
-            "description": "Action for checking availability",
-            "link": "/components/outlook/#check-availability"
-          },
-          "metadata": {
-            "in": "./lib/schemas/checkAvailability.in.json",
-            "out": "./lib/schemas/checkAvailability.out.json"
-          }
-        },
-        "findNextAvailableTime": {
-          "title": "Find Next Available Time",
-          "main": "./lib/actions/findNextAvailableTime.js",
-          "help": {
-            "description": "Action for calculating next availability time",
-            "link": "/components/outlook/#find-next-available-time"
-          },
-          "metadata": {
-            "in": "./lib/schemas/findNextAvailableTime.in.json",
-            "out": "./lib/schemas/findNextAvailableTime.out.json"
-          }
-        },
-        "createEvent": {
-          "title": "Create Event",
-          "main": "./lib/actions/createEvent.js",
-          "help": {
-            "description": "Action for creating new event",
-            "link": "/components/outlook/#create-event"
-          },
-          "fields": {
-            "calendarId": {
-              "viewClass": "SelectView",
-              "prompt": "Select a Calendar",
-              "label": "Calendar",
-              "required": true,
-              "model": "getCalendars"
-            },
-            "timeZone": {
-              "viewClass": "SelectView",
-              "prompt": "Select Event Timezone",
-              "label": "Time Zone",
-              "required": true,
-              "model": {
-                "Etc/GMT+12": "Etc/GMT+12",
-                "Etc/GMT+11": "Etc/GMT+11",
-                "Pacific/Honolulu": "Pacific/Honolulu",
-                "America/Anchorage": "America/Anchorage",
-                "America/Santa_Isabel": "America/Santa_Isabel",
-                "America/Los_Angeles": "America/Los_Angeles",
-                "America/Phoenix": "America/Phoenix",
-                "America/Chihuahua": "America/Chihuahua",
-                "America/Denver": "America/Denver",
-                "America/Guatemala": "America/Guatemala",
-                "America/Chicago": "America/Chicago",
-                "America/Mexico_City": "America/Mexico_City",
-                "America/Regina": "America/Regina",
-                "America/Bogota": "America/Bogota",
-                "America/New_York": "America/New_York",
-                "America/Indiana/Indianapolis": "America/Indiana/Indianapolis",
-                "America/Caracas": "America/Caracas",
-                "America/Asuncion": "America/Asuncion",
-                "America/Halifax": "America/Halifax",
-                "America/Cuiaba": "America/Cuiaba",
-                "America/La_Paz": "America/La_Paz",
-                "America/Santiago": "America/Santiago",
-                "America/St_Johns": "America/St_Johns",
-                "America/Sao_Paulo": "America/Sao_Paulo",
-                "America/Argentina/Buenos_Aires": "America/Argentina/Buenos_Aires",
-                "America/Cayenne": "America/Cayenne",
-                "America/Godthab": "America/Godthab",
-                "America/Montevideo": "America/Montevideo",
-                "America/Bahia": "America/Bahia",
-                "Etc/GMT+2": "Etc/GMT+2",
-                "Atlantic/Azores": "Atlantic/Azores",
-                "Atlantic/Cape_Verde": "Atlantic/Cape_Verde",
-                "Africa/Casablanca": "Africa/Casablanca",
-                "Etc/GMT": "Etc/GMT",
-                "Europe/London": "Europe/London",
-                "Atlantic/Reykjavik": "Atlantic/Reykjavik",
-                "Europe/Berlin": "Europe/Berlin",
-                "Europe/Budapest": "Europe/Budapest",
-                "Europe/Paris": "Europe/Paris",
-                "Europe/Warsaw": "Europe/Warsaw",
-                "Africa/Lagos": "Africa/Lagos",
-                "Africa/Windhoek": "Africa/Windhoek",
-                "Europe/Bucharest": "Europe/Bucharest",
-                "Asia/Beirut": "Asia/Beirut",
-                "Africa/Cairo": "Africa/Cairo",
-                "Asia/Damascus": "Asia/Damascus",
-                "Africa/Johannesburg": "Africa/Johannesburg",
-                "Europe/Kiev": "Europe/Kiev",
-                "Europe/Istanbul": "Europe/Istanbul",
-                "Asia/Jerusalem": "Asia/Jerusalem",
-                "Asia/Amman": "Asia/Amman",
-                "Asia/Baghdad": "Asia/Baghdad",
-                "Europe/Kaliningrad": "Europe/Kaliningrad",
-                "Asia/Riyadh": "Asia/Riyadh",
-                "Africa/Nairobi": "Africa/Nairobi",
-                "Asia/Tehran": "Asia/Tehran",
-                "Asia/Dubai": "Asia/Dubai",
-                        "Asia/Baku": "Asia/Baku",
-                        "Europe/Moscow": "Europe/Moscow",
-                        "Indian/Mauritius": "Indian/Mauritius",
-                        "Asia/Tbilisi": "Asia/Tbilisi",
-                        "Asia/Yerevan": "Asia/Yerevan",
-                        "Asia/Kabul": "Asia/Kabul",
-                        "Asia/Karachi": "Asia/Karachi",
-                        "Asia/Tashkent": "Asia/Tashkent",
-                        "Asia/Kolkata": "Asia/Kolkata",
-                        "Asia/Colombo": "Asia/Colombo",
-                        "Asia/Kathmandu": "Asia/Kathmandu",
-                        "Asia/Almaty": "Asia/Almaty",
-                        "Asia/Dhaka": "Asia/Dhaka",
-                        "Asia/Yekaterinburg": "Asia/Yekaterinburg",
-                        "Asia/Rangoon": "Asia/Rangoon",
-                        "Asia/Bangkok": "Asia/Bangkok",
-                        "Asia/Novosibirsk": "Asia/Novosibirsk",
-                        "Asia/Shanghai": "Asia/Shanghai",
-                        "Asia/Krasnoyarsk": "Asia/Krasnoyarsk",
-                        "Asia/Singapore": "Asia/Singapore",
-                        "Australia/Perth": "Australia/Perth",
-                        "Asia/Taipei": "Asia/Taipei",
-                        "Asia/Ulaanbaatar": "Asia/Ulaanbaatar",
-                        "Asia/Irkutsk": "Asia/Irkutsk",
-                        "Asia/Tokyo": "Asia/Tokyo",
-                        "Asia/Seoul": "Asia/Seoul",
-                        "Australia/Adelaide": "Australia/Adelaide",
-                        "Australia/Darwin": "Australia/Darwin",
-                        "Australia/Brisbane": "Australia/Brisbane",
-                        "Australia/Sydney": "Australia/Sydney",
-                        "Pacific/Port_Moresby": "Pacific/Port_Moresby",
-                        "Australia/Hobart": "Australia/Hobart",
-                        "Asia/Yakutsk": "Asia/Yakutsk",
-                        "Pacific/Guadalcanal": "Pacific/Guadalcanal",
-                        "Asia/Vladivostok": "Asia/Vladivostok",
-                        "Pacific/Auckland": "Pacific/Auckland",
-                        "Etc/GMT-12": "Etc/GMT-12",
-                        "Pacific/Fiji": "Pacific/Fiji",
-                        "Asia/Magadan": "Asia/Magadan",
-                        "Pacific/Tongatapu": "Pacific/Tongatapu",
-                        "Pacific/Apia": "Pacific/Apia",
-                        "Pacific/Kiritimati": "Pacific/Kiritimati"
-                    }
-                },
-                "importance": {
-                    "viewClass": "SelectView",
-                    "prompt": "Select Event Importance",
-                    "label": "Importance",
-                    "required": false,
-                    "model": {
-                        "Low": "Low",
-                        "Normal": "Normal",
-                        "High": "High"
-                    }
-                },
-                "showAs": {
-                    "viewClass": "SelectView",
-                    "prompt": "Select Show As value",
-                    "label": "Show As",
-                    "required": false,
-                    "model": {
-                        "Free": "Free",
-                        "Tentative": "Tentative",
-                        "Busy": "Busy",
-                        "Oof": "Out of Office",
-                        "WorkingElsewhere": "Working Elsewhere",
-                        "Unknown": "Unknown"
-                    }
-                },
-                "sensitivity": {
-                    "viewClass": "SelectView",
-                    "prompt": "Select Event Sensitivity",
-                    "label": "Sensitivity",
-                    "required": false,
-                    "model": {
-                        "Normal": "Normal",
-                        "Personal": "Personal",
-                        "Private": "Private",
-                        "Confidential": "Confidential"
-                    }
-                },
-                "bodyContentType": {
-                    "viewClass": "SelectView",
-                    "prompt": "Select Event Body Content Type",
-                    "label": "Body Content Type",
-                    "required": false,
-                    "model": {
-                        "Text": "Text",
-                        "HTML": "HTML"
-                    }
-                },
-                "isAllDay": {
-                    "label": "All Day Event",
-                    "viewClass": "CheckBoxView"
-                }
-            },
-            "metadata": {
-                "in": "./lib/schemas/createEvent.in.json",
-                "out": "./lib/schemas/createEvent.out.json"
-            }
-        },
-        "moveMail": {
-          "title": "Move Mail",
-          "main": "./lib/actions/moveMail.js",
-          "help": {
-            "description": "Action for moving message between folders or soft-deleting message if the `Destination Mail Folder` folder isn't specified",
-            "link": "/components/outlook/#move-mail"
-          },
-          "fields": {
-            "originalMailFolders": {
-              "viewClass": "SelectView",
-              "prompt": "Select an original Mail Folder",
-              "label": "Original Mail Folder",
-              "required": true,
-              "model": "getFolders"
-            },
-            "destinationFolder": {
-              "viewClass": "SelectView",
-              "note": "Select `Destination Mail Folder`. The message will be soft-deleted (moved to the folder with property `deleteditems`) if the `Destination Mail Folder` folder isn't specified",
-              "prompt": "The message will be soft-deleted (moved to the folder with property `deleteditems`) if the `Destination Mail Folder` folder isn't specified",
-              "label": "Destination Mail Folder",
-              "required": false,
-              "model": "getFolders"
-            }
-          },
-          "metadata": {
-            "in": "./lib/schemas/moveMail.in.json",
-            "out": "./lib/schemas/moveMail.out.json"
-          }
+  "title": "Outlook",
+  "description": "elastic.io integration component for Office 365 Outlook REST API",
+  "version": "2.0.0",
+  "authClientTypes": [
+    "oauth2"
+  ],
+  "credentials": {
+    "fields": {
+      "oauth": {
+        "label": "Authentication",
+        "viewClass": "HTTPAuthView",
+        "required": true
       }
     }
+  },
+  "triggers": {
+    "getContacts": {
+      "title": "Contacts",
+      "main": "./lib/triggers/contacts.js",
+      "type": "polling",
+      "help": {
+        "description": "Contacts",
+        "link": "/components/outlook/index.html#contacts"
+      },
+      "metadata": {
+        "in": {},
+        "out": "./lib/schemas/contacts.out.json"
+      }
+    },
+    "readMail": {
+      "title": "Poll for New Mail",
+      "main": "./lib/triggers/readMail.js",
+      "help": {
+        "description": "Poll for New Mail",
+        "link": "/components/outlook/index.html#poll-for-new-mail"
+      },
+      "type": "polling",
+      "fields": {
+        "folderId": {
+          "viewClass": "SelectView",
+          "prompt": "Select a Mail Folder",
+          "label": "Mail Folder",
+          "required": true,
+          "model": "getFolders"
+        },
+        "startTime": {
+          "label": "Start Time",
+          "viewClass": "TextFieldView",
+          "required": false,
+          "note": "Default: minimum time 1970-01-01T00:00:00.000Z",
+          "placeholder": "2020-07-20T11:44:53.999Z"
+        },
+        "pollOnlyUnreadMail": {
+          "label": "Poll Only Unread Mail",
+          "viewClass": "CheckBoxView"
+        },
+        "emitBehavior": {
+          "viewClass": "SelectView",
+          "prompt": "Select Emit Behavior, defaults to Emit Individually",
+          "label": "Emit Behavior",
+          "required": false,
+          "model": {
+            "emitAll": "Emit All",
+            "emitIndividually": "Emit Individually"
+          }
+        }
+      },
+      "metadata": {
+        "in": {},
+        "out": "./lib/schemas/readMail.out.json"
+      }
+    }
+  },
+  "actions": {
+    "checkAvailability": {
+      "title": "Check Availability",
+      "main": "./lib/actions/checkAvailability.js",
+      "help": {
+        "description": "Action for checking availability",
+        "link": "/components/outlook/index.html#check-availability"
+      },
+      "metadata": {
+        "in": "./lib/schemas/checkAvailability.in.json",
+        "out": "./lib/schemas/checkAvailability.out.json"
+      }
+    },
+    "findNextAvailableTime": {
+      "title": "Find Next Available Time",
+      "main": "./lib/actions/findNextAvailableTime.js",
+      "help": {
+        "description": "Action for calculating next availability time",
+        "link": "/components/outlook/index.html#find-next-available-time"
+      },
+      "metadata": {
+        "in": "./lib/schemas/findNextAvailableTime.in.json",
+        "out": "./lib/schemas/findNextAvailableTime.out.json"
+      }
+    },
+    "createEvent": {
+      "title": "Create Event",
+      "main": "./lib/actions/createEvent.js",
+      "help": {
+        "description": "Action for creating new event",
+        "link": "/components/outlook/index.html#create-event"
+      },
+      "fields": {
+        "calendarId": {
+          "viewClass": "SelectView",
+          "prompt": "Select a Calendar",
+          "label": "Calendar",
+          "required": true,
+          "model": "getCalendars"
+        },
+        "timeZone": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Timezone",
+          "label": "Time Zone",
+          "required": true,
+          "model": {
+            "Etc/GMT+12": "Etc/GMT+12",
+            "Etc/GMT+11": "Etc/GMT+11",
+            "Pacific/Honolulu": "Pacific/Honolulu",
+            "America/Anchorage": "America/Anchorage",
+            "America/Santa_Isabel": "America/Santa_Isabel",
+            "America/Los_Angeles": "America/Los_Angeles",
+            "America/Phoenix": "America/Phoenix",
+            "America/Chihuahua": "America/Chihuahua",
+            "America/Denver": "America/Denver",
+            "America/Guatemala": "America/Guatemala",
+            "America/Chicago": "America/Chicago",
+            "America/Mexico_City": "America/Mexico_City",
+            "America/Regina": "America/Regina",
+            "America/Bogota": "America/Bogota",
+            "America/New_York": "America/New_York",
+            "America/Indiana/Indianapolis": "America/Indiana/Indianapolis",
+            "America/Caracas": "America/Caracas",
+            "America/Asuncion": "America/Asuncion",
+            "America/Halifax": "America/Halifax",
+            "America/Cuiaba": "America/Cuiaba",
+            "America/La_Paz": "America/La_Paz",
+            "America/Santiago": "America/Santiago",
+            "America/St_Johns": "America/St_Johns",
+            "America/Sao_Paulo": "America/Sao_Paulo",
+            "America/Argentina/Buenos_Aires": "America/Argentina/Buenos_Aires",
+            "America/Cayenne": "America/Cayenne",
+            "America/Godthab": "America/Godthab",
+            "America/Montevideo": "America/Montevideo",
+            "America/Bahia": "America/Bahia",
+            "Etc/GMT+2": "Etc/GMT+2",
+            "Atlantic/Azores": "Atlantic/Azores",
+            "Atlantic/Cape_Verde": "Atlantic/Cape_Verde",
+            "Africa/Casablanca": "Africa/Casablanca",
+            "Etc/GMT": "Etc/GMT",
+            "Europe/London": "Europe/London",
+            "Atlantic/Reykjavik": "Atlantic/Reykjavik",
+            "Europe/Berlin": "Europe/Berlin",
+            "Europe/Budapest": "Europe/Budapest",
+            "Europe/Paris": "Europe/Paris",
+            "Europe/Warsaw": "Europe/Warsaw",
+            "Africa/Lagos": "Africa/Lagos",
+            "Africa/Windhoek": "Africa/Windhoek",
+            "Europe/Bucharest": "Europe/Bucharest",
+            "Asia/Beirut": "Asia/Beirut",
+            "Africa/Cairo": "Africa/Cairo",
+            "Asia/Damascus": "Asia/Damascus",
+            "Africa/Johannesburg": "Africa/Johannesburg",
+            "Europe/Kiev": "Europe/Kiev",
+            "Europe/Istanbul": "Europe/Istanbul",
+            "Asia/Jerusalem": "Asia/Jerusalem",
+            "Asia/Amman": "Asia/Amman",
+            "Asia/Baghdad": "Asia/Baghdad",
+            "Europe/Kaliningrad": "Europe/Kaliningrad",
+            "Asia/Riyadh": "Asia/Riyadh",
+            "Africa/Nairobi": "Africa/Nairobi",
+            "Asia/Tehran": "Asia/Tehran",
+            "Asia/Dubai": "Asia/Dubai",
+            "Asia/Baku": "Asia/Baku",
+            "Europe/Moscow": "Europe/Moscow",
+            "Indian/Mauritius": "Indian/Mauritius",
+            "Asia/Tbilisi": "Asia/Tbilisi",
+            "Asia/Yerevan": "Asia/Yerevan",
+            "Asia/Kabul": "Asia/Kabul",
+            "Asia/Karachi": "Asia/Karachi",
+            "Asia/Tashkent": "Asia/Tashkent",
+            "Asia/Kolkata": "Asia/Kolkata",
+            "Asia/Colombo": "Asia/Colombo",
+            "Asia/Kathmandu": "Asia/Kathmandu",
+            "Asia/Almaty": "Asia/Almaty",
+            "Asia/Dhaka": "Asia/Dhaka",
+            "Asia/Yekaterinburg": "Asia/Yekaterinburg",
+            "Asia/Rangoon": "Asia/Rangoon",
+            "Asia/Bangkok": "Asia/Bangkok",
+            "Asia/Novosibirsk": "Asia/Novosibirsk",
+            "Asia/Shanghai": "Asia/Shanghai",
+            "Asia/Krasnoyarsk": "Asia/Krasnoyarsk",
+            "Asia/Singapore": "Asia/Singapore",
+            "Australia/Perth": "Australia/Perth",
+            "Asia/Taipei": "Asia/Taipei",
+            "Asia/Ulaanbaatar": "Asia/Ulaanbaatar",
+            "Asia/Irkutsk": "Asia/Irkutsk",
+            "Asia/Tokyo": "Asia/Tokyo",
+            "Asia/Seoul": "Asia/Seoul",
+            "Australia/Adelaide": "Australia/Adelaide",
+            "Australia/Darwin": "Australia/Darwin",
+            "Australia/Brisbane": "Australia/Brisbane",
+            "Australia/Sydney": "Australia/Sydney",
+            "Pacific/Port_Moresby": "Pacific/Port_Moresby",
+            "Australia/Hobart": "Australia/Hobart",
+            "Asia/Yakutsk": "Asia/Yakutsk",
+            "Pacific/Guadalcanal": "Pacific/Guadalcanal",
+            "Asia/Vladivostok": "Asia/Vladivostok",
+            "Pacific/Auckland": "Pacific/Auckland",
+            "Etc/GMT-12": "Etc/GMT-12",
+            "Pacific/Fiji": "Pacific/Fiji",
+            "Asia/Magadan": "Asia/Magadan",
+            "Pacific/Tongatapu": "Pacific/Tongatapu",
+            "Pacific/Apia": "Pacific/Apia",
+            "Pacific/Kiritimati": "Pacific/Kiritimati"
+          }
+        },
+        "importance": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Importance",
+          "label": "Importance",
+          "required": false,
+          "model": {
+            "Low": "Low",
+            "Normal": "Normal",
+            "High": "High"
+          }
+        },
+        "showAs": {
+          "viewClass": "SelectView",
+          "prompt": "Select Show As value",
+          "label": "Show As",
+          "required": false,
+          "model": {
+            "Free": "Free",
+            "Tentative": "Tentative",
+            "Busy": "Busy",
+            "Oof": "Out of Office",
+            "WorkingElsewhere": "Working Elsewhere",
+            "Unknown": "Unknown"
+          }
+        },
+        "sensitivity": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Sensitivity",
+          "label": "Sensitivity",
+          "required": false,
+          "model": {
+            "Normal": "Normal",
+            "Personal": "Personal",
+            "Private": "Private",
+            "Confidential": "Confidential"
+          }
+        },
+        "bodyContentType": {
+          "viewClass": "SelectView",
+          "prompt": "Select Event Body Content Type",
+          "label": "Body Content Type",
+          "required": false,
+          "model": {
+            "Text": "Text",
+            "HTML": "HTML"
+          }
+        },
+        "isAllDay": {
+          "label": "All Day Event",
+          "viewClass": "CheckBoxView"
+        }
+      },
+      "metadata": {
+        "in": "./lib/schemas/createEvent.in.json",
+        "out": "./lib/schemas/createEvent.out.json"
+      }
+    },
+    "moveMail": {
+      "title": "Move Mail",
+      "main": "./lib/actions/moveMail.js",
+      "help": {
+        "description": "Action for moving message between folders or soft-deleting message if the `Destination Mail Folder` folder isn't specified",
+        "link": "/components/outlook/index.html#move-mail"
+      },
+      "fields": {
+        "originalMailFolders": {
+          "viewClass": "SelectView",
+          "prompt": "Select an original Mail Folder",
+          "label": "Original Mail Folder",
+          "required": true,
+          "model": "getFolders"
+        },
+        "destinationFolder": {
+          "viewClass": "SelectView",
+          "note": "Select `Destination Mail Folder`. The message will be soft-deleted (moved to the folder with property `deleteditems`) if the `Destination Mail Folder` folder isn't specified",
+          "prompt": "The message will be soft-deleted (moved to the folder with property `deleteditems`) if the `Destination Mail Folder` folder isn't specified",
+          "label": "Destination Mail Folder",
+          "required": false,
+          "model": "getFolders"
+        }
+      },
+      "metadata": {
+        "in": "./lib/schemas/moveMail.in.json",
+        "out": "./lib/schemas/moveMail.out.json"
+      }
+    },
+    "sendMail": {
+      "title": "Send Mail",
+      "main": "./lib/actions/sendMail.js",
+      "help": {
+        "description": "Action for sending messages",
+        "link": "/components/outlook/index.html#send-mail"
+      },
+      "metadata": {
+        "in": "./lib/schemas/sendMail.in.json",
+        "out": "./lib/schemas/sendMail.in.json"
+      }
+    }
+  }
 }

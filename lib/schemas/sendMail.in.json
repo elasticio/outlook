@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "required": true,
+  "properties": {
+    "subject": {
+      "type": "string",
+      "required": true,
+      "name": "The subject of the message"
+    },
+    "ccRecipients": {
+      "type": "array",
+      "required": false,
+      "name": "The Cc: recipients for the message",
+      "items": {
+        "emailAddress": {
+          "type": "object",
+          "required": true,
+          "name": "The subject of the message",
+          "properties": {
+            "address": {
+              "type": "string",
+              "required": true,
+              "name": "The email address of the person or entity"
+            },
+            "name": {
+              "type": "string",
+              "required": false,
+              "name": "The display name of the person or entity"
+            }
+          }
+        }
+      }
+    },
+    "toRecipients": {
+      "type": "array",
+      "required": true,
+      "name": "The To: recipients for the message",
+      "items": {
+        "type": "object",
+        "properties": {
+          "emailAddress": {
+            "type": "object",
+            "required": true,
+            "name": "The subject of the message",
+            "properties": {
+              "address": {
+                "type": "string",
+                "required": true,
+                "name": "The email address of the person or entity"
+              },
+              "name": {
+                "type": "string",
+                "required": false,
+                "name": "The display name of the person or entity"
+              }
+            }
+          }
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "required": true,
+      "properties": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "name": "The content of the item"
+        },
+        "contentType": {
+          "type": "string",
+          "required": false,
+          "name": "The type of the content. Possible values are text and html",
+          "enum": ["text", "html"]
+        }
+      }
+    },
+    "saveToSentItems": {
+      "type": "boolean",
+      "required": false,
+      "name": "Save to Sent items"
+    }
+  }
+}

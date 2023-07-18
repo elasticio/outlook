@@ -5,9 +5,9 @@ require('dotenv').config();
 
 const { expect } = chai;
 const logger = Logger.getLogger();
-const action = require('../../lib/actions/moveMail');
+const action = require('../../lib/actions/sendMail');
 
-describe('Outlook Move Mail', () => {
+describe('Outlook Send Mail', () => {
   let self;
   let cfg;
   beforeEach(() => {
@@ -30,20 +30,25 @@ describe('Outlook Move Mail', () => {
     };
   });
 
-  it('getFolder test', async () => {
-    const result = await action.getFolders.call(self, cfg);
-    expect(result).to.not.eql({});
-  });
-
-  it('process test', async () => {
-    cfg.originalMailFolders = 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAAA==';
-    cfg.destinationFolder = 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoALgAAA14NR8zJ7GxJnz_JauTU1uQBALdeJHYCtWNEt1wFU6jUUYgAAABl7rNzAAAA';
+  it('Send mail', async () => {
     const msg = {
       body: {
-        messageId: 'AQMkADAwATM0MDAAMS0yMgA3MC1mZDkyLTAwAi0wMAoARgAAA14NR8zJ7GxJnz_JauTU1uQHALdeJHYCtWNEt1wFU6jUUYgAAAIBCgAAALdeJHYCtWNEt1wFU6jUUYgAAynDa-QAAAA=',
+        subject: 'Hello',
+        toRecipients: [
+          {
+            emailAddress: {
+              address: 'voropaiev@gmail.com',
+              name: 'Pavlo',
+            },
+          },
+        ],
+        body: {
+          content: 'sdf',
+          contentType: 'text',
+        },
       },
     };
     const result = await action.process.call(self, msg, cfg);
-    expect(result.body.id).to.eql(msg.body.messageId);
+    expect(result.body).to.deep.equal(msg.body);
   });
 });

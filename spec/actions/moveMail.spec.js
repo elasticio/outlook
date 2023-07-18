@@ -1,24 +1,23 @@
 const { Logger } = require('@elastic.io/component-commons-library');
-const nock = require('nock');
 const chai = require('chai');
 const sinon = require('sinon');
+require('../commons');
 
 const { expect } = chai;
 const logger = Logger.getLogger();
 const action = require('../../lib/actions/moveMail');
+const { OutlookClient } = require('../../lib/OutlookClient');
 
 const configuration = require('../data/configuration.new.in.json');
 
 const cfgString = JSON.stringify(configuration);
 const jsonOut = require('../data/moveMail_test.out.json');
+const folder = require('../data/moveMail_folder_test.in.json');
 
 describe('Outlook Move Mail', () => {
   const originalMailFolders = 'originalId';
   const destinationFolder = 'destinationId';
   const messageId = 'messageId';
-  const refreshTokenUri = 'https://login.microsoftonline.com';
-  const refreshTokenApi = '/common/oauth2/v2.0/token';
-  const microsoftGraphUri = 'https://graph.microsoft.com/v1.0';
   const msg = {
     body: {
       messageId,
@@ -35,64 +34,33 @@ describe('Outlook Move Mail', () => {
       logger,
     };
   });
+  afterEach(() => {
+    sinon.restore();
+  });
 
-  it('should move message to specified folder', async () => {
+  it('should move message to specified folder case: destinationFolder is specified', async () => {
+    sinon.stub(OutlookClient.prototype, 'getMailFolderById').callsFake(() => folder);
+    sinon.stub(OutlookClient.prototype, 'moveMessage').callsFake(() => jsonOut);
     cfg.destinationFolder = destinationFolder;
-    const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-      .reply(200, {
-        access_token: 1,
-        expires_in: 3600,
-      });
-
-    const scope2 = nock(microsoftGraphUri)
-      .post(`/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
-        {
-          destinationId: destinationFolder,
-        })
-      .reply(200, jsonOut);
-
-    const scope3 = nock(microsoftGraphUri)
-      .get(`/me/mailFolders/${destinationFolder}`)
-      .reply(200, { id: destinationFolder });
-
     const result = await action.process.call(self, msg, cfg, {});
-    const expectedReult = jsonOut;
-    expectedReult.currentFolder = {
+    const expectedResult = jsonOut;
+    expectedResult.currentFolder = {
       id: destinationFolder,
     };
-    expect(result.body).to.eql(expectedReult);
-    expect(scope1.isDone()).to.eql(true);
-    expect(scope2.isDone()).to.eql(true);
-    expect(scope3.isDone()).to.eql(true);
+    expect(result.body).to.eql(expectedResult);
   });
 
   it('should move message to Deleted Items folder', async () => {
-    const deletedItemsFolderId = 'deletedItemsFolderId';
-    const scope1 = nock(refreshTokenUri).post(refreshTokenApi)
-      .reply(200, {
-        access_token: 1,
-        expires_in: 3600,
-      });
-
-    const scope2 = nock(microsoftGraphUri)
-      .get('/me/mailFolders/deleteditems')
-      .reply(200, { id: deletedItemsFolderId });
-
-    const scope3 = nock(microsoftGraphUri)
-      .post(`/me/mailFolders/${originalMailFolders}/messages/${messageId}/move`,
-        {
-          destinationId: deletedItemsFolderId,
-        })
-      .reply(200, jsonOut);
+    sinon.stub(OutlookClient.prototype, 'getMailFolderById').callsFake(() => folder);
+    folder.id = 'deletedItemsFolderId';
+    sinon.stub(OutlookClient.prototype, 'getDeletedItemsFolder').callsFake(() => folder);
+    sinon.stub(OutlookClient.prototype, 'moveMessage').callsFake(() => jsonOut);
 
     const result = await action.process.call(self, msg, cfg, {});
-    const expectedReult = jsonOut;
-    expectedReult.currentFolder = {
+    const expectedResult = jsonOut;
+    expectedResult.currentFolder = {
       id: 'deletedItemsFolderId',
     };
-    expect(result.body).to.eql(expectedReult);
-    expect(scope1.isDone()).to.eql(true);
-    expect(scope2.isDone()).to.eql(true);
-    expect(scope3.isDone()).to.eql(true);
+    expect(result.body).to.eql(expectedResult);
   });
 });

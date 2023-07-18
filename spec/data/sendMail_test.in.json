@@ -1,0 +1,16 @@
+{
+  "subject": "Test subject",
+  "body": {
+    "contentType": "Text",
+    "content": "Some plain text"
+  },
+  "toRecipients": [
+    {
+      "emailAddress": {
+        "address": "email@example.com",
+        "name": "John"
+      }
+    }
+  ],
+  "saveToSentItems": "false"
+}
