@@ -24,7 +24,7 @@
         "dateTime": {
           "type": "string",
           "required": true,
-          "title":"Start Time"
+          "title":"Start Time (YYYY-MM-DDTHH:MM:SS format)"
         }
       }
     },
@@ -34,7 +34,7 @@
         "dateTime": {
           "type": "string",
           "required": true,
-          "title":"End Time"
+          "title":"End Time (YYYY-MM-DDTHH:MM:SS format)"
         }
       }
     },
