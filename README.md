@@ -94,6 +94,7 @@ Per one execution it is possible to poll 1000 mails by defaults, this can be cha
 * **Mail Folder** - Dropdown list with available Outlook mail folders
 * **Start Time** - Start datetime of polling. Defaults: `1970-01-01T00:00:00.000Z`
 * **Poll Only Unread Mail** - CheckBox, if set, only unread mails will be poll
+* **Get Attachment** - CheckBox, if checked, attachments of the email will be downloaded to platform and link provided as part of output metadata with key `attachments`
 * **Emit Behavior** -  Options are: default is `Emit Individually` emits each mail in separate message, `Emit All` emits all found mails in one message
 
 #### Expected output metadata
@@ -182,3 +183,4 @@ In case of a success, output metadata simply repeats the incoming message. I.e. 
 ```
 
 ## Known limitations
+  * When you use `Send Mail` action with attachments, by default component works fine with files up to 20MB, if you going to use larger files, you should create/increase environment variable `EIO_REQUIRED_RAM_MB` - memory usage limit for component in MB (256 by default)
