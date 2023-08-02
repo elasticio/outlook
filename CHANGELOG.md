@@ -1,5 +1,6 @@
 ## 2.1.0 (August 01, 2023)
 * Added checkbox `Get Attachment` to `Poll for New Mail` trigger
+* Added metadata field `Attachments` to `Send Mail` action
 
 ## 2.0.0 (July 19, 2023)
 * Breaking change! Reworked authentication mechanism - implemented Secrets feature
