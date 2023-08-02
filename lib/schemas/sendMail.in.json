@@ -85,17 +85,17 @@
     },
     "attachments": {
       "type": "array",
-      "title":"Attachments",
+      "title": "Attachments",
       "items": {
         "type": "object",
         "properties": {
           "name": {
             "type": "string",
-            "title":"File name"
+            "title": "File name"
           },
           "url": {
             "type": "string",
-            "title":"URL to file"
+            "title": "URL to file"
           }
         }
       }
