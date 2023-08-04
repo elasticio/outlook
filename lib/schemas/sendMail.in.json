@@ -71,7 +71,10 @@
           "type": "string",
           "required": false,
           "name": "The type of the content. Possible values are text and html",
-          "enum": ["text", "html"]
+          "enum": [
+            "text",
+            "html"
+          ]
         }
       }
     },
@@ -79,6 +82,23 @@
       "type": "boolean",
       "required": false,
       "name": "Save to Sent items"
+    },
+    "attachments": {
+      "type": "array",
+      "title": "Attachments",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "File name"
+          },
+          "url": {
+            "type": "string",
+            "title": "URL to file"
+          }
+        }
+      }
     }
   }
 }
