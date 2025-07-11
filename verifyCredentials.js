@@ -2,7 +2,6 @@ const { OutlookClient } = require('./lib/OutlookClient');
 
 module.exports = async function verifyCredentials(cfg) {
   this.logger.info('Verify Credentials started');
-  this.logger.info(JSON.stringify(cfg, null, 2));
   try {
     const client = new OutlookClient(this, cfg);
     await client.getUserInfo();
