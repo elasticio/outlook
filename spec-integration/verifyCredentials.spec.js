@@ -26,7 +26,7 @@ describe('Outlook Verify credentials', () => {
         tokenExpiryTime: (new Date('2995-12-17T03:24:00')).toISOString(),
         client_id: process.env.OAUTH_CLIENT_ID,
         client_secret: process.env.OAUTH_CLIENT_SECRET,
-        // access_token: process.env.ACCESS_TOKEN,
+        access_token: process.env.ACCESS_TOKEN,
       },
       folderId: process.env.FOLDER_ID,
     };
