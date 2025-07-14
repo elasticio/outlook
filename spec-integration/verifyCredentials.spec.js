@@ -32,7 +32,7 @@ describe('Outlook Verify credentials', () => {
     };
   });
 
-  it.only('Verify credentials', async () => {
+  it('Verify credentials', async () => {
     const result = await verify.call(self, cfg);
     expect(result.verified).to.be.equal(true);
   });
