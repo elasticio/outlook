@@ -1,4 +1,4 @@
-## 2.1.1 (July 17, 2025)
+## 2.1.1 (July 22, 2025)
 * Slightly improved error handling
 * Updated Sailor 2.7.1 -> 2.7.5
 * Updated axios 1.4.0 -> 1.10.0
