@@ -1,6 +1,9 @@
 const { Logger } = require('@elastic.io/component-commons-library');
 const sinon = require('sinon');
 require('dotenv').config();
+const chai = require('chai');
+
+const { expect } = chai;
 
 const logger = Logger.getLogger();
 const verify = require('../verifyCredentials');
@@ -14,7 +17,8 @@ describe('Outlook Verify credentials', () => {
       logger,
     };
     cfg = {
-      oauth2: {
+      secretId: process.env.ELASTICIO_SECRET_ID,
+      oauth: {
         token_type: 'Bearer',
         scope: 'openid User.Read Contacts.Read profile Calendars.ReadWrite Mail.ReadWrite Files.ReadWrite.All',
         expires_in: 3600,
@@ -29,6 +33,7 @@ describe('Outlook Verify credentials', () => {
   });
 
   it('Verify credentials', async () => {
-    await verify.call(self, cfg);
+    const result = await verify.call(self, cfg);
+    expect(result.verified).to.be.equal(true);
   });
 });

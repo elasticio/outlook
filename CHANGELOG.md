@@ -1,3 +1,9 @@
+## 2.1.1 (July 22, 2025)
+* Slightly improved error handling
+* Updated Sailor 2.7.1 -> 2.7.5
+* Updated axios 1.4.0 -> 1.10.0
+* Updated @elastic.io/component-commons-library 3.1.5 -> 3.2.2
+
 ## 2.1.0 (August 04, 2023)
 * Added checkbox `Get Attachment` to `Poll for New Mail` trigger
 * Added metadata field `Attachments` to `Send Mail` action

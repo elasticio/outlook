@@ -8,15 +8,16 @@
     "url": "git@github.com:elasticio/outlook.git"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "files": [
     "lib"
   ],
   "scripts": {
+    "audit": "better-npm-audit audit --level high --production",
     "pretest": "eslint lib spec verifyCredentials.js --fix",
     "test": "mocha spec --recursive",
-    "integration-test": "mocha spec-integration --recursive --timeout 3000"
+    "integration-test": "LOG_LEVEL=debug mocha spec-integration --recursive --timeout 3000"
   },
   "main": "lib/index.js",
   "keywords": [
@@ -27,16 +28,17 @@
     "elasticio-component"
   ],
   "dependencies": {
-    "@elastic.io/component-commons-library": "3.1.5",
-    "axios": "1.4.0",
+    "@elastic.io/component-commons-library": "3.2.2",
+    "axios": "1.10.0",
     "elasticio-node": "0.0.9",
-    "elasticio-sailor-nodejs": "2.7.1",
+    "elasticio-sailor-nodejs": "2.7.5",
     "lodash": "4.17.21",
     "moment": "2.29.4",
     "moment-timezone": "0.5.43",
     "q": "1.5.1"
   },
   "devDependencies": {
+    "better-npm-audit": "3.11.0",
     "chai": "4.3.7",
     "dotenv": "16.3.1",
     "eslint": "8.44.0",
