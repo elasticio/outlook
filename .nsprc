@@ -1,0 +1,6 @@
+{
+    "GHSA-fjxv-7rqg-78g4": {
+            "active": true,
+            "notes": "We don't to users for any fields in form-data (request), so not affected"
+    }
+}
